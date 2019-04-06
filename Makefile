@@ -27,11 +27,5 @@ clean :
 	@echo "Clear of obj/"
 	@rm -r obj
 	@mkdir obj
-	@mkdir obj/Header/
-	@mkdir obj/System/
-	@mkdir obj/System/Info/
-	@mkdir obj/System/OS/
-	@mkdir obj/System/OS/Linux/
-	@mkdir obj/System/OS/Windows/
 	@echo "obj-Tree creation done."
 	@echo "Clean done."
