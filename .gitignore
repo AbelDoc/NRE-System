@@ -1,0 +1,4 @@
+*.o
+config.nre
+*.exe
+DoxyFile

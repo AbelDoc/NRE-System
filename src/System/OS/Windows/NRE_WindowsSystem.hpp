@@ -1,0 +1,77 @@
+
+    /**
+     * @file System/OS/Windows/NRE_WindowsSystem.hpp
+     * @brief Declaration of System's API's Object : WindowsSystem
+     * @author Louis ABEL
+     * @date 06/04/2019
+     * @copyright CC-BY-NC-SA
+     */
+
+    #pragma once
+
+    #include <string>
+    #include <cstring>
+    #include <iostream>
+    #include <intrin.h>
+    #include <Windows.h>
+    #include <psapi.h>
+
+    #include "../NRE_AbstractSystem.hpp"
+
+    /**
+     * @namespace NRE
+     * @brief The NearlyRealEngine's global namespace
+     */
+    namespace NRE {
+        /**
+         * @namespace System
+         * @brief System's API
+         */
+        namespace System {
+
+            /**
+             * @class WindowsSystem
+             * @brief Represent the Windows System abstraction layer
+             */
+            class WindowsSystem : public AbstractSystem {
+                public :    // Methods
+                    //## Constructor ##//
+                        /**
+                         * Construct the system class and fill it with system information
+                         */
+                        WindowsSystem();
+
+                    //## Getter ##//
+                        /**
+                         * @return the system's name
+                         */
+                        std::string getSystemName() const override;
+
+                    //## Methods ##//
+                        /**
+                         * Query the System's Memory info
+                         */
+                        void queryMemoryInfo() override;
+                        /**
+                         * Query the System's Info
+                         */
+                        void querySystemInfo() override;
+                        /**
+                         * Query the CPU's name
+                         */
+                        void queryCPUName() override;
+
+                private :   // Methods
+            };
+
+            typedef WindowsSystem System;
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return the    modified stream
+             */
+            std::ostream& operator <<(std::ostream& stream, WindowsSystem const& o);
+        }
+    }
