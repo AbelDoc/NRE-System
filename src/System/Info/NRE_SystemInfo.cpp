@@ -12,6 +12,9 @@
      namespace NRE {
          namespace System {
 
+             SystemInfo::SystemInfo() : cpuName(""), architecture(""), nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
+             }
+
              std::string const& SystemInfo::getCPUName() const {
                  return cpuName;
              }

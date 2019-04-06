@@ -11,8 +11,8 @@ export LIBDIR = -L"C:\lib\MinGW64_7.3\lib"
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/NRE_AbstractSystem.o $(OBJDIR)System/OS/Windows/NRE_WindowsSystem.o 
-OUT = NRE-System
+OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/NRE_AbstractSystem.o $(OBJDIR)System/OS/Linux/NRE_LinuxSystem.o $(OBJDIR)System/OS/Windows/NRE_WindowsSystem.o 
+OUT = Windows/NRE-System
 
 all : childs out
 
@@ -31,6 +31,7 @@ clean :
 	@mkdir obj/System/
 	@mkdir obj/System/Info/
 	@mkdir obj/System/OS/
+	@mkdir obj/System/OS/Linux/
 	@mkdir obj/System/OS/Windows/
 	@echo "obj-Tree creation done."
 	@echo "Clean done."

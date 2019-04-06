@@ -28,7 +28,9 @@
             #error "Unknown Apple platform"
         #endif
     #elif __linux__                         // Linux
-        #error "Not Supported Yet"
+
+        #include "../System/OS/Linux/NRE_LinuxSystem.hpp"
+
     #elif __unix__                          // Unix
         #error "Not Supported Yet"
     #elif defined(_POSIX_VERSION)           // Posix

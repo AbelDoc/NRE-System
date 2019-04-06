@@ -41,7 +41,7 @@
                         /**
                          * Construct an empty system information set
                          */
-                        SystemInfo() = default;
+                        SystemInfo();
 
                     //## Getter ##//
                         /**

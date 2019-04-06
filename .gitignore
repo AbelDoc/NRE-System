@@ -1,4 +1,4 @@
 *.o
-config.nre
+*.nre
 *.exe
 DoxyFile
