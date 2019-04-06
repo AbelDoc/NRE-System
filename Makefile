@@ -11,7 +11,7 @@ export LIBDIR = -L"C:\lib\MinGW64_7.3\lib"
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/NRE_AbstractSystem.o $(OBJDIR)System/OS/Linux/NRE_LinuxSystem.o $(OBJDIR)System/OS/Windows/NRE_WindowsSystem.o 
+OBJ = $(OBJDIR)NRE_Main.o 
 OUT = Windows/NRE-System
 
 all : childs out

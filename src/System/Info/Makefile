@@ -1,7 +1,7 @@
-OBJ = $(OBJDIR)NRE_SystemInfo.o 
+OBJ = 
 OBJDIR = ../../../obj/System/Info/
 
 all : $(OBJ)
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+$(OBJDIR)%.o :  %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

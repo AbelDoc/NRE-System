@@ -1,4 +1,4 @@
-OBJ = $(OBJDIR)NRE_AbstractSystem.o 
+OBJ = 
 OBJDIR = ../../../obj/System/OS/
 
 LINUX = Linux
@@ -10,5 +10,5 @@ childs:
 	@(cd $(LINUX) && $(MAKE))
 	@(cd $(WINDOWS) && $(MAKE))
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+$(OBJDIR)%.o :  %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

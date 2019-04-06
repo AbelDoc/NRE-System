@@ -69,7 +69,9 @@
                         /**
                          * @return the System info
                          */
-                        SystemInfo const& getSystemInfo() const;
+                        SystemInfo const& getSystemInfo() const {
+                            return infos;
+                        }
 
                     //## Methods ##//
                         /**
@@ -104,7 +106,12 @@
                          * Convert the system into a string
                          * @return the converted system
                          */
-                        std::string toString() const;
+                        std::string toString() const {
+                            std::string res(getSystemName());
+                            res += " :\n";
+                            res += infos.toString();
+                            return res;
+                        }
             };
 
             /**
@@ -113,6 +120,8 @@
              * @param  o      the object to add in the stream
              * @return the    modified stream
              */
-            std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o);
+            std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o) {
+               return stream << o.toString();
+            }
         }
     }

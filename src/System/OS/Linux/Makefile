@@ -1,7 +1,7 @@
-OBJ = $(OBJDIR)NRE_LinuxSystem.o 
+OBJ = 
 OBJDIR = ../../../../obj/System/OS/Linux/
 
 all : $(OBJ)
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+$(OBJDIR)%.o :  %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

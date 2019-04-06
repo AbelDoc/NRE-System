@@ -1,7 +1,7 @@
-OBJ = $(OBJDIR)NRE_WindowsSystem.o 
+OBJ = 
 OBJDIR = ../../../../obj/System/OS/Windows/
 
 all : $(OBJ)
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+$(OBJDIR)%.o :  %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
