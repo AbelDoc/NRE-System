@@ -12,6 +12,10 @@
     namespace NRE {
         namespace System {
 
+            SystemInfo const& AbstractSystem::getSystemInfo() const {
+                return infos;
+            }
+
             std::string AbstractSystem::toString() const {
                 std::string res(getSystemName());
                 res += " :\n";

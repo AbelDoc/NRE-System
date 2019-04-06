@@ -64,7 +64,8 @@
                 private :   // Methods
             };
 
-            typedef WindowsSystem System;
+            typedef WindowsSystem SystemType;
+            static SystemType System;
 
             /**
              * Output stream operator for the object

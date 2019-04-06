@@ -61,7 +61,8 @@
                 private :   // Methods
             };
 
-            typedef LinuxSystem System;
+            typedef LinuxSystem SystemType;
+            static SystemType System;
 
             /**
              * Output stream operator for the object

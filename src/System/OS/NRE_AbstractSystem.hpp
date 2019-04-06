@@ -66,6 +66,10 @@
                          * @return the system's name
                          */
                         virtual std::string getSystemName() const = 0;
+                        /**
+                         * @return the System info
+                         */
+                        SystemInfo const& getSystemInfo() const;
 
                     //## Methods ##//
                         /**
