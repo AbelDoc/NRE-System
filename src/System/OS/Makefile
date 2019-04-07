@@ -7,7 +7,7 @@ WINDOWS = Windows
 all : childs $(OBJ)
 
 childs:
-	@(cd $(LINUX) && $(MAKE))
+	@(cd $(WINDOWS) && $(MAKE))
 
 $(OBJDIR)%.o :  %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
