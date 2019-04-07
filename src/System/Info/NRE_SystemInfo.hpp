@@ -120,5 +120,3 @@
 
         }
     }
-
-    #include "NRE_SystemInfo.tpp"

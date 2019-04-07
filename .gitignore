@@ -2,3 +2,4 @@
 *.nre
 *.exe
 DoxyFile
+bin/*

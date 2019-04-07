@@ -7,6 +7,8 @@
      * @copyright CC-BY-NC-SA
      */
 
+    #include "NRE_SystemInfo.hpp"
+
      namespace NRE {
          namespace System {
 

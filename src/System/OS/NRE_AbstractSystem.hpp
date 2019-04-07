@@ -116,5 +116,3 @@
             std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o);
         }
     }
-
-    #include "NRE_AbstractSystem.tpp"

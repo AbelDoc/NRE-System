@@ -77,5 +77,3 @@
 
         }
     }
-
-    #include "NRE_WindowsSystem.tpp"
