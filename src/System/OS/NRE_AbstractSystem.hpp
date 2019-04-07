@@ -69,9 +69,7 @@
                         /**
                          * @return the System info
                          */
-                        SystemInfo const& getSystemInfo() const {
-                            return infos;
-                        }
+                        SystemInfo const& getSystemInfo() const;
 
                     //## Methods ##//
                         /**
@@ -106,12 +104,7 @@
                          * Convert the system into a string
                          * @return the converted system
                          */
-                        std::string toString() const {
-                            std::string res(getSystemName());
-                            res += " :\n";
-                            res += infos.toString();
-                            return res;
-                        }
+                        std::string toString() const;
             };
 
             /**
@@ -120,8 +113,8 @@
              * @param  o      the object to add in the stream
              * @return the    modified stream
              */
-            std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o) {
-               return stream << o.toString();
-            }
+            std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o);
         }
     }
+
+    #include "NRE_AbstractSystem.tpp"

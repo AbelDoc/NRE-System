@@ -36,36 +36,27 @@
                         /**
                          * Construct the system class and fill it with system information
                          */
-                        LinuxSystem() {
-                            queryCPUName();
-                            querySystemInfo();
-                            queryMemoryInfo();
-                        }
+                        LinuxSystem();
 
                     //## Getter ##//
                         /**
                          * @return the system's name
                          */
-                        std::string getSystemName() const override {
-                            return "Linux System";
-                        }
+                        std::string getSystemName() const override;
 
                     //## Methods ##//
                         /**
                          * Query the System's Memory info
                          */
-                        void queryMemoryInfo() override {
-                        }
+                        void queryMemoryInfo() override;
                         /**
                          * Query the System's Info
                          */
-                        void querySystemInfo() override {
-                        }
+                        void querySystemInfo() override;
                         /**
                          * Query the CPU's name
                          */
-                        void queryCPUName() override {
-                        }
+                        void queryCPUName() override;
 
                 private :   // Methods
             };
@@ -79,8 +70,6 @@
              * @param  o      the object to add in the stream
              * @return the    modified stream
              */
-            std::ostream& operator <<(std::ostream& stream, LinuxSystem const& o) {
-                return stream << o.toString();
-            }
+            std::ostream& operator <<(std::ostream& stream, LinuxSystem const& o);
         }
     }

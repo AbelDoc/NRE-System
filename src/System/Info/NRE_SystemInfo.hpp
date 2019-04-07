@@ -41,112 +41,72 @@
                         /**
                          * Construct an empty system information set
                          */
-                        SystemInfo() : cpuName(""), architecture(""), nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
-                        }
+                        SystemInfo();
 
                     //## Getter ##//
                         /**
                          * @return the CPU's name
                          */
-                        std::string const& getCPUName() const {
-                            return cpuName;
-                        }
+                        std::string const& getCPUName() const;
                         /**
                          * @return the System Architecture
                          */
-                        std::string const& getArchitecture() const {
-                            return architecture;
-                        }
+                        std::string const& getArchitecture() const;
                         /**
                          * @return the number of CPU
                          */
-                        std::size_t getNbProcessors() const {
-                            return nbProcessors;
-                        }
+                        std::size_t getNbProcessors() const;
                         /**
                          * @return the memory size
                          */
-                        std::size_t getMemorySize() const {
-                            return memorySize;
-                        }
+                        std::size_t getMemorySize() const;
                         /**
                          * @return the memory used
                          */
-                        std::size_t getMemoryUsed() const {
-                            return memoryUsed;
-                        }
+                        std::size_t getMemoryUsed() const;
                         /**
                          * @return the memory used by the current process
                          */
-                        std::size_t getMemoryUsedByProcess() const {
-                            return memoryUsedByProcess;
-                        }
+                        std::size_t getMemoryUsedByProcess() const;
 
                     //## Setter ##//
                         /**
                          * CPU Name Setter
                          * @param name the new cpu's name
                          */
-                        void setCPUName(std::string const& name) {
-                            cpuName = name;
-                        }
+                        void setCPUName(std::string const& name);
                         /**
                          * Architecture Setter
                          * @param arc the new architecture value
                          */
-                        void setArchitecture(std::string const& arc) {
-                            architecture = arc;
-                        }
+                        void setArchitecture(std::string const& arc);
                         /**
                          * NbProcessors Setter
                          * @param nb the new number of processors
                          */
-                        void setNbProcessors(std::size_t nb) {
-                            nbProcessors = nb;
-                        }
+                        void setNbProcessors(std::size_t nb);
                         /**
                          * Memory Size Setter
                          * @param size the new memory size
                          */
-                        void setMemorySize(std::size_t size) {
-                            memorySize = size;
-                        }
+                        void setMemorySize(std::size_t size);
                         /**
                          * Memory Used Setter
                          * @param used the new memory used
                          */
-                        void setMemoryUsed(std::size_t used) {
-                            memoryUsed = used;
-                        }
+                        void setMemoryUsed(std::size_t used);
                         /**
                          * Memory Used By Process Setter
                          * @param used the new memory used by process
                          */
-                        void setMemoryUsedByProcess(std::size_t used) {
-                            memoryUsedByProcess = used;
-                        }
+                        void setMemoryUsedByProcess(std::size_t used);
 
                     //## Stream Operator ##//
                         /**
                          * Convert the system info into a string
                          * @return the converted system info
                          */
-                        std::string toString() const {
-                            std::string res("Architecture : ");
-                            res += architecture;
-                            res += "\nCPU Model : ";
-                            res += std::to_string(nbProcessors);
-                            res += "x ";
-                            res += cpuName;
-                            res += "\nMemory : ";
-                            res += std::to_string(memoryUsed);
-                            res += " / ";
-                            res += std::to_string(memorySize);
-                            res += " Mo\nMemory Used by this Process : ";
-                            res += std::to_string(memoryUsedByProcess);
-                            res += " Mo";
-                            return res;
-                        }
+                        std::string toString() const;
 
             };
 
@@ -156,9 +116,9 @@
              * @param  o      the object to add in the stream
              * @return the    modified stream
              */
-            std::ostream& operator <<(std::ostream& stream, SystemInfo const& o) {
-                return stream << o.toString();
-            }
+            std::ostream& operator <<(std::ostream& stream, SystemInfo const& o);
 
         }
     }
+
+    #include "NRE_SystemInfo.tpp"
