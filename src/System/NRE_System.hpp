@@ -1,9 +1,9 @@
 
     /**
-     * @file NRE_AbstractSystem.hpp
-     * @brief Declaration of System's API's Object : AbstractSystem
+     * @file NRE_System.hpp
+     * @brief Declaration of System's API's Object : System
      * @author Louis ABEL
-     * @date 06/04/2019
+     * @date 07/05/2019
      * @copyright CC-BY-NC-SA
      */
 
@@ -12,8 +12,12 @@
     #include <string>
     #include <cstring>
     #include <iostream>
+    #include <fstream>
 
-    #include "../Info/NRE_SystemInfo.hpp"
+    #include "NRE_SystemInclude.hpp"
+
+    #include "Info/NRE_SystemInfo.hpp"
+    #include "CpuID/NRE_CpuID.hpp"
 
     /**
      * @namespace NRE
@@ -27,10 +31,10 @@
         namespace System {
 
             /**
-             * @class AbstractSystem
+             * @class System
              * @brief Represent the System abstraction layer
              */
-            class AbstractSystem {
+            class System {
                 protected :   // Fields
                     SystemInfo infos;   /**< The system's info */
 
@@ -39,33 +43,33 @@
                         /**
                          * Construct the system class;
                          */
-                        AbstractSystem() = default;
+                        System();
 
                     //## Copy Constructor ##//
                         /**
                          * Copy forbidden
                          * @param sys the system to copy
                          */
-                        AbstractSystem(AbstractSystem const& sys) = delete;
+                        System(System const& sys) = delete;
 
                     //## Move Constructor ##//
                         /**
                          * Move forbidden
                          * @param sys the system to copy
                          */
-                        AbstractSystem(AbstractSystem && sys) = delete;
+                        System(System && sys) = delete;
 
                     //## Deconstructor ##//
                         /**
-                         * AbstractSystem Deconstructor
+                         * System Deconstructor
                          */
-                        virtual ~AbstractSystem() = default;
+                        ~System() = default;
 
                     //## Getter ##//
                         /**
                          * @return the system's name
                          */
-                        virtual std::string getSystemName() const = 0;
+                        std::string getSystemName() const;
                         /**
                          * @return the System info
                          */
@@ -75,15 +79,15 @@
                         /**
                          * Query the System's Memory info
                          */
-                        virtual void queryMemoryInfo() = 0;
+                        void queryMemoryInfo();
                         /**
                          * Query the System's Info
                          */
-                        virtual void querySystemInfo() = 0;
+                        void querySystemInfo();
                         /**
                          * Query the CPU's name
                          */
-                        virtual void queryCPUName() = 0;
+                        void queryCPUName();
 
                     //## Assignment Operator ##//
                         /**
@@ -91,13 +95,13 @@
                          * @param s the object to copy into this
                          * @return  the reference of himself
                          */
-                        AbstractSystem& operator =(AbstractSystem const& s) = delete;
+                        System& operator =(System const& s) = delete;
                         /**
                          * Move forbidden
                          * @param s the object to move into this
                          * @return  the reference of himself
                          */
-                        AbstractSystem& operator =(AbstractSystem && s) = delete;
+                        System& operator =(System && s) = delete;
 
                     //## Stream Operator ##//
                         /**
@@ -113,6 +117,6 @@
              * @param  o      the object to add in the stream
              * @return the    modified stream
              */
-            std::ostream& operator <<(std::ostream& stream, AbstractSystem const& o);
+            std::ostream& operator <<(std::ostream& stream, System const& o);
         }
     }
