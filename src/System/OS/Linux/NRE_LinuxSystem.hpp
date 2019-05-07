@@ -13,6 +13,11 @@
     #include <iostream>
     #include <fstream>
 
+    #include <unistd.h>
+    #include <sys/types.h>
+    #include <sys/sysinfo.h>
+
+    #include "../../CpuID/NRE_CpuID.hpp"
     #include "../NRE_AbstractSystem.hpp"
 
     /**
@@ -62,7 +67,6 @@
             };
 
             typedef LinuxSystem SystemType;
-            static SystemType System;
 
             /**
              * Output stream operator for the object

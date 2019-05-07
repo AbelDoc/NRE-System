@@ -12,10 +12,10 @@
     #include <string>
     #include <cstring>
     #include <iostream>
-    #include <intrin.h>
     #include <Windows.h>
     #include <Psapi.h>
 
+    #include "../../CpuID/NRE_CpuID.hpp"
     #include "../NRE_AbstractSystem.hpp"
 
     /**

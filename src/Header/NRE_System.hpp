@@ -9,6 +9,8 @@
 
     #pragma once
 
+    #include "../System/CpuID/NRE_CpuID.hpp"
+
     #ifdef _WIN32                           // Windows
 
         #include "../System/OS/Windows/NRE_WindowsSystem.hpp"
@@ -38,3 +40,16 @@
     #else
         #error "Unknown compiler"
     #endif
+
+    namespace NRE {
+        namespace System {
+
+            /**
+             * @return the system instance
+             */
+            SystemType& getSystem() {
+                static SystemType systemInstance;
+                return systemInstance;
+            }
+        }
+    }

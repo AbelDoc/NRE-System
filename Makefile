@@ -11,7 +11,7 @@ export LIBDIR = -L"C:\lib\MinGW64_7.3\x86_64-w64-mingw32\lib" -L"C:\lib\WindowsK
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/NRE_AbstractSystem.o $(OBJDIR)System/OS/Windows/NRE_WindowsSystem.o 
+OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/NRE_AbstractSystem.o $(OBJDIR)System/OS/Windows/NRE_WindowsSystem.o 
 OUT = Windows/NRE-System
 
 all : childs out
@@ -28,6 +28,7 @@ clean :
 	@rm -r obj
 	@mkdir obj
 	@mkdir obj/System/
+	@mkdir obj/System/CpuID/
 	@mkdir obj/System/Info/
 	@mkdir obj/System/OS/
 	@mkdir obj/System/OS/Linux/

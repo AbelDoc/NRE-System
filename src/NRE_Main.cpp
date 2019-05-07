@@ -15,7 +15,7 @@
     using namespace NRE::System;
 
     int main(int, char**) {
-        std::cout << System << std::endl;
+        std::cout << getSystem() << std::endl;
 
         return 0;
     }
