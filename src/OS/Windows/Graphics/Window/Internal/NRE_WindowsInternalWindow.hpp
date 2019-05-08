@@ -8,7 +8,8 @@
      */
 
      #pragma once
-
+     
+     #include <Header/NRE_Math.hpp>
      #include <Windows.h>
 
      /**
@@ -31,11 +32,66 @@
                     HWND internal;
 
                 public :    // Methods
+                    //## Constructor ##//
+                        /**
+                         * No default constructor
+                         */
+                        InternalWindow() = delete;
+                        /**
+                         * Construct the internal window
+                         * @param title    the window title
+                         * @param position the window position
+                         * @param size     the window size
+                         */
+                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size);
+                        /**
+                         * Construct the internal window with centered position
+                         * @param title    the window title
+                         * @param size     the window size
+                         */
+                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size);
+
+                    //## Copy Constructor ##//
+                        /**
+                         * Copy forbidden
+                         * @param inl the internal window to copy
+                         */
+                        InternalWindow(InternalWindow const& inl) = delete;
+
+                    //## Move Constructor ##//
+                        /**
+                         * Move forbidden
+                         * @param inl the internal window to move
+                         */
+                        InternalWindow(InternalWindow && inl) = delete;
+
+                    //## Deconstructor ##//
+                        /**
+                         * InternalWindow Deconstructor
+                         */
+                        ~InternalWindow();
+
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy forbidden
+                         * @param inl the object to copy into this
+                         * @return    the reference of himself
+                         */
+                        InternalWindow& operator =(InternalWindow const& inl) = delete;
+                        /**
+                         * Move forbidden
+                         * @param inl the object to move into this
+                         * @return    the reference of himself
+                         */
+                        InternalWindow& operator =(InternalWindow && inl) = delete;
+
+                public :    // Static
                     /**
-                     * No default constructor
+                     * Compute the centered position for the window
+                     * @param size the window size
+                     * @return     the center point for the given size
                      */
-                    InternalWindow() = delete;
-                    InternalWindow()
+                    static Math::Point2D<unsigned int> computeCenteredPosition(Math::Vector2D<unsigned int> size);
 
             };
         }
