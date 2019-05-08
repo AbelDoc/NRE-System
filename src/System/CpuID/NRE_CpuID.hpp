@@ -37,7 +37,7 @@
              */
             class CpuID {
                 private :   // Fields
-                    Register registers[4];
+                    Register registers[4];  /**< The command registers */
 
                 public :    // Methods
                     //## Constructor ##//

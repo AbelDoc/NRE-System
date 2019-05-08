@@ -25,9 +25,16 @@
                 DestroyWindow(internal);
             }
 
+            Point2D<unsigned int> InternalWindow::getPosition() const {
+                RECT internalRect;
+                GetWindowRect(internal, &internalRect);
+                return Point2D<unsigned int>(internalRect.left, internalRect.top);
+            }
+
             Point2D<unsigned int> InternalWindow::computeCenteredPosition(Vector2D<unsigned int> size) {
                 RECT desktop;
                 GetWindowRect(GetDesktopWindow(), &desktop);
+
                 return Point2D<unsigned int>(desktop.right / 2 - size.getW() / 2, desktop.bottom / 2 - size.getH() / 2);
             }
 

@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_WindowsInternalWindow.hpp
+     * @file NRE_LinuxInternalWindow.hpp
      * @brief Declaration of System's API's Object : InternalWindow
      * @author Louis ABEL
      * @date 08/05/2019
@@ -10,7 +10,7 @@
      #pragma once
 
      #include <Header/NRE_Math.hpp>
-     #include <Windows.h>
+     #include "../../Driver/NRE_LinuxGraphicsDriver.hpp"
 
      /**
       * @namespace NRE
@@ -29,7 +29,8 @@
               */
             class InternalWindow {
                 private :   // Fields
-                    HWND internal;      /**< The internal window */
+                    Window internal;    /**< The internal window */
+                    int xId;            /**< The X11 window id */
 
                 public :    // Methods
                     //## Constructor ##//

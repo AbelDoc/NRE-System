@@ -10,6 +10,7 @@
     #pragma once
 
     #include "../System/NRE_System.hpp"
+    #include "../System/Graphics/Window/NRE_Window.hpp"
 
     namespace NRE {
         namespace System {

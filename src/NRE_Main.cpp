@@ -12,13 +12,18 @@
 
     #include "Header/NRE_System.hpp"
     #include <Header/NRE_Math.hpp>
-    #include "OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.hpp"
 
     using namespace NRE::System;
     using namespace NRE::Math;
 
     int main(int, char**) {
+        NRE::System::Window window("MyWindow", {1280, 720});
+
         std::cout << getSystem() << std::endl;
+        std::cout << "\nWindow : \n" << window << std::endl;
+
+        while (1) {
+        }
 
         return 0;
     }
