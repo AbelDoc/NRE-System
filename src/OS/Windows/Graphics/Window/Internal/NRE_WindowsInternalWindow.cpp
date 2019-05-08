@@ -21,14 +21,14 @@
             InternalWindow::InternalWindow(std::string const& title, Vector2D<unsigned int> const& size) : InternalWindow(title, computeCenteredPosition(size), size) {
             }
 
-            InternalWindow::~InternalWindow() {
-                DestroyWindow(internal);
-            }
-
             Point2D<unsigned int> InternalWindow::getPosition() const {
                 RECT internalRect;
                 GetWindowRect(internal, &internalRect);
                 return Point2D<unsigned int>(internalRect.left, internalRect.top);
+            }
+
+            void InternalWindow::close() {
+                DestroyWindow(internal);
             }
 
             Point2D<unsigned int> InternalWindow::computeCenteredPosition(Vector2D<unsigned int> size) {

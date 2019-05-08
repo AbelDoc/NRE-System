@@ -16,6 +16,7 @@
 
     #include "Info/NRE_SystemInfo.hpp"
     #include "CpuID/NRE_CpuID.hpp"
+    #include "Graphics/NRE_GraphicsSystem.hpp"
 
     /**
      * @namespace NRE
@@ -34,7 +35,8 @@
              */
             class System {
                 protected :   // Fields
-                    SystemInfo infos;   /**< The system's info */
+                    SystemInfo infos;           /**< The system's info */
+                    GraphicsSystem graphics;    /**< The graphics sub system */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -72,6 +74,10 @@
                          * @return the System info
                          */
                         SystemInfo const& getSystemInfo() const;
+                        /**
+                         * @return the graphics sub system
+                         */
+                        GraphicsSystem& getGraphicsSystem();
 
                     //## Methods ##//
                         /**
@@ -116,5 +122,10 @@
              * @return the    modified stream
              */
             std::ostream& operator <<(std::ostream& stream, System const& o);
+
+            /**
+             * @return the system instance
+             */
+            System& getSystem();
         }
     }

@@ -9,7 +9,8 @@
 
      #pragma once
 
-     #include <Header/NRE_Math.hpp>
+     #include "Attributes/NRE_WindowAttributes.hpp"
+     #include "Status/NRE_WindowStatus.hpp"
 
      #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.hpp"
@@ -30,16 +31,19 @@
           */
          namespace System {
 
-         /**
+            typedef std::size_t WindowId;
+
+            /**
              * @class Window
              * @brief Manage a graphics window
              */
             class Window {
                 private :   // Fields
-                    InternalWindow window;                  /**< The internal os-dependant window */
-                    std::string title;                      /**< The window title */
-                    Math::Point2D<unsigned int> position;   /**< The window top-left corner position */
-                    Math::Vector2D<unsigned int> size;      /**< The window size */
+                    InternalWindow window;          /**< The internal os-dependant window */
+                    WindowAttributes attributes;    /**< The window attributes */
+                    WindowStatus status;            /**< The window status */
+                    WindowId id;                    /**< The window id */
+
 
                 public :    // Methods
                     //## Constructor ##//
@@ -49,17 +53,19 @@
                         Window() = delete;
                         /**
                          * Construct the window
+                         * @param i   the window id
                          * @param t   the window title
                          * @param pos the window top-left corner position
                          * @param s   the window size
                          */
-                        Window(std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
+                        Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
                         /**
                          * Construct the window with centered position
+                         * @param i   the window id
                          * @param t   the window title
                          * @param s   the window size
                          */
-                        Window(std::string const& t, Math::Vector2D<unsigned int> const& s);
+                        Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s);
 
                     //## Copy Constructor ##//
                         /**
@@ -79,7 +85,14 @@
                         /**
                          * Window Deconstructor
                          */
-                        ~Window() = default;
+                        ~Window();
+
+                    //## Methods ##//
+                        /**
+                         * Close the window and free all resources, don't use it after this operation
+                         * @param removeFromSystem tell if the window has to be removed from the graphics system
+                         */
+                        void close(bool removeFromSystem = true);
 
                     //## Assignment Operator ##//
                         /**

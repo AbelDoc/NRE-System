@@ -39,7 +39,7 @@
                 XFlush(display);
             }
 
-            InternalWindow::~InternalWindow() {
+            void InternalWindow::close() {
                 XDestroyWindow(GraphicsDriver::getDriver().getDisplay(), internal);
             }
 

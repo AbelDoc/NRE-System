@@ -70,13 +70,19 @@
                         /**
                          * InternalWindow Deconstructor
                          */
-                        ~InternalWindow();
+                        ~InternalWindow() = default;
 
                     //## Getter ##//
                         /**
                          * @return the window top-left corner position
                          */
                         Math::Point2D<unsigned int> getPosition() const;
+
+                    //## Methods ##//
+                        /**
+                         * Close the internal window
+                         */
+                        void close();
 
                     //## Assignment Operator ##//
                         /**

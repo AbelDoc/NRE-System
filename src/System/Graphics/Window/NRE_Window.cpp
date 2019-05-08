@@ -8,28 +8,36 @@
      */
 
     #include "NRE_Window.hpp"
+    #include "../../../Header/NRE_System.hpp"
 
     using namespace NRE::Math;
 
      namespace NRE {
          namespace System {
 
-             Window::Window(std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : window(t, pos, s), title(t), position(pos), size(s) {
+             Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : window(t, pos, s), attributes(t, pos, s), id(i) {
              }
 
-             Window::Window(std::string const& t, Math::Vector2D<unsigned int> const& s) : window(t, s), title(t), size(s) {
-                 position = window.getPosition();
+             Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s) : window(t, s), attributes(t, s), id(i) {
+                 attributes.setPosition(window.getPosition());
+             }
+
+             Window::~Window() {
+                 if (!status.isClosed()) {
+                     close();
+                 }
+             }
+
+             void Window::close(bool removeFromSystem) {
+                 window.close();
+                 status.setClosed(true);
+                 if (removeFromSystem) {
+                     getSystem().getGraphicsSystem().removeWindow(id);
+                 }
              }
 
              std::string Window::toString() const {
-                std::string res(title);
-                res += " | ";
-                res += position.toString();
-                res += " - ";
-                res += std::to_string(size.getW());
-                res += "x";
-                res += std::to_string(size.getH());
-                return res;
+                 return attributes.toString();
              }
 
              std::ostream& operator <<(std::ostream& stream, Window const& o) {

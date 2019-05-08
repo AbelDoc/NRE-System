@@ -11,7 +11,7 @@ export LIBDIR = -L"C:/lib/MinGW64_7.3/x86_64-w64-mingw32/lib" -L"C:/lib/WindowsK
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)OS/Windows/NRE_WindowsSystem.o $(OBJDIR)OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Graphics/Window/NRE_Window.o $(OBJDIR)System/Info/NRE_SystemInfo.o 
+OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)OS/Windows/NRE_WindowsSystem.o $(OBJDIR)OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Graphics/NRE_GraphicsSystem.o $(OBJDIR)System/Graphics/Window/NRE_Window.o $(OBJDIR)System/Graphics/Window/Attributes/NRE_WindowAttributes.o $(OBJDIR)System/Graphics/Window/Status/NRE_WindowStatus.o $(OBJDIR)System/Info/NRE_SystemInfo.o 
 OUT = Windows/NRE-System
 
 all : childs out
@@ -37,5 +37,7 @@ clean :
 	@mkdir obj/System/Graphics/
 	@mkdir obj/System/Info/
 	@mkdir obj/System/Graphics/Window/
+	@mkdir obj/System/Graphics/Window/Attributes/
+	@mkdir obj/System/Graphics/Window/Status/
 	@echo "obj-Tree creation done."
 	@echo "Clean done."

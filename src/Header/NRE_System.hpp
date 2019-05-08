@@ -11,16 +11,3 @@
 
     #include "../System/NRE_System.hpp"
     #include "../System/Graphics/Window/NRE_Window.hpp"
-
-    namespace NRE {
-        namespace System {
-
-            /**
-             * @return the system instance
-             */
-            System& getSystem() {
-                static System systemInstance;
-                return systemInstance;
-            }
-        }
-    }

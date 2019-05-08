@@ -17,13 +17,11 @@
     using namespace NRE::Math;
 
     int main(int, char**) {
-        NRE::System::Window window("MyWindow", {1280, 720});
+        System& system = getSystem();
+        NRE::System::Window& window = system.getGraphicsSystem().createWindow("MyWindow", {1280, 720});
 
-        std::cout << getSystem() << std::endl;
+        std::cout << system << std::endl;
         std::cout << "\nWindow : \n" << window << std::endl;
-
-        while (1) {
-        }
 
         return 0;
     }
