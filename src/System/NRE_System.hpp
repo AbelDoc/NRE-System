@@ -14,8 +14,6 @@
     #include <iostream>
     #include <fstream>
 
-    #include "NRE_SystemInclude.hpp"
-
     #include "Info/NRE_SystemInfo.hpp"
     #include "CpuID/NRE_CpuID.hpp"
 
