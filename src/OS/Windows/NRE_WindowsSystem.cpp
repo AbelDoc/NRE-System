@@ -7,7 +7,7 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #include "../../NRE_System.hpp"
+    #include "../../System/NRE_System.hpp"
     #include <Windows.h>
     #include <Psapi.h>
 

@@ -2,4 +2,5 @@
 *.nre
 *.exe
 DoxyFile
+archive.sh
 bin/Linux/NRE-System

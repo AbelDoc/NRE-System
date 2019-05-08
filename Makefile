@@ -1,18 +1,18 @@
-export CXX = g++
-export LD = g++
+export CXX = g++.exe
+export LD = g++.exe
 
 export CFLAGS = -pedantic -Wno-virtual-move-assign -Winline -Wall -Wextra -Wfloat-equal -Wstrict-overflow -Wshadow -Wconversion -Wunreachable-code -Wuninitialized -Winit-self -Werror -fstrict-overflow -std=c++17
-export LDFLAGS = 
+export LDFLAGS = -static -static-libgcc -static-libstdc++
 
-export INC = 
-export LIB = 
-export LIBDIR = 
+export INC = -I"C:/lib/MinGW64_7.3/include" -I"C:/Users/abell/Documents/GitHub/NRE-Math/src" 
+export LIB = "-lmingw32" "-lPsapi" "-lNRE-Math" 
+export LIBDIR = -L"C:/lib/MinGW64_7.3/x86_64-w64-mingw32/lib" -L"C:/lib/WindowsKits/10/Lib/10.0.17763.0/um/x64" -L"C:/lib/NRE" 
 
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Info/NRE_SystemInfo.o $(OBJDIR)System/OS/Linux/NRE_LinuxSystem.o 
-OUT = Linux\NRE-System
+OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)OS/Windows/NRE_WindowsSystem.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Info/NRE_SystemInfo.o 
+OUT = Windows/NRE-System
 
 all : childs out
 
@@ -27,10 +27,10 @@ clean :
 	@echo "Clear of obj/"
 	@rm -r obj
 	@mkdir obj
+	@mkdir obj/OS/
 	@mkdir obj/System/
+	@mkdir obj/OS/Windows/
 	@mkdir obj/System/CpuID/
 	@mkdir obj/System/Info/
-	@mkdir obj/System/OS/
-	@mkdir obj/System/OS/Linux/
 	@echo "obj-Tree creation done."
 	@echo "Clean done."
