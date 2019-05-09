@@ -12,6 +12,20 @@
 
      namespace NRE {
          namespace System {
+   
+                 LRESULT EventSystem::internalDispatcher(WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+                     switch (msg) {
+                         case (WM_CLOSE) : {
+                             getGraphicsSystem().closeWindow(id);
+                             break;
+                         }
+                         default : {
+                             return DefWindowProc(hwnd, msg, wParam, lParam );
+                         }
+                     }
+
+                     return 0;
+                 }
 
                  void EventSystem::update() {
                      DWORD current = GetTickCount();
