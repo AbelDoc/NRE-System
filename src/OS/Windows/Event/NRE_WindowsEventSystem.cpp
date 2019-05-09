@@ -7,12 +7,12 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #include "../../../System/Event/NRE_EventSystem.hpp"
+    #include "../../../System/NRE_System.hpp"
     #include <Windows.h>
 
      namespace NRE {
          namespace System {
-   
+
                  LRESULT EventSystem::internalDispatcher(WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                      switch (msg) {
                          case (WM_CLOSE) : {
