@@ -39,7 +39,7 @@
                         /**
                          * Construct the sub system
                          */
-                        GraphicsSystem() = default;
+                        GraphicsSystem();
 
                     //## Copy Constructor ##//
                         /**

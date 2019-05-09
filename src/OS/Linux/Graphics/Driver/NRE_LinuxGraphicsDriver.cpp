@@ -14,9 +14,10 @@
 
             GraphicsDriver::GraphicsDriver() : display(XOpenDisplay(NULL)) {
                 if (display == nullptr) {
-                    std::cerr << "Can't connect to display server" << std::endl; 
+                    std::cerr << "Can't connect to display server" << std::endl;
                     std::exit(-1);
                 }
+                closeAtom = XInternAtom(display, "WM_DELETE_WINDOW", false);
             }
 
             GraphicsDriver::~GraphicsDriver() {
@@ -25,6 +26,22 @@
 
             Display* GraphicsDriver::getDisplay() {
                 return display;
+            }
+
+            Atom& GraphicsDriver::getCloseAtom() {
+                return closeAtom;
+            }
+
+            void GraphicsDriver::registerWindow(Window window, WindowId id) {
+                windows.emplace(std::make_pair(window, id));
+            }
+
+            WindowId GraphicsDriver::findId(Window window) const {
+                auto it = windows.find(window);
+                if (it != windows.end()) {
+                    return it->second;
+                }
+                return 0;
             }
 
             GraphicsDriver& GraphicsDriver::getDriver() {

@@ -24,8 +24,6 @@
           */
          namespace System {
 
-            typedef std::size_t WindowId;
-
              /**
               * @class InternalWindow
               * @brief Manage the internal os-dependant graphics window
@@ -112,6 +110,12 @@
                      * @param style the window style to set
                      */
                     void updateStyle(WindowStyle const& style);
+                    /**
+                     * Finish the construction process by showing the window
+                     * @param style the window style to set
+                     * @param title the window title
+                     */
+                    void finishCreation(WindowStyle const& style, std::string const& title);
 
             };
         }

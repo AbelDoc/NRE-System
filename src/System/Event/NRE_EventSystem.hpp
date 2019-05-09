@@ -68,6 +68,16 @@
                              * @return        depend on the message processing
                              */
                             LRESULT internalDispatcher(WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+                        #elif __linux__
+                            /**
+                             * Dispatch an event
+                             * @param event the event to dispatch
+                             */
+                            void internalDispatcher(XEvent const& event);
+                            /**
+                             * @return check if an event is available, to not block with X11 function
+                             */
+                            bool hasNextEvent();
                         #endif
                         /**
                          * Update the event system and dispatch event

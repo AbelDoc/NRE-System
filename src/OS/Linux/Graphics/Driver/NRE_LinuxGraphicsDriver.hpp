@@ -11,6 +11,7 @@
 
      #include <cstdlib>
      #include <iostream>
+     #include <unordered_map>
      #include <X11/Xlib.h>
 
      /**
@@ -24,13 +25,17 @@
           */
          namespace System {
 
+            typedef std::size_t WindowId;
+
              /**
               * @class GraphicsDriver
               * @brief Manage the os-dependant graphics driver
               */
             class GraphicsDriver {
                 private :   // Fields
-                    Display* display;   /**< The X11 display connection */
+                    Display* display;                               /**< The X11 display connection */
+                    Atom closeAtom;                                 /**< The internal atom for close */
+                    std::unordered_map<Window, WindowId> windows;  /**< Store all opened X11 windows */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -64,6 +69,22 @@
                          * @return the driver display
                          */
                         Display* getDisplay();
+                        /**
+                         * @return the display close atom
+                         */
+                        Atom& getCloseAtom();
+                        /**
+                         * Register a window in the driver
+                         * @param window the window to store
+                         * @param id     the window id
+                         */
+                        void registerWindow(Window window, WindowId id);
+                        /**
+                         * Find the window id associated with the given window
+                         * @param  window the window to retrive the id
+                         * @return        the corresponding id
+                         */
+                        WindowId findId(Window window) const;
 
                     //## Assignment Operator ##//
                         /**

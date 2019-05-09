@@ -14,6 +14,9 @@
      namespace NRE {
          namespace System {
 
+             GraphicsSystem::GraphicsSystem() : counter(1) {
+             }
+
              GraphicsSystem::~GraphicsSystem() {
                  for (auto& it : windows) {
                      it.second->close(false);

@@ -16,12 +16,7 @@
     using namespace NRE::Math;
 
     int main(int, char**) {
-        System& system = getSystem();
-        NRE::System::Window& window = system.getGraphicsSystem().createWindow("MyWindow", {1280, 720}, WindowStyle::RESIZEABLE);
-
-        system.queryMemoryInfo();
-        std::cout << system << std::endl;
-        std::cout << "\nWindow : \n" << window << std::endl;
+        NRE::System::Window& window = getGraphicsSystem().createWindow("MyWindow", {1280, 720}, WindowStyle::RESIZEABLE);
 
         while (!window.isClosed()) {
             getEventSystem().update();
