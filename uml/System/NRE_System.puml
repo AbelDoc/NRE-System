@@ -1,0 +1,61 @@
+@startuml
+    class System << (S, #FF7700) >> {
+    }
+    class GraphicsSystem {
+    }
+    class SystemInfo {
+        private std::string cpuName
+        private std::string architecture
+        private std::size_t nbProcessors
+        private std::size_t memorySize
+        private std::size_t memoryUsed
+        private std::size_t memoryUsedByProcess
+    }
+    class Window {
+    }
+    class WindowAttributes {
+        private std::string title
+    }
+    class WindowStatus {
+        private bool closed
+    }
+    class WindowStyle {
+        private unsigned int style
+    }
+    System -right- "1" SystemInfo : infos
+    System -down- "1" GraphicsSystem : graphics
+    GraphicsSystem -right- "1" WindowId : counter
+    GraphicsSystem -down- "*" Window : windows
+    Window -right- "1" WindowId : id
+    Window -down- "1" InternalWindow : window
+    Window -left- "1" WindowAttributes : attributes
+    Window -left- "1" WindowStatus : status
+    Window -left- "1" WindowStyle : style
+    WindowStyle -up[hidden]- WindowStatus
+    WindowStatus -up[hidden]- WindowAttributes
+    package Math {
+        class Point2D < unsigned int > {
+        }
+        class Vector2D < unsigned int > {
+        }
+        WindowAttributes --left- "1" Point2D : position
+        WindowAttributes --left- "1" Vector2D : size
+        Point2D -down[hidden]- Vector2D
+    }
+    package Windows {
+        class InternalWindow {
+        }
+        Windows::InternalWindow -down- "1" HWND : internal
+        InternalWindow .down. Windows::InternalWindow
+    }
+    package Linux {
+        class InternalWindow {
+            private int xId
+        }
+        class GraphicsDriver << (S, #FF7700) >> {
+        }
+        GraphicsDriver -down- "1" X11::Display : display
+        Linux::InternalWindow -down- "1" X11::Window : internal
+        InternalWindow .down. Linux::InternalWindow
+    }
+@enduml
