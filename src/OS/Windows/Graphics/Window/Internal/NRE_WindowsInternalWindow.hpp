@@ -10,7 +10,7 @@
      #pragma once
 
      #include <Header/NRE_Math.hpp>
-     #include <Windows.h>
+     #include "../../../../../System/Graphics/Window/Style/NRE_WindowStyle.hpp"
 
      /**
       * @namespace NRE
@@ -42,14 +42,16 @@
                          * @param title    the window title
                          * @param position the window top-left corner position
                          * @param size     the window size
+                         * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size);
+                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
                          * @param title    the window title
                          * @param size     the window size
+                         * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size);
+                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**
@@ -82,6 +84,11 @@
                          * Close the internal window
                          */
                         void close();
+                        /**
+                         * Update the window style
+                         * @param style the window style to set
+                         */
+                        void updateStyle(WindowStyle const& style);
 
                     //## Assignment Operator ##//
                         /**
@@ -97,7 +104,7 @@
                          */
                         InternalWindow& operator =(InternalWindow && inl) = delete;
 
-                public :    // Static
+                private :    // Static
                     /**
                      * Compute the centered position for the window
                      * @param size the window size

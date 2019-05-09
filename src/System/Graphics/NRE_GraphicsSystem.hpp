@@ -64,19 +64,21 @@
                     //## Methods ##//
                         /**
                          * Create a window and register it in the system
-                         * @param  title    the window title
-                         * @param  position the window top-left corner position
-                         * @param  size     the window size
-                         * @return          the created window
+                         * @param title    the window title
+                         * @param position the window top-left corner position
+                         * @param size     the window size
+                         * @param style    the window style
+                         * @return         the created window
                          */
-                        NRE::System::Window& createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size);
+                        NRE::System::Window& createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Create a window and register it in the system
-                         * @param  title    the window title
-                         * @param  size     the window size
-                         * @return          the created window
+                         * @param title    the window title
+                         * @param size     the window size
+                         * @param style    the window style
+                         * @return         the created window
                          */
-                        NRE::System::Window& createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size);
+                        NRE::System::Window& createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Remove the window corresponding to the given id
                          * @param id the window to remove

@@ -14,11 +14,11 @@
      namespace NRE {
          namespace System {
 
-            InternalWindow::InternalWindow(std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size) {
-                internal = CreateWindowExA(WS_EX_APPWINDOW, "STATIC", title.c_str(), WS_VISIBLE | WS_BORDER | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX, position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, NULL);
+            InternalWindow::InternalWindow(std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) {
+                internal = CreateWindowExA(WS_EX_APPWINDOW, "STATIC", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, NULL);
             }
 
-            InternalWindow::InternalWindow(std::string const& title, Vector2D<unsigned int> const& size) : InternalWindow(title, computeCenteredPosition(size), size) {
+            InternalWindow::InternalWindow(std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(title, computeCenteredPosition(size), size, style) {
             }
 
             Point2D<unsigned int> InternalWindow::getPosition() const {

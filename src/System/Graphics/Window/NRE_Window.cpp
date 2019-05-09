@@ -15,10 +15,12 @@
      namespace NRE {
          namespace System {
 
-             Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : window(t, pos, s), attributes(t, pos, s), id(i) {
+             Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
+                 std::cout << "First" << std::endl;
              }
 
-             Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s) : window(t, s), attributes(t, s), id(i) {
+             Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(t, s, ws), attributes(t, s), style(ws), id(i) {
+                 std::cout << "Second" << std::endl;
                  attributes.setPosition(window.getPosition());
              }
 

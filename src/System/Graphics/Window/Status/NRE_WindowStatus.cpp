@@ -15,28 +15,12 @@
              WindowStatus::WindowStatus() : closed(false) {
              }
 
-             WindowStatus::WindowStatus(WindowStatus const& status) : closed(status.closed) {
-             }
-
-             WindowStatus::WindowStatus(WindowStatus && status) : closed(std::move(status.closed)) {
-             }
-
              bool WindowStatus::isClosed() const {
                  return closed;
              }
 
              void WindowStatus::setClosed(bool status) {
                  closed = status;
-             }
-
-             WindowStatus& WindowStatus::operator=(WindowStatus const& status) {
-                 closed = status.closed;
-                 return *this;
-             }
-
-             WindowStatus& WindowStatus::operator=(WindowStatus && status) {
-                 closed = std::move(status.closed);
-                 return *this;
              }
 
         }

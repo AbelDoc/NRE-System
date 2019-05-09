@@ -58,14 +58,14 @@
                          * Copy the window attributes into this
                          * @param attr the window attributes to copy
                          */
-                        WindowAttributes(WindowAttributes const& attr);
+                        WindowAttributes(WindowAttributes const& attr) = default;
 
                     //## Move Constructor ##//
                         /**
                          * Move the window attributes into this
                          * @param attr the window attributes to move
                          */
-                        WindowAttributes(WindowAttributes && attr);
+                        WindowAttributes(WindowAttributes && attr) = default;
 
                     //## Deconstructor ##//
                         /**
@@ -86,13 +86,13 @@
                          * @param attr the object to copy into this
                          * @return     the reference of himself
                          */
-                        WindowAttributes& operator =(WindowAttributes const& status);
+                        WindowAttributes& operator =(WindowAttributes const& status) = default;
                         /**
                          * Move the window attributes into this
                          * @param attr the object to move into this
                          * @return     the reference of himself
                          */
-                        WindowAttributes& operator =(WindowAttributes && attr);
+                        WindowAttributes& operator =(WindowAttributes && attr) = default;
 
                     //## Stream Operator ##//
                         /**

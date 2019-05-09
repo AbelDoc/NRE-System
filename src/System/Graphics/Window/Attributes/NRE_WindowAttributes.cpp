@@ -20,28 +20,8 @@
              WindowAttributes::WindowAttributes(std::string const& t, Vector2D<unsigned int> const& s) : title(t), size(s) {
              }
 
-             WindowAttributes::WindowAttributes(WindowAttributes const& attr) : title(attr.title), position(attr.position), size(attr.size) {
-             }
-
-             WindowAttributes::WindowAttributes(WindowAttributes && attr) : title(std::move(attr.title)), position(std::move(attr.position)), size(std::move(attr.size)) {
-             }
-
              void WindowAttributes::setPosition(Point2D<unsigned int> const& pos) {
                  position = pos;
-             }
-
-             WindowAttributes& WindowAttributes::operator=(WindowAttributes const& attr) {
-                 title = attr.title;
-                 position = attr.position;
-                 size = attr.size;
-                 return *this;
-             }
-
-             WindowAttributes& WindowAttributes::operator=(WindowAttributes && attr) {
-                 title = std::move(attr.title);
-                 position = std::move(attr.position);
-                 size = std::move(attr.size);
-                 return *this;
              }
 
              std::string WindowAttributes::toString() const {

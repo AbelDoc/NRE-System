@@ -8,7 +8,7 @@
      */
 
      #pragma once
-     
+
      #include <utility>
 
      /**
@@ -42,14 +42,14 @@
                          * Copy the window status into this
                          * @param status the window status to copy
                          */
-                        WindowStatus(WindowStatus const& status);
+                        WindowStatus(WindowStatus const& status) = default;
 
                     //## Move Constructor ##//
                         /**
                          * Move the window status into this
                          * @param status the window status to move
                          */
-                        WindowStatus(WindowStatus && status);
+                        WindowStatus(WindowStatus && status) = default;
 
                     //## Deconstructor ##//
                         /**
@@ -76,13 +76,13 @@
                          * @param status the object to copy into this
                          * @return       the reference of himself
                          */
-                        WindowStatus& operator =(WindowStatus const& status);
+                        WindowStatus& operator =(WindowStatus const& status) = default;
                         /**
                          * Move the window status into this
                          * @param status the object to move into this
                          * @return       the reference of himself
                          */
-                        WindowStatus& operator =(WindowStatus && status);
+                        WindowStatus& operator =(WindowStatus && status) = default;
              };
          }
      }

@@ -11,6 +11,7 @@
 
      #include <Header/NRE_Math.hpp>
      #include "../../Driver/NRE_LinuxGraphicsDriver.hpp"
+     #include "../../../../../System/Graphics/Window/Style/NRE_WindowStyle.hpp"
 
      /**
       * @namespace NRE
@@ -43,14 +44,16 @@
                          * @param title    the window title
                          * @param position the window top-left corner position
                          * @param size     the window size
+                         * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size);
+                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
                          * @param title    the window title
                          * @param size     the window size
+                         * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size);
+                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**
@@ -98,13 +101,12 @@
                          */
                         InternalWindow& operator =(InternalWindow && inl) = delete;
 
-                public :    // Static
+                private :   // Methods
                     /**
-                     * Compute the centered position for the window
-                     * @param size the window size
-                     * @return     the center point for the given size
+                     * Update the window style
+                     * @param style the window style to set
                      */
-                    static Math::Point2D<unsigned int> computeCenteredPosition(Math::Vector2D<unsigned int> size);
+                    void updateStyle(WindowStyle const& style);
 
             };
         }

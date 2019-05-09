@@ -11,6 +11,7 @@
 
      #include "Attributes/NRE_WindowAttributes.hpp"
      #include "Status/NRE_WindowStatus.hpp"
+     #include "Style/NRE_WindowStyle.hpp"
 
      #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.hpp"
@@ -42,6 +43,7 @@
                     InternalWindow window;          /**< The internal os-dependant window */
                     WindowAttributes attributes;    /**< The window attributes */
                     WindowStatus status;            /**< The window status */
+                    WindowStyle style;              /**< The window style */
                     WindowId id;                    /**< The window id */
 
 
@@ -57,15 +59,17 @@
                          * @param t   the window title
                          * @param pos the window top-left corner position
                          * @param s   the window size
+                         * @param ws  the window style value
                          */
-                        Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
+                        Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
                         /**
                          * Construct the window with centered position
                          * @param i   the window id
                          * @param t   the window title
                          * @param s   the window size
+                         * @param ws  the window style value
                          */
-                        Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s);
+                        Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
 
                     //## Copy Constructor ##//
                         /**
