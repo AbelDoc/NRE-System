@@ -26,6 +26,10 @@
                  return graphics;
              }
 
+             EventSystem& System::getEventSystem() {
+                 return events;
+             }
+
              std::string System::toString() const {
                  std::string res(getSystemName());
                  res += " :\n";
@@ -41,6 +45,15 @@
                  static System systemInstance;
                  return systemInstance;
              }
+
+             GraphicsSystem& getGraphicsSystem() {
+                 return getSystem().getGraphicsSystem();
+             }
+
+             EventSystem& getEventSystem() {
+                 return getSystem().getEventSystem();
+             }
+
 
          }
      }

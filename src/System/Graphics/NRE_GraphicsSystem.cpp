@@ -20,6 +20,14 @@
                  }
              }
 
+             NRE::System::Window& GraphicsSystem::getWindow(WindowId id) {
+                 return *(windows.at(id));
+             }
+
+             void GraphicsSystem::closeWindow(WindowId id) {
+                 getWindow(id).close();
+             }
+
              NRE::System::Window& GraphicsSystem::createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style) {
                  windows.emplace(std::make_pair(counter, new NRE::System::Window(counter, title, position, size, WindowStyle(style))));
                  counter++;

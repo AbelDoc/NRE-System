@@ -17,6 +17,7 @@
     #include "Info/NRE_SystemInfo.hpp"
     #include "CpuID/NRE_CpuID.hpp"
     #include "Graphics/NRE_GraphicsSystem.hpp"
+    #include "Event/NRE_EventSystem.hpp"
 
     /**
      * @namespace NRE
@@ -37,6 +38,7 @@
                 protected :   // Fields
                     SystemInfo infos;           /**< The system's info */
                     GraphicsSystem graphics;    /**< The graphics sub system */
+                    EventSystem events;         /**< The events sub system */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -78,6 +80,10 @@
                          * @return the graphics sub system
                          */
                         GraphicsSystem& getGraphicsSystem();
+                        /**
+                         * @return the events sub system
+                         */
+                        EventSystem& getEventSystem();
 
                     //## Methods ##//
                         /**
@@ -127,5 +133,13 @@
              * @return the system instance
              */
             System& getSystem();
+            /**
+             * @return the system graphics sub system
+             */
+            GraphicsSystem& getGraphicsSystem();
+            /**
+             * @return the system events sub system
+             */
+            EventSystem& getEventSystem();
         }
     }

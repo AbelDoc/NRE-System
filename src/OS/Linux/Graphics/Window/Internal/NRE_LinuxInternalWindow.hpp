@@ -24,6 +24,8 @@
           */
          namespace System {
 
+            typedef std::size_t WindowId;
+
              /**
               * @class InternalWindow
               * @brief Manage the internal os-dependant graphics window
@@ -31,6 +33,7 @@
             class InternalWindow {
                 private :   // Fields
                     Window internal;    /**< The internal window */
+                    WindowId id;        /**< The OS-independant window id */
                     int xId;            /**< The X11 window id */
 
                 public :    // Methods
@@ -41,19 +44,21 @@
                         InternalWindow() = delete;
                         /**
                          * Construct the internal window
+                         * @param i        the window id
                          * @param title    the window title
                          * @param position the window top-left corner position
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
+                         * @param i        the window id
                          * @param title    the window title
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**

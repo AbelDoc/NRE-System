@@ -15,12 +15,10 @@
      namespace NRE {
          namespace System {
 
-             Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
-                 std::cout << "First" << std::endl;
+             Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
              }
 
-             Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(t, s, ws), attributes(t, s), style(ws), id(i) {
-                 std::cout << "Second" << std::endl;
+             Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, s, ws), attributes(t, s), style(ws), id(i) {
                  attributes.setPosition(window.getPosition());
              }
 
@@ -30,11 +28,15 @@
                  }
              }
 
+             bool Window::isClosed() const {
+                 return status.isClosed();
+             }
+
              void Window::close(bool removeFromSystem) {
                  window.close();
                  status.setClosed(true);
                  if (removeFromSystem) {
-                     getSystem().getGraphicsSystem().removeWindow(id);
+                     getGraphicsSystem().removeWindow(id);
                  }
              }
 

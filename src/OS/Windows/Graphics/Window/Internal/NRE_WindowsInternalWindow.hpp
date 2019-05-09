@@ -11,6 +11,7 @@
 
      #include <Header/NRE_Math.hpp>
      #include "../../../../../System/Graphics/Window/Style/NRE_WindowStyle.hpp"
+     #include <wingdi.h>
 
      /**
       * @namespace NRE
@@ -23,6 +24,8 @@
           */
          namespace System {
 
+            typedef std::size_t WindowId;
+
              /**
               * @class InternalWindow
               * @brief Manage the internal os-dependant graphics window
@@ -30,6 +33,7 @@
             class InternalWindow {
                 private :   // Fields
                     HWND internal;      /**< The internal window */
+                    WindowId id;        /**< The OS-independant window id */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -39,19 +43,21 @@
                         InternalWindow() = delete;
                         /**
                          * Construct the internal window
+                         * @param i        the window id
                          * @param title    the window title
                          * @param position the window top-left corner position
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
+                         * @param i        the window id
                          * @param title    the window title
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**
@@ -89,6 +95,15 @@
                          * @param style the window style to set
                          */
                         void updateStyle(WindowStyle const& style);
+                        /**
+                         * Manage the internal dispatchment to the event system
+                         * @param  hwnd   the window handler
+                         * @param  msg    the event message
+                         * @param  wParam additionnal message-specific information
+                         * @param  lParam additionnal message-specific information
+                         * @return        depend on the message processing
+                         */
+                        static LRESULT CALLBACK internalDispatcher(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
                     //## Assignment Operator ##//
                         /**

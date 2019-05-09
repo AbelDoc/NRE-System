@@ -8,17 +8,34 @@
      */
 
     #include "NRE_WindowsInternalWindow.hpp"
+    #include "../../../../../Header/NRE_System.hpp"
 
     using namespace NRE::Math;
 
      namespace NRE {
          namespace System {
 
-            InternalWindow::InternalWindow(std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) {
-                internal = CreateWindowExA(WS_EX_APPWINDOW, "STATIC", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, NULL);
+            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+                WNDCLASSEXA windowClass;
+                windowClass.cbSize = sizeof(WNDCLASSEX);
+                windowClass.style = CS_OWNDC;
+                windowClass.lpfnWndProc = internalDispatcher;
+                windowClass.cbClsExtra = 0;
+                windowClass.cbWndExtra = 0;
+                windowClass.hInstance = GetModuleHandle(NULL);
+                windowClass.hIcon   = LoadIcon(NULL,   IDI_APPLICATION);
+                windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+                windowClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+                windowClass.lpszMenuName = NULL;
+                windowClass.lpszClassName = "NRE_Window";
+                windowClass.hIconSm = NULL;
+
+                RegisterClassExA(&windowClass);
+
+                internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
             }
 
-            InternalWindow::InternalWindow(std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(title, computeCenteredPosition(size), size, style) {
+            InternalWindow::InternalWindow(WindowId i, std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
             }
 
             Point2D<unsigned int> InternalWindow::getPosition() const {
@@ -29,6 +46,24 @@
 
             void InternalWindow::close() {
                 DestroyWindow(internal);
+            }
+
+            LRESULT CALLBACK InternalWindow::internalDispatcher(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+                WindowId* id;
+	            if (msg == WM_NCCREATE) {
+	                 id = reinterpret_cast <WindowId*> (((LPCREATESTRUCT)lParam)->lpCreateParams);
+	                 SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast <long&> (id));
+
+	                 return DefWindowProc(hwnd, msg, wParam, lParam);
+                } else {
+	                 id = reinterpret_cast <WindowId*> (GetWindowLongPtr(hwnd, GWLP_USERDATA));
+
+	                 if (id != nullptr) {
+                         return getEventSystem().internalDispatcher(*id, hwnd, msg, wParam, lParam);
+                     } else {
+		                 return DefWindowProc(hwnd, msg, wParam, lParam);
+                     }
+                }
             }
 
             Point2D<unsigned int> InternalWindow::computeCenteredPosition(Vector2D<unsigned int> size) {

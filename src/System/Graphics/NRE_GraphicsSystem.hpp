@@ -61,6 +61,19 @@
                          */
                         ~GraphicsSystem();
 
+                    //## Getter ##//
+                        /**
+                         * Query a specific window
+                         * @param  id the window id
+                         * @return    the corresponding window
+                         */
+                        NRE::System::Window& getWindow(WindowId id);
+                        /**
+                         * Close a specific window
+                         * @param id the window id
+                         */
+                        void closeWindow(WindowId id);
+
                     //## Methods ##//
                         /**
                          * Create a window and register it in the system
@@ -88,16 +101,16 @@
                     //## Assignment Operator ##//
                         /**
                          * Copy forbidden
-                         * @param w the object to copy into this
-                         * @return  the reference of himself
+                         * @param sys the object to copy into this
+                         * @return    the reference of himself
                          */
-                        Window& operator =(Window const& w) = delete;
+                        GraphicsSystem& operator =(GraphicsSystem const& sys) = delete;
                         /**
                          * Move forbidden
-                         * @param w the object to move into this
-                         * @return  the reference of himself
+                         * @param sys the object to move into this
+                         * @return    the reference of himself
                          */
-                        Window& operator =(Window && w) = delete;
+                        GraphicsSystem& operator =(GraphicsSystem && sys) = delete;
             };
         }
     }

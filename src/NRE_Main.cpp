@@ -23,7 +23,8 @@
         std::cout << system << std::endl;
         std::cout << "\nWindow : \n" << window << std::endl;
 
-        while (1) {
+        while (!window.isClosed()) {
+            getEventSystem().update();
         }
 
         return 0;

@@ -14,7 +14,7 @@
      namespace NRE {
          namespace System {
 
-            InternalWindow::InternalWindow(std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) {
+            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
                 internal = XCreateSimpleWindow(display, XRootWindow(display, xId), position.getX(), position.getY(), size.getW(), size.getH(), 1, XBlackPixel(display, xId), XWhitePixel(display, xId));
@@ -26,7 +26,7 @@
                 XFlush(display);
             }
 
-            InternalWindow::InternalWindow(std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) {
+            InternalWindow::InternalWindow(WindowId i, std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
                 Window root = XRootWindow(display, xId);

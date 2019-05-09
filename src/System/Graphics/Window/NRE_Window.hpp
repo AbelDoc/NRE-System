@@ -32,8 +32,6 @@
           */
          namespace System {
 
-            typedef std::size_t WindowId;
-
             /**
              * @class Window
              * @brief Manage a graphics window
@@ -90,6 +88,12 @@
                          * Window Deconstructor
                          */
                         ~Window();
+
+                    //## Getter ##//
+                        /**
+                         * @return if the window is closed
+                         */
+                        bool isClosed() const;
 
                     //## Methods ##//
                         /**
