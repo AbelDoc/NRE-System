@@ -38,7 +38,7 @@
                         bool savedInFullscreen;     /**< The window last fullscreen state */
                         RECT savedRect;             /**< The window last size */
                     #elif __linux__             // Linux
-                        int xId;                      /**< The X11 window id */
+                        int xId;                                 /**< The X11 window id */
                     #endif
 
                 public :    // Methods
