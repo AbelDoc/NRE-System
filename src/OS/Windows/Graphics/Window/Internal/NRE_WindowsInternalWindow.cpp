@@ -16,7 +16,7 @@
      namespace NRE {
          namespace System {
 
-            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
                 WNDCLASSEXA windowClass;
                 windowClass.cbSize = sizeof(WNDCLASSEX);
                 windowClass.style = CS_OWNDC;
@@ -34,6 +34,9 @@
                 RegisterClassExA(&windowClass);
 
                 internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
+                if (style.getStyle() & WindowStyle::FULLSCREEN) {
+                    toggleFullscreen(true);
+                }
                 GraphicsDriver::getDriver().registerWindow(internal, id);
             }
 
@@ -49,6 +52,29 @@
             void InternalWindow::close() {
                 GraphicsDriver::getDriver().unregisterWindow(internal);
                 DestroyWindow(internal);
+            }
+
+            void InternalWindow::toggleFullscreen(bool inFullscreen) {
+                if (!savedInFullscreen) {
+                    savedStyle   = GetWindowLongPtr(internal, GWL_STYLE);
+                    savedExStyle = GetWindowLongPtr(internal, GWL_EXSTYLE);
+                    GetWindowRect(internal, &savedRect);
+                }
+
+                savedInFullscreen = inFullscreen;
+                if (inFullscreen) {
+                    SetWindowLongPtr(internal, GWL_STYLE, savedStyle & ~(WS_CAPTION | WS_THICKFRAME));
+                    SetWindowLongPtr(internal, GWL_EXSTYLE, savedExStyle);
+
+                    MONITORINFO monitor;
+                    monitor.cbSize = sizeof(monitor);
+                    GetMonitorInfo(MonitorFromWindow(internal, MONITOR_DEFAULTTONEAREST), &monitor);
+                    SetWindowPos(internal, NULL, monitor.rcMonitor.left, monitor.rcMonitor.top, monitor.rcMonitor.right, monitor.rcMonitor.bottom, SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED);
+                } else {
+                    SetWindowLongPtr(internal, GWL_STYLE, savedStyle);
+                    SetWindowLongPtr(internal, GWL_EXSTYLE, savedExStyle);
+                    SetWindowPos(internal, NULL, savedRect.left, savedRect.top, savedRect.right, savedRect.bottom, SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED);
+                }
             }
 
             LRESULT CALLBACK InternalWindow::internalDispatcher(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {

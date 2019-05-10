@@ -12,15 +12,23 @@
      namespace NRE {
          namespace System {
 
-             WindowStatus::WindowStatus() : closed(false) {
+             WindowStatus::WindowStatus() : closed(false), inFullscreen(false) {
              }
 
              bool WindowStatus::isClosed() const {
                  return closed;
              }
 
+             bool WindowStatus::isInFullscreen() const {
+                 return inFullscreen;
+             }
+
              void WindowStatus::setClosed(bool status) {
                  closed = status;
+             }
+
+             void WindowStatus::setFullscreen(bool status) {
+                 inFullscreen = status;
              }
 
         }

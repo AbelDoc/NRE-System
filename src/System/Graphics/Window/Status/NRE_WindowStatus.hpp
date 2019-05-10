@@ -28,7 +28,8 @@
               */
              class WindowStatus {
                  private :  // Fields
-                    bool closed;    /**< Tell if the window is closed */
+                    bool closed;        /**< Tell if the window is closed */
+                    bool inFullscreen;  /**< Tell if the window is in fullscreen mode */
 
                  public :   // Methods
                     //## Constructor ##//
@@ -62,6 +63,10 @@
                          * @return the closed status
                          */
                         bool isClosed() const;
+                        /**
+                         * @return the fullscreen status
+                         */
+                        bool isInFullscreen() const;
 
                     //## Setter ##//
                         /**
@@ -69,6 +74,11 @@
                          * @param status the new closed status
                          */
                         void setClosed(bool status);
+                        /**
+                         * Set the fullscreen status
+                         * @param status the new fullscreen status
+                         */
+                        void setFullscreen(bool status);
 
                     //## Assignment Operator ##//
                         /**

@@ -16,9 +16,15 @@
          namespace System {
 
              Window::Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
+                 if (ws.getStyle() & WindowStyle::FULLSCREEN) {
+                     status.setFullscreen(true);
+                 }
              }
 
              Window::Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, s, ws), attributes(t, s), style(ws), id(i) {
+                 if (ws.getStyle() & WindowStyle::FULLSCREEN) {
+                     status.setFullscreen(true);
+                 }
                  attributes.setPosition(window.getPosition());
              }
 

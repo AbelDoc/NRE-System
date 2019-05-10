@@ -21,6 +21,6 @@
         while (getGraphicsSystem().isRunning()) {
             getEventSystem().update();
         }
-
+        
         return 0;
     }

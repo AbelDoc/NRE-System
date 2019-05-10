@@ -66,6 +66,12 @@
                          */
                         ~WindowStyle() = default;
 
+                    //## Getter ##//
+                        /**
+                         * @return the style value
+                         */
+                        unsigned int getStyle() const;
+
                     //## Methods ##//
                         #ifdef _WIN32                           // Windows
                             /**

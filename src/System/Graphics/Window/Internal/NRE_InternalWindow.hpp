@@ -32,7 +32,12 @@
                 private :   // Fields
                     NativeWindowType internal;    /**< The internal window */
                     WindowId id;                  /**< The OS-independant window id */
-                    #ifdef __linux__               // Linux
+                    #ifdef WIN32                // Windows
+                        LONG_PTR savedStyle;        /**< The window last style */
+                        LONG_PTR savedExStyle;      /**< The window last extended style */
+                        bool savedInFullscreen;     /**< The window last fullscreen state */
+                        RECT savedRect;             /**< The window last size */
+                    #elif __linux__             // Linux
                         int xId;                      /**< The X11 window id */
                     #endif
 
@@ -91,6 +96,10 @@
                          * Close the internal window
                          */
                         void close();
+                        /**
+                         * Toggle between fullscreen and windowed mode
+                         */
+                        void toggleFullscreen(bool inFullscreen);
 
                     //## Assignment Operator ##//
                         /**

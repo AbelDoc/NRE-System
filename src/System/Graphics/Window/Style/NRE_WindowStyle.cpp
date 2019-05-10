@@ -15,6 +15,10 @@
              WindowStyle::WindowStyle(unsigned int s) : style(s) {
              }
 
+             unsigned int WindowStyle::getStyle() const {
+                 return style;
+             }
+
              WindowStyle& WindowStyle::operator|=(WindowStyle const& ws) {
                  style = style | ws.style;
                  return *this;
