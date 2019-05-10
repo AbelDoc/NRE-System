@@ -3,5 +3,5 @@ OBJDIR = ../../../../../../obj/OS/Linux/Graphics/Window/Internal/
 
 all : $(OBJ)
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+$(OBJDIR)%.o :  %.cpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

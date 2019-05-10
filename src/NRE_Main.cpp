@@ -16,9 +16,9 @@
     using namespace NRE::Math;
 
     int main(int, char**) {
-        NRE::System::Window& window = getGraphicsSystem().createWindow("MyWindow", {1280, 720}, WindowStyle::RESIZEABLE);
+        getGraphicsSystem().createWindow("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE);
 
-        while (!window.isClosed()) {
+        while (getGraphicsSystem().isRunning()) {
             getEventSystem().update();
         }
 

@@ -33,6 +33,7 @@
                 private :   // Fields
                     std::unordered_map<WindowId, NRE::System::Window*> windows;   /**< The system windows */
                     WindowId counter;
+                    bool running;
 
                 public :    // Methods
                     //## Constructor ##//
@@ -73,6 +74,10 @@
                          * @param id the window id
                          */
                         void closeWindow(WindowId id);
+                        /**
+                         * @return if at least one window is opened
+                         */
+                        bool isRunning() const;
 
                     //## Methods ##//
                         /**
@@ -111,6 +116,12 @@
                          * @return    the reference of himself
                          */
                         GraphicsSystem& operator =(GraphicsSystem && sys) = delete;
+
+                private :   // Methods
+                    /**
+                     * Check if at least one window is running
+                     */
+                    void checkRunningState();
             };
         }
     }

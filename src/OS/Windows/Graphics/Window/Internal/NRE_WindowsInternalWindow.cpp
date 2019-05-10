@@ -7,8 +7,9 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #include "NRE_WindowsInternalWindow.hpp"
+    #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
     #include "../../../../../Header/NRE_System.hpp"
+    #include <wingdi.h>
 
     using namespace NRE::Math;
 
@@ -33,6 +34,7 @@
                 RegisterClassExA(&windowClass);
 
                 internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
+                GraphicsDriver::getDriver().registerWindow(internal, id);
             }
 
             InternalWindow::InternalWindow(WindowId i, std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
@@ -45,6 +47,7 @@
             }
 
             void InternalWindow::close() {
+                GraphicsDriver::getDriver().unregisterWindow(internal);
                 DestroyWindow(internal);
             }
 

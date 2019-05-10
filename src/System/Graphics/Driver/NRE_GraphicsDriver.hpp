@@ -1,9 +1,9 @@
 
     /**
-     * @file NRE_LinuxGraphicsDriver.hpp
+     * @file NRE_GraphicsDriver.hpp
      * @brief Declaration of System's API's Object : GraphicsDriver
      * @author Louis ABEL
-     * @date 08/05/2019
+     * @date 10/05/2019
      * @copyright CC-BY-NC-SA
      */
 
@@ -12,7 +12,14 @@
      #include <cstdlib>
      #include <iostream>
      #include <unordered_map>
-     #include <X11/Xlib.h>
+
+     #ifdef _WIN32                           // Windows
+        #include <Windows.h>
+     #elif __linux__                         // Linux
+        #include <X11/Xlib.h>
+     #else
+        #error "Not Supported Yet or Unknown compiler"
+     #endif
 
      /**
       * @namespace NRE
@@ -27,15 +34,23 @@
 
             typedef std::size_t WindowId;
 
+            #ifdef _WIN32                           // Windows
+                typedef HWND NativeWindowType;
+            #elif __linux__                         // Linux
+                typedef Window NativeWindowType;
+            #endif
+
              /**
               * @class GraphicsDriver
               * @brief Manage the os-dependant graphics driver
               */
             class GraphicsDriver {
                 private :   // Fields
-                    Display* display;                               /**< The X11 display connection */
-                    Atom closeAtom;                                 /**< The internal atom for close */
-                    std::unordered_map<Window, WindowId> windows;  /**< Store all opened X11 windows */
+                    #ifdef __linux__               // Linux
+                        Display* display;                               /**< The X11 display connection */
+                        Atom closeAtom;                                 /**< The internal atom for close */
+                    #endif
+                    std::unordered_map<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -65,26 +80,33 @@
                         ~GraphicsDriver();
 
                     //## Getter ##//
+                        #ifdef __linux__               // Linux
+                            /**
+                             * @return the driver display
+                             */
+                            Display* getDisplay();
+                            /**
+                             * @return the display close atom
+                             */
+                            Atom& getCloseAtom();
+                        #endif
                         /**
-                         * @return the driver display
-                         */
-                        Display* getDisplay();
-                        /**
-                         * @return the display close atom
-                         */
-                        Atom& getCloseAtom();
-                        /**
-                         * Register a window in the driver
+                         * Register a window into the driver
                          * @param window the window to store
                          * @param id     the window id
                          */
-                        void registerWindow(Window window, WindowId id);
+                        void registerWindow(NativeWindowType window, WindowId id);
+                        /**
+                         * Unregister a window from the driver
+                         * @param window the window to remove
+                         */
+                        void unregisterWindow(NativeWindowType window);
                         /**
                          * Find the window id associated with the given window
                          * @param  window the window to retrive the id
                          * @return        the corresponding id
                          */
-                        WindowId findId(Window window) const;
+                        WindowId findId(NativeWindowType window) const;
 
                     //## Assignment Operator ##//
                         /**

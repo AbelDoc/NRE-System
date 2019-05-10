@@ -19,6 +19,9 @@
                              getGraphicsSystem().closeWindow(id);
                              break;
                          }
+                         case (WM_DESTROY) : {
+                             break;
+                         }
                          default : {
                              return DefWindowProc(hwnd, msg, wParam, lParam );
                          }

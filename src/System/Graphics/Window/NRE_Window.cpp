@@ -28,8 +28,8 @@
                  }
              }
 
-             bool Window::isClosed() const {
-                 return status.isClosed();
+             bool Window::isRunning() const {
+                 return !status.isClosed();
              }
 
              void Window::close(bool removeFromSystem) {

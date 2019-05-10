@@ -7,9 +7,9 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #include "NRE_LinuxInternalWindow.hpp"
+     #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
 
-    using namespace NRE::Math;
+     using namespace NRE::Math;
 
      namespace NRE {
          namespace System {
@@ -34,6 +34,7 @@
             }
 
             void InternalWindow::close() {
+                GraphicsDriver::getDriver().unregisterWindow(internal);
                 XDestroyWindow(GraphicsDriver::getDriver().getDisplay(), internal);
             }
 

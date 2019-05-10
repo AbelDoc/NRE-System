@@ -11,15 +11,7 @@
 
      #include "Attributes/NRE_WindowAttributes.hpp"
      #include "Status/NRE_WindowStatus.hpp"
-     #include "Style/NRE_WindowStyle.hpp"
-
-     #ifdef _WIN32                           // Windows
-        #include "../../../OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.hpp"
-     #elif __linux__                         // Linux
-        #include "../../../OS/Linux/Graphics/Window/Internal/NRE_LinuxInternalWindow.hpp"
-     #else
-        #error "Not Supported Yet or Unknown compiler"
-     #endif
+     #include "Internal/NRE_InternalWindow.hpp"
 
      /**
       * @namespace NRE
@@ -91,9 +83,9 @@
 
                     //## Getter ##//
                         /**
-                         * @return if the window is closed
+                         * @return if the window is running
                          */
-                        bool isClosed() const;
+                        bool isRunning() const;
 
                     //## Methods ##//
                         /**
