@@ -9,6 +9,8 @@
 
     #include "../../../System/NRE_System.hpp"
 
+    using namespace NRE::Graphics;
+
      namespace NRE {
          namespace System {
 

@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_WindowStatus.cpp
-     * @brief Implementation of System's API's Object : WindowStatus
+     * @brief Implementation of Graphics's API's Object : WindowStatus
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
@@ -10,7 +10,7 @@
     #include "NRE_WindowStatus.hpp"
 
      namespace NRE {
-         namespace System {
+         namespace Graphics {
 
              WindowStatus::WindowStatus() : closed(false), inFullscreen(false) {
              }

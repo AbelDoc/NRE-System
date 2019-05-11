@@ -14,6 +14,7 @@
 
     using namespace NRE::System;
     using namespace NRE::Math;
+    using namespace NRE::Graphics;
 
     int main(int, char**) {
         getGraphicsSystem().createWindow("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE);

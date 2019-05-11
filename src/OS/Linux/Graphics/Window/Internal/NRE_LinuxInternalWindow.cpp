@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_LinuxInternalWindow.cpp
-     * @brief Implementation of System's API's Object : InternalWindow
+     * @brief Implementation of Graphics's API's Object : InternalWindow
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
@@ -13,7 +13,7 @@
      using namespace NRE::Math;
 
      namespace NRE {
-         namespace System {
+         namespace Graphics {
 
             InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = GraphicsDriver::getDriver().getDisplay();

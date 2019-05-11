@@ -27,8 +27,6 @@
              * @brief Manage the event sub system
              */
             class EventSystem {
-                private :   // Fields
-
                 public :    // Methods
                     //## Constructor ##//
                         /**
@@ -67,7 +65,7 @@
                              * @param  lParam additionnal message-specific information
                              * @return        depend on the message processing
                              */
-                            LRESULT internalDispatcher(WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+                            LRESULT internalDispatcher(Graphics::WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
                         #elif __linux__
                             /**
                              * Dispatch an event

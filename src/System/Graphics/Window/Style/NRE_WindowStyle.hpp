@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_WindowStyle.hpp
-     * @brief Declaration of System's API's Object : WindowStyle
+     * @brief Declaration of Graphics's API's Object : WindowStyle
      * @author Louis ABEL
      * @date 09/05/2019
      * @copyright CC-BY-NC-SA
@@ -25,10 +25,10 @@
       */
      namespace NRE {
          /**
-          * @namespace System
-          * @brief System's API
+          * @namespace Graphics
+          * @brief Graphics's API
           */
-         namespace System {
+         namespace Graphics {
 
              /**
               * @class WindowStyle

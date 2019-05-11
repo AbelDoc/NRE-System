@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_WindowAttributes.cpp
-     * @brief Implementation of System's API's Object : WindowAttributes
+     * @brief Implementation of Graphics's API's Object : WindowAttributes
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
@@ -12,7 +12,7 @@
     using namespace NRE::Math;
 
      namespace NRE {
-         namespace System {
+         namespace Graphics {
 
              WindowAttributes::WindowAttributes(std::string const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
              }

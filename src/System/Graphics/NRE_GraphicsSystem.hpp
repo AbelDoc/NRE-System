@@ -31,8 +31,8 @@
              */
             class GraphicsSystem {
                 private :   // Fields
-                    std::unordered_map<WindowId, NRE::System::Window*> windows;   /**< The system windows */
-                    WindowId counter;
+                    std::unordered_map<Graphics::WindowId, Graphics::Window*> windows;   /**< The system windows */
+                    Graphics::WindowId counter;
                     bool running;
 
                 public :    // Methods
@@ -68,12 +68,12 @@
                          * @param  id the window id
                          * @return    the corresponding window
                          */
-                        NRE::System::Window& getWindow(WindowId id);
+                        Graphics::Window& getWindow(Graphics::WindowId id);
                         /**
                          * Close a specific window
                          * @param id the window id
                          */
-                        void closeWindow(WindowId id);
+                        void closeWindow(Graphics::WindowId id);
                         /**
                          * @return if at least one window is opened
                          */
@@ -88,7 +88,7 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        NRE::System::Window& createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Create a window and register it in the system
                          * @param title    the window title
@@ -96,12 +96,12 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        NRE::System::Window& createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Remove the window corresponding to the given id
                          * @param id the window to remove
                          */
-                        void removeWindow(WindowId const& id);
+                        void removeWindow(Graphics::WindowId const& id);
 
                     //## Assignment Operator ##//
                         /**

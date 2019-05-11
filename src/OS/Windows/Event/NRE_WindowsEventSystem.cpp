@@ -10,6 +10,8 @@
     #include "../../../System/NRE_System.hpp"
     #include <Windows.h>
 
+    using namespace NRE::Graphics;
+
      namespace NRE {
          namespace System {
 

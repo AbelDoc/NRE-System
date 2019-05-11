@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_WindowsInternalWindow.cpp
-     * @brief Implementation of System's API's Object : InternalWindow
+     * @brief Implementation of Graphics's API's Object : InternalWindow
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
@@ -12,9 +12,10 @@
     #include <wingdi.h>
 
     using namespace NRE::Math;
+    using namespace NRE::System;
 
      namespace NRE {
-         namespace System {
+         namespace Graphics {
 
             InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
                 WNDCLASSEXA windowClass;

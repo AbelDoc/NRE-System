@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_LinuxInternalWindow.hpp
-     * @brief Declaration of System's API's Object : InternalWindow
+     * @brief Declaration of Graphics's API's Object : InternalWindow
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
@@ -19,10 +19,10 @@
       */
      namespace NRE {
          /**
-          * @namespace System
-          * @brief System's API
+          * @namespace Graphics
+          * @brief Graphics' API
           */
-         namespace System {
+         namespace Graphics {
 
              /**
               * @class InternalWindow
