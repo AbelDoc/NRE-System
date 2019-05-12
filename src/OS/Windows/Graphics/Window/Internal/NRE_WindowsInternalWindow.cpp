@@ -35,7 +35,7 @@
                 RegisterClassExA(&windowClass);
 
                 internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
-                if (style.getStyle() & WindowStyle::FULLSCREEN) {
+                if (style & WindowStyle::FULLSCREEN) {
                     toggleFullscreen(true);
                 }
                 GraphicsDriver::getDriver().registerWindow(internal, id);

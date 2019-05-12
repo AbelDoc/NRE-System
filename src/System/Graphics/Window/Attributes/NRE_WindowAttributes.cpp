@@ -14,16 +14,6 @@
      namespace NRE {
          namespace Graphics {
 
-             WindowAttributes::WindowAttributes(std::string const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
-             }
-
-             WindowAttributes::WindowAttributes(std::string const& t, Vector2D<unsigned int> const& s) : title(t), size(s) {
-             }
-
-             void WindowAttributes::setPosition(Point2D<unsigned int> const& pos) {
-                 position = pos;
-             }
-
              std::string WindowAttributes::toString() const {
                 std::string res(title);
                 res += " | ";

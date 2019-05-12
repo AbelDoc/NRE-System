@@ -12,25 +12,12 @@
      namespace NRE {
          namespace Graphics {
 
-            void GraphicsDriver::registerWindow(NativeWindowType window, WindowId id) {
-                windows.emplace(std::make_pair(window, id));
-            }
-
-            void GraphicsDriver::unregisterWindow(NativeWindowType window) {
-                windows.erase(window);
-            }
-
             WindowId GraphicsDriver::findId(NativeWindowType window) const {
                 auto it = windows.find(window);
                 if (it != windows.end()) {
                     return it->second;
                 }
                 return 0;
-            }
-
-            GraphicsDriver& GraphicsDriver::getDriver() {
-                static GraphicsDriver instance;
-                return instance;
             }
 
         }

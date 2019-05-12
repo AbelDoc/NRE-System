@@ -95,12 +95,16 @@
                          * @param window the window to store
                          * @param id     the window id
                          */
-                        void registerWindow(NativeWindowType window, WindowId id);
+                        inline void registerWindow(NativeWindowType window, WindowId id) {
+                            windows.emplace(std::make_pair(window, id));
+                        }
                         /**
                          * Unregister a window from the driver
                          * @param window the window to remove
                          */
-                        void unregisterWindow(NativeWindowType window);
+                        inline void unregisterWindow(NativeWindowType window) {
+                            windows.erase(window);
+                        }
                         /**
                          * Find the window id associated with the given window
                          * @param  window the window to retrive the id
@@ -126,7 +130,10 @@
                     /**
                      * @return the driver instance
                      */
-                    static GraphicsDriver& getDriver();
+                    inline static GraphicsDriver& getDriver() {
+                        static GraphicsDriver instance;
+                        return instance;
+                    }
             };
         }
     }

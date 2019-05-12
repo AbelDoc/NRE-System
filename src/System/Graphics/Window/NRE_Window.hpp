@@ -85,7 +85,9 @@
                         /**
                          * @return if the window is running
                          */
-                        bool isRunning() const;
+                        inline bool isRunning() const {
+                            return !status.isClosed();
+                        }
 
                     //## Methods ##//
                         /**

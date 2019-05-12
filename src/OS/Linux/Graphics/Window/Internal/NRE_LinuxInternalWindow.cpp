@@ -19,7 +19,7 @@
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
 
-                bool inFullscreen = style.getStyle() & WindowStyle::FULLSCREEN;
+                bool inFullscreen = style & WindowStyle::FULLSCREEN;
 
                 Window root = XRootWindow(display, xId);
                 XWindowAttributes attributes;
@@ -40,7 +40,7 @@
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
 
-                bool inFullscreen = style.getStyle() & WindowStyle::FULLSCREEN;
+                bool inFullscreen = style & WindowStyle::FULLSCREEN;
 
                 Window root = XRootWindow(display, xId);
                 XWindowAttributes attributes;
@@ -65,7 +65,7 @@
             }
 
             void InternalWindow::updateStyle(WindowStyle const& style) {
-                bool inFullscreen = style.getStyle() & WindowStyle::FULLSCREEN;
+                bool inFullscreen = style & WindowStyle::FULLSCREEN;
                 Display* display = GraphicsDriver::getDriver().getDisplay();
 
                 Atom wHints = XInternAtom(display, "_MOTIF_WM_HINTS", false);

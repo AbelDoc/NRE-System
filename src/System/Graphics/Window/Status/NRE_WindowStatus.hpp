@@ -36,7 +36,8 @@
                         /**
                          * Construct the window default status
                          */
-                        WindowStatus();
+                        WindowStatus() : closed(false), inFullscreen(false) {
+                        }
 
                     //## Copy Constructor ##//
                         /**
@@ -62,23 +63,31 @@
                         /**
                          * @return the closed status
                          */
-                        bool isClosed() const;
+                        inline bool isClosed() const {
+                            return closed;
+                        }
                         /**
                          * @return the fullscreen status
                          */
-                        bool isInFullscreen() const;
+                        inline bool isInFullscreen() const {
+                            return inFullscreen;
+                        }
 
                     //## Setter ##//
                         /**
                          * Set the closed status
                          * @param status the new closed status
                          */
-                        void setClosed(bool status);
+                        inline void setClosed(bool status) {
+                            closed = status;
+                        }
                         /**
                          * Set the fullscreen status
                          * @param status the new fullscreen status
                          */
-                        void setFullscreen(bool status);
+                        inline void setFullscreen(bool status) {
+                            inFullscreen = status;
+                        }
 
                     //## Assignment Operator ##//
                         /**

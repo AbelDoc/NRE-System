@@ -10,7 +10,7 @@
     #pragma once
 
     #include "../Graphics/Window/NRE_Window.hpp"
-    #include "Keys/NRE_Keys.hpp"
+    #include "Input/Keys/NRE_Keys.hpp"
 
     /**
      * @namespace NRE

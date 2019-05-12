@@ -15,26 +15,15 @@
      namespace NRE {
          namespace System {
 
-             GraphicsSystem::GraphicsSystem() : counter(1), running(false) {
-             }
-
              GraphicsSystem::~GraphicsSystem() {
                  for (auto& it : windows) {
                      it.second->close(false);
                  }
              }
 
-             Graphics::Window& GraphicsSystem::getWindow(WindowId id) {
-                 return *(windows.at(id));
-             }
-
              void GraphicsSystem::closeWindow(WindowId id) {
                  getWindow(id).close();
                  checkRunningState();
-             }
-
-             bool GraphicsSystem::isRunning() const {
-                 return running;
              }
 
              void GraphicsSystem::checkRunningState() {
@@ -58,10 +47,6 @@
                  counter++;
                  running = true;
                  return *(windows[counter - 1]);
-             }
-
-             void GraphicsSystem::removeWindow(WindowId const& id) {
-                 windows.erase(id);
              }
 
         }

@@ -75,15 +75,21 @@
                         /**
                          * @return the System info
                          */
-                        SystemInfo const& getSystemInfo() const;
+                        inline SystemInfo const& getSystemInfo() const {
+                            return infos;
+                        }
                         /**
                          * @return the graphics sub system
                          */
-                        GraphicsSystem& getGraphicsSystem();
+                        inline GraphicsSystem& getGraphicsSystem() {
+                            return graphics;
+                        }
                         /**
                          * @return the events sub system
                          */
-                        EventSystem& getEventSystem();
+                        inline EventSystem& getEventSystem() {
+                            return events;
+                        }
 
                     //## Methods ##//
                         /**
@@ -132,14 +138,21 @@
             /**
              * @return the system instance
              */
-            System& getSystem();
+            inline System& getSystem() {
+                static System instance;
+                return instance;
+            }
             /**
              * @return the system graphics sub system
              */
-            GraphicsSystem& getGraphicsSystem();
+            inline GraphicsSystem& getGraphicsSystem() {
+                return getSystem().getGraphicsSystem();
+            }
             /**
              * @return the system events sub system
              */
-            EventSystem& getEventSystem();
+            inline EventSystem& getEventSystem() {
+                return getSystem().getEventSystem();
+            }
         }
     }

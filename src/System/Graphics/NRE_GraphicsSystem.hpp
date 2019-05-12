@@ -31,16 +31,17 @@
              */
             class GraphicsSystem {
                 private :   // Fields
-                    std::unordered_map<Graphics::WindowId, Graphics::Window*> windows;   /**< The system windows */
-                    Graphics::WindowId counter;
-                    bool running;
+                    std::unordered_map<Graphics::WindowId, Graphics::Window*> windows;  /**< The system windows */
+                    Graphics::WindowId counter;                                         /**< The window id counter */
+                    bool running;                                                       /**< Tell if the system is running */
 
                 public :    // Methods
                     //## Constructor ##//
                         /**
                          * Construct the sub system
                          */
-                        GraphicsSystem();
+                        GraphicsSystem() : counter(1), running(false) {
+                        }
 
                     //## Copy Constructor ##//
                         /**
@@ -68,7 +69,9 @@
                          * @param  id the window id
                          * @return    the corresponding window
                          */
-                        Graphics::Window& getWindow(Graphics::WindowId id);
+                        inline Graphics::Window& getWindow(Graphics::WindowId id) {
+                            return *(windows.at(id));
+                        }
                         /**
                          * Close a specific window
                          * @param id the window id
@@ -77,7 +80,9 @@
                         /**
                          * @return if at least one window is opened
                          */
-                        bool isRunning() const;
+                        inline bool isRunning() const {
+                            return running;
+                        }
 
                     //## Methods ##//
                         /**
@@ -101,7 +106,9 @@
                          * Remove the window corresponding to the given id
                          * @param id the window to remove
                          */
-                        void removeWindow(Graphics::WindowId const& id);
+                        inline void removeWindow(Graphics::WindowId const& id) {
+                            windows.erase(id);
+                        }
 
                     //## Assignment Operator ##//
                         /**

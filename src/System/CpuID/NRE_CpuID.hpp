@@ -57,31 +57,45 @@
                          * @param  index the register index
                          * @return       the corresponding register
                          */
-                        Register const& getRegister(unsigned int index) const;
+                        inline Register const& getRegister(unsigned int index) const {
+                            return registers[index];
+                        }
                         /**
                          * @return all registers
                          */
-                        const Register* getRegisters() const;
+                        inline const Register* getRegisters() const {
+                            return registers;
+                        }
                         /**
                          * @return registers size
                          */
-                        std::size_t getRegistersSize() const;
+                        inline std::size_t getRegistersSize() const {
+                            return sizeof(registers);
+                        }
                         /**
                          * @return the eax register, equivalent to getRegister(0)
                          */
-                        Register const& getEax() const;
+                        inline Register const& getEax() const {
+                            return registers[0];
+                        }
                         /**
                          * @return the ebx register, equivalent to getRegister(1)
                          */
-                        Register const& getEbx() const;
+                        inline Register const& getEbx() const {
+                            return registers[1];
+                        }
                         /**
                          * @return the ecx register, equivalent to getRegister(2)
                          */
-                        Register const& getEcx() const;
+                        inline Register const& getEcx() const {
+                            return registers[2];
+                        }
                         /**
                          * @return the edx register, equivalent to getRegister(3)
                          */
-                        Register const& getEdx() const;
+                        inline Register const& getEdx() const {
+                            return registers[3];
+                        }
 
                     //## Access Operator ##//
                         /**
@@ -89,7 +103,9 @@
                          * @param index the point's object index
                          * @return      a const-reference on the index's register
                          */
-                        Register const& operator [](unsigned int index) const;
+                        Register const& operator [](unsigned int index) const {
+                            return registers[index];
+                        }
 
                     //## Stream Operator ##//
                         /**

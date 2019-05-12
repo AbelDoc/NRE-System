@@ -12,20 +12,17 @@
      namespace NRE {
          namespace Graphics {
 
-             WindowStyle::WindowStyle(unsigned int s) : style(s) {
-             }
-
-             unsigned int WindowStyle::getStyle() const {
-                 return style;
-             }
-
              WindowStyle& WindowStyle::operator|=(WindowStyle const& ws) {
                  style = style | ws.style;
                  return *this;
              }
 
-             WindowStyle WindowStyle::operator|(WindowStyle const& ws) {
+             WindowStyle WindowStyle::operator|(WindowStyle const& ws) const {
                  return WindowStyle(*this) |= ws;
+             }
+
+             unsigned int WindowStyle::operator &(unsigned int ws) const {
+                 return style & ws;
              }
 
         }

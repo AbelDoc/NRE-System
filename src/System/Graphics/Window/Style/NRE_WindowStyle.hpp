@@ -44,7 +44,8 @@
                          * Construct the window style
                          * @param s the style value
                          */
-                        WindowStyle(unsigned int s = BASIC);
+                        inline WindowStyle(unsigned int s = BASIC) : style(s) {
+                        }
 
                     //## Copy Constructor ##//
                         /**
@@ -65,12 +66,6 @@
                          * WindowStyle Deconstructor
                          */
                         ~WindowStyle() = default;
-
-                    //## Getter ##//
-                        /**
-                         * @return the style value
-                         */
-                        unsigned int getStyle() const;
 
                     //## Methods ##//
                         #ifdef _WIN32                           // Windows
@@ -137,7 +132,13 @@
                          * @param ws the other style
                          * @return   the computed style
                          */
-                        WindowStyle operator |(WindowStyle const& ws);
+                        WindowStyle operator |(WindowStyle const& ws) const;
+                        /**
+                         * Compute the style value resulting in the bitwize AND with this
+                         * @param ws the other style
+                         * @return   the computed style value
+                         */
+                        unsigned int operator &(unsigned int ws) const;
 
                 public :    // Static
                     static constexpr unsigned int BASIC      = 0b000;

@@ -18,18 +18,6 @@
                  queryMemoryInfo();
              }
 
-             SystemInfo const& System::getSystemInfo() const {
-                 return infos;
-             }
-
-             GraphicsSystem& System::getGraphicsSystem() {
-                 return graphics;
-             }
-
-             EventSystem& System::getEventSystem() {
-                 return events;
-             }
-
              std::string System::toString() const {
                  std::string res(getSystemName());
                  res += " :\n";
@@ -40,20 +28,6 @@
              std::ostream& operator <<(std::ostream& stream, System const& o) {
                 return stream << o.toString();
              }
-
-             System& getSystem()  {
-                 static System systemInstance;
-                 return systemInstance;
-             }
-
-             GraphicsSystem& getGraphicsSystem() {
-                 return getSystem().getGraphicsSystem();
-             }
-
-             EventSystem& getEventSystem() {
-                 return getSystem().getEventSystem();
-             }
-
 
          }
      }

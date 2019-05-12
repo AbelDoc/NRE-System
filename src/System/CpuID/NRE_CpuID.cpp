@@ -20,38 +20,6 @@
                 #endif
             }
 
-            Register const& CpuID::getRegister(unsigned int index) const {
-                return registers[index];
-            }
-
-            const Register* CpuID::getRegisters() const {
-                return registers;
-            }
-
-            std::size_t CpuID::getRegistersSize() const {
-                return sizeof(registers);
-            }
-
-            Register const& CpuID::getEax() const {
-                return registers[0];
-            }
-
-            Register const& CpuID::getEbx() const {
-                return registers[1];
-            }
-
-            Register const& CpuID::getEcx() const {
-                return registers[2];
-            }
-
-            Register const& CpuID::getEdx() const {
-                return registers[3];
-            }
-
-            Register const& CpuID::operator[](unsigned int index) const {
-                return registers[index];
-            }
-
             std::string CpuID::toString() const {
                 std::string res((const char *)&registers[0]);
                 res += (const char *)&registers[1];

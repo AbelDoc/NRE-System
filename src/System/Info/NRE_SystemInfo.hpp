@@ -41,65 +41,90 @@
                         /**
                          * Construct an empty system information set
                          */
-                        SystemInfo();
+                        inline SystemInfo() : cpuName(""), architecture(""), nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
+                        }
 
                     //## Getter ##//
                         /**
                          * @return the CPU's name
                          */
-                        std::string const& getCPUName() const;
+                        inline std::string const& getCPUName() const {
+                            return cpuName;
+                        }
                         /**
                          * @return the System Architecture
                          */
-                        std::string const& getArchitecture() const;
+                        inline std::string const& getArchitecture() const {
+                            return architecture;
+                        }
                         /**
                          * @return the number of CPU
                          */
-                        std::size_t getNbProcessors() const;
+                        inline std::size_t getNbProcessors() const {
+                            return nbProcessors;
+                        }
                         /**
                          * @return the memory size
                          */
-                        std::size_t getMemorySize() const;
+                        inline std::size_t getMemorySize() const {
+                            return memorySize;
+                        }
                         /**
                          * @return the memory used
                          */
-                        std::size_t getMemoryUsed() const;
+                        inline std::size_t getMemoryUsed() const {
+                            return memoryUsed;
+                        }
                         /**
                          * @return the memory used by the current process
                          */
-                        std::size_t getMemoryUsedByProcess() const;
+                        inline std::size_t getMemoryUsedByProcess() const {
+                            return memoryUsedByProcess;
+                        }
 
                     //## Setter ##//
                         /**
                          * CPU Name Setter
                          * @param name the new cpu's name
                          */
-                        void setCPUName(std::string const& name);
+                        inline void setCPUName(std::string const& name) {
+                            cpuName = name;
+                        }
                         /**
                          * Architecture Setter
                          * @param arc the new architecture value
                          */
-                        void setArchitecture(std::string const& arc);
+                        inline void setArchitecture(std::string const& arc) {
+                            architecture = arc;
+                        }
                         /**
                          * NbProcessors Setter
                          * @param nb the new number of processors
                          */
-                        void setNbProcessors(std::size_t nb);
+                        inline void setNbProcessors(std::size_t nb) {
+                            nbProcessors = nb;
+                        }
                         /**
                          * Memory Size Setter
                          * @param size the new memory size
                          */
-                        void setMemorySize(std::size_t size);
+                        inline void setMemorySize(std::size_t size) {
+                            memorySize = size;
+                        }
                         /**
                          * Memory Used Setter
                          * @param used the new memory used
                          */
-                        void setMemoryUsed(std::size_t used);
+                        inline void setMemoryUsed(std::size_t used) {
+                            memoryUsed = used;
+                        }
                         /**
                          * Memory Used By Process Setter
                          * @param used the new memory used by process
                          */
-                        void setMemoryUsedByProcess(std::size_t used);
+                        inline void setMemoryUsedByProcess(std::size_t used) {
+                            memoryUsedByProcess = used;
+                        }
 
                     //## Stream Operator ##//
                         /**

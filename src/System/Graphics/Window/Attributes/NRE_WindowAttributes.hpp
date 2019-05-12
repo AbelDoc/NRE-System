@@ -45,13 +45,15 @@
                          * @param pos the window top-left corner position
                          * @param s   the window size
                          */
-                        WindowAttributes(std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
+                        inline WindowAttributes(std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
+                        }
                         /**
                          * Construct the window attributes
                          * @param t   the window title
                          * @param s   the window size
                          */
-                        WindowAttributes(std::string const& t, Math::Vector2D<unsigned int> const& s);
+                        inline WindowAttributes(std::string const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
+                        }
 
                     //## Copy Constructor ##//
                         /**
@@ -78,7 +80,9 @@
                          * Set the window position attribute
                          * @param pos the new window position
                          */
-                        void setPosition(Math::Point2D<unsigned int> const& pos);
+                        inline void setPosition(Math::Point2D<unsigned int> const& pos) {
+                            position = pos;
+                        }
 
                     //## Assignment Operator ##//
                         /**
