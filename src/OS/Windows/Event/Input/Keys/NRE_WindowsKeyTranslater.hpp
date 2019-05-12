@@ -40,6 +40,10 @@
 
 
                 private :   // Static
+                    /**
+                     * Store the map used to translate native key,
+                     * Derived from : https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
+                     */
                     static constexpr Key translationMap[] = {
                         Key::NONE,
                         Key::NONE,
@@ -264,7 +268,7 @@
                         Key::BACKSLASH,
                         Key::RIGHT_BRACE,
                         Key::APOSTROPHE,
-                        Key::NONE,
+                        Key::KEYPAD_EXCLAMATION,
                         Key::NONE,
                         Key::NONE,
                         Key::NON_US_BACKSLASH,
@@ -295,7 +299,7 @@
                         Key::NONE,
                         Key::NONE,
                         Key::NONE,
-                        Key::KEYPAD_CLEAR_ENTRY,
+                        Key::KEYPAD_CLEAR_ENTRY
                     };
             };
         }

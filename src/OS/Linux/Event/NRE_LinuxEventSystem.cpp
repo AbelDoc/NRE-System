@@ -8,8 +8,10 @@
      */
 
     #include "../../../System/NRE_System.hpp"
+    #include <X11/XKBlib.h>
 
     using namespace NRE::Graphics;
+    using namespace NRE::Event;
 
      namespace NRE {
          namespace System {
@@ -24,6 +26,15 @@
                                 }
             				}
             				break;
+                        }
+                        case KeyPress : {
+                            Key translated = inputManager.translateKey(event.xkey);
+                            std::cout << translated << std::endl;
+
+                            if (translated == Key::NONE) {
+                                std::cerr << "Not find : " <<  event.xkey.keycode << std::endl;
+                            }
+                            break;
                         }
                      }
                  }

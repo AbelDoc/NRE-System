@@ -1,0 +1,51 @@
+
+    /**
+     * @file NRE_LinuxKeyTranslater.cpp
+     * @brief Implementation of Event's API's Object : KeyTranslater
+     * @author Louis ABEL
+     * @date 12/05/2019
+     * @copyright CC-BY-NC-SA
+     */
+
+    #include "NRE_LinuxKeyTranslater.hpp"
+    #include <X11/XKBlib.h>
+    #include "../../../../../System/Graphics/Driver/NRE_GraphicsDriver.hpp"
+
+    using namespace NRE::Graphics;
+
+     namespace NRE {
+         namespace Event {
+
+            constexpr KeyTranslater::NativeKeyToKey KeyTranslater::translationMap[];
+
+            Key KeyTranslater::translateKey(XKeyEvent const& keyEvent) const {
+                KeySym keySym = XkbKeycodeToKeysym(GraphicsDriver::getDriver().getDisplay(), static_cast <KeyCode> (keyEvent.keycode), 0, keyEvent.state & ShiftMask ? 1 : 0);
+
+                if (keySym == NoSymbol) {
+                    return Key::NONE;
+                }
+                if (keySym >= XK_a && keySym <= XK_z) {
+                    return static_cast <Key> (Key::A + static_cast <Key> (keySym - XK_a));
+                }
+                if (keySym >= XK_A && keySym <= XK_Z) {
+                    return static_cast <Key> (Key::A + static_cast <Key> (keySym - XK_A));
+                }
+
+                if (keySym == XK_0) {
+                    return Key::NUM_0;
+                }
+                if (keySym >= XK_1 && keySym <= XK_9) {
+                    return static_cast <Key> (Key::NUM_1 + static_cast <Key> (keySym - XK_1));
+                }
+
+                for (unsigned char i = 0; i < 108; i++) {
+                    if (keySym == translationMap[i].keySym) {
+                        return translationMap[i].key;
+                    }
+                }
+
+                return Key::NONE;
+            }
+
+         }
+     }

@@ -266,7 +266,7 @@
                 KEYPAD_MEM_SUBTRACT         = 0xd4,
                 KEYPAD_MEM_MULTIPLY         = 0xd5,
                 KEYPAD_MEM_DIVIDE           = 0xd6,
-                KEYPAD_PLUS_MINUX           = 0xd7,
+                KEYPAD_PLUS_MINUS           = 0xd7,
                 KEYPAD_CLEAR                = 0xd8,
                 KEYPAD_CLEAR_ENTRY          = 0xd9,
                 KEYPAD_BINARY               = 0xda,

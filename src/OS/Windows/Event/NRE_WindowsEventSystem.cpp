@@ -27,7 +27,12 @@
                          }
                          case (WM_KEYDOWN) :
                          case (WM_SYSKEYDOWN) : {
-                             std::cout << inputManager.translateKey(wParam, lParam) << std::endl;
+                             Key translated = inputManager.translateKey(wParam, lParam);
+                             std::cout << translated << std::endl;
+
+                             if (translated == Key::NONE) {
+                                 std::cerr << "Not find : " <<  wParam << std::endl;
+                             }
                              break;
                          }
                          default : {

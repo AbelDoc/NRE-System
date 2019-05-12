@@ -22,17 +22,21 @@
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
 
                 Window root = XRootWindow(display, xId);
-                XWindowAttributes attributes;
-                XGetWindowAttributes(display, root, &attributes);
+                XWindowAttributes monitorAttributes;
+                XGetWindowAttributes(display, root, &monitorAttributes);
+
+                XSetWindowAttributes attributes;
+                attributes.event_mask = KeyPressMask;
+                attributes.background_pixel = XWhitePixel(display, xId);
+                attributes.border_pixel = XBlackPixel(display, xId);
 
                 Point2D<unsigned int> finalPosition(position);
                 Vector2D<unsigned int> finalSize(size);
                 if (inFullscreen) {
                     finalPosition.setCoord(0, 0);
-                    finalSize.setSize(attributes.width, attributes.height);
+                    finalSize.setSize(monitorAttributes.width, monitorAttributes.height);
                 }
-
-                internal = XCreateSimpleWindow(display, XRootWindow(display, xId), finalPosition.getX(), finalPosition.getY(), finalSize.getW(), finalSize.getH(), 1, XBlackPixel(display, xId), XWhitePixel(display, xId));
+                internal = XCreateWindow(display, root, finalPosition.getX(), finalPosition.getY(), finalSize.getW(), finalSize.getH(), 1, XDefaultDepth(display, xId), InputOutput, XDefaultVisual(display, xId), CWEventMask | CWBackPixel | CWBorderPixel, &attributes);
                 finishCreation(style, title);
             }
 
@@ -43,19 +47,24 @@
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
 
                 Window root = XRootWindow(display, xId);
-                XWindowAttributes attributes;
-                XGetWindowAttributes(display, root, &attributes);
+                XWindowAttributes monitorAttributes;
+                XGetWindowAttributes(display, root, &monitorAttributes);
+
+                XSetWindowAttributes attributes;
+                attributes.event_mask = KeyPressMask;
+                attributes.background_pixel = XWhitePixel(display, xId);
+                attributes.border_pixel = XBlackPixel(display, xId);
 
                 Point2D<unsigned int> finalPosition;
                 Vector2D<unsigned int> finalSize(size);
                 if (inFullscreen) {
                     finalPosition.setCoord(0, 0);
-                    finalSize.setSize(attributes.width, attributes.height);
+                    finalSize.setSize(monitorAttributes.width, monitorAttributes.height);
                 } else {
-                    finalPosition.setCoord(attributes.width / 2 - size.getW() / 2, attributes.height / 2 - size.getH());
+                    finalPosition.setCoord(monitorAttributes.width / 2 - size.getW() / 2, monitorAttributes.height / 2 - size.getH());
                 }
 
-                internal = XCreateSimpleWindow(display, root, finalPosition.getX(), finalPosition.getY(), finalSize.getW(), finalSize.getH(), 1, XBlackPixel(display, xId), XWhitePixel(display, xId));
+                internal = XCreateWindow(display, root, finalPosition.getX(), finalPosition.getY(), finalSize.getW(), finalSize.getH(), 1, XDefaultDepth(display, xId), InputOutput, XDefaultVisual(display, xId), CWEventMask | CWBackPixel | CWBorderPixel, &attributes);
                 finishCreation(style, title);
             }
 

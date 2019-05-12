@@ -10,7 +10,7 @@
     #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Event/Input/Keys/NRE_WindowsKeyTranslater.hpp"
     #elif __linux__                         // Linux
-        #include "../../../OS/Linux/Event/Input/Keys/NRE_WindowsKeyTranslater.hpp"
+        #include "../../../OS/Linux/Event/Input/Keys/NRE_LinuxKeyTranslater.hpp"
     #else
        #error "Not Supported Yet or Unknown compiler"
     #endif
@@ -45,6 +45,13 @@
                          * @return        the translated key
                          */
                         Key translateKey(WPARAM wParam, LPARAM lParam) const;
+                    #elif __linux__                         // Linux
+                        /**
+                         * Translate a native key code into an NRE key
+                         * @param keyEvent the native key press event
+                         * @return         the translated key
+                         */
+                        Key translateKey(XKeyEvent const& keyEvent) const;
                     #endif
             };
         }
