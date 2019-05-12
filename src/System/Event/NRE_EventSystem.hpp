@@ -10,7 +10,7 @@
     #pragma once
 
     #include "../Graphics/Window/NRE_Window.hpp"
-    #include "Input/Keys/NRE_Keys.hpp"
+    #include "Input/NRE_InputManager.hpp"
 
     /**
      * @namespace NRE
@@ -28,6 +28,9 @@
              * @brief Manage the event sub system
              */
             class EventSystem {
+                private :   // Fields
+                    Event::InputManager inputManager;   /**< The input manager */
+
                 public :    // Methods
                     //## Constructor ##//
                         /**

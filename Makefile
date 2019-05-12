@@ -11,7 +11,7 @@ export LIBDIR = -L"C:/lib/MinGW64_7.3/x86_64-w64-mingw32/lib" -L"C:/lib/WindowsK
 OBJDIR = obj/
 BIN = bin/
 SRC = src
-OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)OS/Windows/NRE_WindowsSystem.o $(OBJDIR)OS/Windows/Event/NRE_WindowsEventSystem.o $(OBJDIR)OS/Windows/Graphics/Driver/NRE_WindowsGraphicsDriver.o $(OBJDIR)OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.o $(OBJDIR)OS/Windows/Graphics/Window/Style/NRE_WindowsWindowStyle.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Graphics/NRE_GraphicsSystem.o $(OBJDIR)System/Graphics/Driver/NRE_GraphicsDriver.o $(OBJDIR)System/Graphics/Window/NRE_Window.o $(OBJDIR)System/Graphics/Window/Attributes/NRE_WindowAttributes.o $(OBJDIR)System/Graphics/Window/Style/NRE_WindowStyle.o $(OBJDIR)System/Info/NRE_SystemInfo.o 
+OBJ = $(OBJDIR)NRE_Main.o $(OBJDIR)OS/Windows/NRE_WindowsSystem.o $(OBJDIR)OS/Windows/Event/NRE_WindowsEventSystem.o $(OBJDIR)OS/Windows/Event/Input/NRE_WindowsInputManager.o $(OBJDIR)OS/Windows/Event/Input/Keys/NRE_WindowsKeyTranslater.o $(OBJDIR)OS/Windows/Graphics/Driver/NRE_WindowsGraphicsDriver.o $(OBJDIR)OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.o $(OBJDIR)OS/Windows/Graphics/Window/Style/NRE_WindowsWindowStyle.o $(OBJDIR)System/NRE_System.o $(OBJDIR)System/CpuID/NRE_CpuID.o $(OBJDIR)System/Graphics/NRE_GraphicsSystem.o $(OBJDIR)System/Graphics/Driver/NRE_GraphicsDriver.o $(OBJDIR)System/Graphics/Window/NRE_Window.o $(OBJDIR)System/Graphics/Window/Attributes/NRE_WindowAttributes.o $(OBJDIR)System/Graphics/Window/Style/NRE_WindowStyle.o $(OBJDIR)System/Info/NRE_SystemInfo.o 
 OUT = Windows/NRE-System
 
 all : childs out
@@ -32,6 +32,8 @@ clean :
 	@mkdir obj/OS/Windows/
 	@mkdir obj/OS/Windows/Event/
 	@mkdir obj/OS/Windows/Graphics/
+	@mkdir obj/OS/Windows/Event/Input/
+	@mkdir obj/OS/Windows/Event/Input/Keys/
 	@mkdir obj/OS/Windows/Graphics/Driver/
 	@mkdir obj/OS/Windows/Graphics/Window/
 	@mkdir obj/OS/Windows/Graphics/Window/Internal/

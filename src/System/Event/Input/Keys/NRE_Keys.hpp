@@ -36,10 +36,10 @@
             };
 
             /**
-             * @enum Keys
+             * @enum Key
              * Regroup all keys, derived from https://source.android.com/devices/input/keyboard-devices.html
              */
-            enum class Keys {
+            enum Key : unsigned char {
                 NONE                        = 0x00,
                 ERR_ROV                     = 0x01,
                 ERR_POST                    = 0x02,
@@ -133,7 +133,7 @@
                 NUM_LOCK                    = 0x53,
                 KEYPAD_SLASH                = 0x54,
                 KEYPAD_ASTERISK             = 0x55,
-                KEYPAD_MINUX                = 0x56,
+                KEYPAD_MINUS                = 0x56,
                 KEYPAD_PLUS                 = 0x57,
                 KEYPAD_ENTER                = 0x58,
                 KEYPAD_1                    = 0x59,
@@ -184,7 +184,7 @@
                 LOCKING_NUM_LOCK            = 0x83,
                 LOCKING_SCROLL_LOCK         = 0x84,
                 KEYPAD_COMMA                = 0x85,
-                KEYAPD_EQUALS_SIGN          = 0x86,
+                KEYPAD_EQUALS_SIGN          = 0x86,
 
                 INTERNATIONAL_1             = 0x87,
                 INTERNATIONAL_2             = 0x88,
@@ -218,6 +218,10 @@
                 CLEAR_AGAIN                 = 0xa2,
                 CR_SEL_PROPS                = 0xa3,
                 EX_SEL                      = 0xa4,
+
+                CONTROL                     = 0xa5,     // Special key for left/right recognition
+                SHIFT                       = 0xa6,     // Special key for left/right recognition
+                ALT                         = 0xa7,     // Special key for left/right recognition
 
                 KEYPAD_00                   = 0xb0,
                 KEYPAD_000                  = 0xb1,

@@ -11,6 +11,7 @@
     #include <Windows.h>
 
     using namespace NRE::Graphics;
+    using namespace NRE::Event;
 
      namespace NRE {
          namespace System {
@@ -22,6 +23,11 @@
                              break;
                          }
                          case (WM_DESTROY) : {
+                             break;
+                         }
+                         case (WM_KEYDOWN) :
+                         case (WM_SYSKEYDOWN) : {
+                             std::cout << inputManager.translateKey(wParam, lParam) << std::endl;
                              break;
                          }
                          default : {
