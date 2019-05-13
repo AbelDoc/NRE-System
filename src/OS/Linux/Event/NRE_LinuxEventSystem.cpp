@@ -8,7 +8,6 @@
      */
 
     #include "../../../System/NRE_System.hpp"
-    #include <X11/XKBlib.h>
 
     using namespace NRE::Graphics;
     using namespace NRE::Event;
