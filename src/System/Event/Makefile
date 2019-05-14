@@ -1,7 +1,12 @@
-OBJ = $(OBJDIR)NRE_EventSystem.o 
+OBJ = 
 OBJDIR = ../../../obj/System/Event/
 
-all : $(OBJ)
+EMITTER = Emitter
 
-$(OBJDIR)%.o :  %.cpp %.hpp
+all : childs $(OBJ)
+
+childs:
+	@(cd $(EMITTER) && $(MAKE))
+
+$(OBJDIR)%.o :  %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

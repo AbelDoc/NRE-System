@@ -11,6 +11,7 @@
 
     #include "../Graphics/Window/NRE_Window.hpp"
     #include "Input/NRE_InputManager.hpp"
+    #include "Emitter/NRE_AbstractEventEmitter.hpp"
 
     /**
      * @namespace NRE
