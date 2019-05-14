@@ -18,6 +18,7 @@
     #include "CpuID/NRE_CpuID.hpp"
     #include "Graphics/NRE_GraphicsSystem.hpp"
     #include "Event/NRE_EventSystem.hpp"
+    #include "Time/Clock/NRE_Clock.hpp"
 
     /**
      * @namespace NRE
@@ -39,6 +40,7 @@
                     SystemInfo infos;           /**< The system's info */
                     GraphicsSystem graphics;    /**< The graphics sub system */
                     EventSystem events;         /**< The events sub system */
+                    Time::Clock clock;                /**< The system clock */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -89,6 +91,9 @@
                          */
                         inline EventSystem& getEventSystem() {
                             return events;
+                        }
+                        inline Time::Clock& getClock() {
+                            return clock;
                         }
 
                     //## Methods ##//
@@ -153,6 +158,9 @@
              */
             inline EventSystem& getEventSystem() {
                 return getSystem().getEventSystem();
+            }
+            inline Time::Clock& getClock() {
+                return getSystem().getClock();
             }
         }
     }

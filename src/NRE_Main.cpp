@@ -13,6 +13,7 @@
     using namespace NRE::Math;
     using namespace NRE::Event;
     using namespace NRE::Graphics;
+    using namespace std::chrono_literals;
 
     int main(int, char**) {
         getGraphicsSystem().createWindow("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE);
@@ -21,7 +22,10 @@
             std::cout << event.getCode() << std::endl;
         });
 
+        getClock().update();
+        getClock().showFPS();
         while (getGraphicsSystem().isRunning()) {
+            getClock().updateAndSleep(16ms);
             getEventSystem().update();
         }
 
