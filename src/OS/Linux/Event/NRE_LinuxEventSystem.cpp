@@ -8,6 +8,7 @@
      */
 
     #include "../../../System/NRE_System.hpp"
+    #include "../../../System/Event/Event/NRE_Event.hpp"
 
     using namespace NRE::Graphics;
     using namespace NRE::Event;
@@ -27,12 +28,7 @@
             				break;
                         }
                         case KeyPress : {
-                            Key translated = inputManager.translateKey(event.xkey);
-                            std::cout << translated << std::endl;
-
-                            if (translated == Key::NONE) {
-                                std::cerr << "Not find : " <<  event.xkey.keycode << std::endl;
-                            }
+                            emit<KeyEvent>(inputManager.translateKey(event.xkey));
                             break;
                         }
                      }

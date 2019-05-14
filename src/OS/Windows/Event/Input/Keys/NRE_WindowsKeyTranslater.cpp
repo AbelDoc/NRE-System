@@ -12,35 +12,35 @@
      namespace NRE {
          namespace Event {
 
-            Key KeyTranslater::translateKey(WPARAM wParam, LPARAM lParam) const {
-                Key code = translationMap[static_cast <unsigned char> (wParam)];
+            KeyCode KeyTranslater::translateKey(WPARAM wParam, LPARAM lParam) const {
+                KeyCode code = translationMap[static_cast <unsigned char> (wParam)];
 
-                if (code == Key::CONTROL || code == Key::SHIFT || code == Key::ALT) {
+                if (code == KeyCode::CONTROL || code == KeyCode::SHIFT || code == KeyCode::ALT) {
                     int scanCode = (lParam >> 16) & 0xff;
                     bool isExtended = (lParam & (1 << 24)) != 0;
 
                     switch (code) {
-                        case (Key::CONTROL) : {
+                        case (KeyCode::CONTROL) : {
                             if (isExtended) {
-                                code = Key::RIGHT_CONTROL;
+                                code = KeyCode::RIGHT_CONTROL;
                             } else {
-                                code = Key::LEFT_CONTROL;
+                                code = KeyCode::LEFT_CONTROL;
                             }
                             break;
                         }
-                        case (Key::SHIFT) : {
+                        case (KeyCode::SHIFT) : {
                             if (scanCode == 54) {
-                                code = Key::RIGHT_SHIFT;
+                                code = KeyCode::RIGHT_SHIFT;
                             } else {
-                                code = Key::LEFT_SHIFT;
+                                code = KeyCode::LEFT_SHIFT;
                             }
                             break;
                         }
-                        case (Key::ALT) : {
+                        case (KeyCode::ALT) : {
                             if (isExtended) {
-                                code = Key::RIGHT_ALT;
+                                code = KeyCode::RIGHT_ALT;
                             } else {
-                                code = Key::LEFT_ALT;
+                                code = KeyCode::LEFT_ALT;
                             }
                             break;
                         }

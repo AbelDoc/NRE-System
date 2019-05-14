@@ -18,24 +18,24 @@
 
             constexpr KeyTranslater::NativeKeyToKey KeyTranslater::translationMap[];
 
-            Key KeyTranslater::translateKey(XKeyEvent const& keyEvent) const {
+            KeyCode KeyTranslater::translateKey(XKeyEvent const& keyEvent) const {
                 KeySym keySym = XkbKeycodeToKeysym(GraphicsDriver::getDriver().getDisplay(), static_cast <KeyCode> (keyEvent.keycode), 0, keyEvent.state & ShiftMask ? 1 : 0);
 
                 if (keySym == NoSymbol) {
-                    return Key::NONE;
+                    return KeyCode::NONE;
                 }
                 if (keySym >= XK_a && keySym <= XK_z) {
-                    return static_cast <Key> (Key::A + static_cast <Key> (keySym - XK_a));
+                    return static_cast <KeyCode> (KeyCode::A + static_cast <KeyCode> (keySym - XK_a));
                 }
                 if (keySym >= XK_A && keySym <= XK_Z) {
-                    return static_cast <Key> (Key::A + static_cast <Key> (keySym - XK_A));
+                    return static_cast <KeyCode> (KeyCode::A + static_cast <KeyCode> (keySym - XK_A));
                 }
 
                 if (keySym == XK_0) {
-                    return Key::NUM_0;
+                    return KeyCode::NUM_0;
                 }
                 if (keySym >= XK_1 && keySym <= XK_9) {
-                    return static_cast <Key> (Key::NUM_1 + static_cast <Key> (keySym - XK_1));
+                    return static_cast <KeyCode> (KeyCode::NUM_1 + static_cast <KeyCode> (keySym - XK_1));
                 }
 
                 for (unsigned char i = 0; i < 108; i++) {
@@ -44,7 +44,7 @@
                     }
                 }
 
-                return Key::NONE;
+                return KeyCode::NONE;
             }
 
          }

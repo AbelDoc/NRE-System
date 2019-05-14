@@ -44,14 +44,14 @@
                          * @param  lParam additionnal message-specific information
                          * @return        the translated key
                          */
-                        Key translateKey(WPARAM wParam, LPARAM lParam) const;
+                        KeyCode translateKey(WPARAM wParam, LPARAM lParam) const;
                     #elif __linux__                         // Linux
                         /**
                          * Translate a native key code into an NRE key
                          * @param keyEvent the native key press event
                          * @return         the translated key
                          */
-                        Key translateKey(XKeyEvent const& keyEvent) const;
+                        KeyCode translateKey(XKeyEvent const& keyEvent) const;
                     #endif
             };
         }

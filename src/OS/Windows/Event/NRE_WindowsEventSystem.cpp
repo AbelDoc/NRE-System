@@ -8,6 +8,7 @@
      */
 
     #include "../../../System/NRE_System.hpp"
+    #include "../../../System/Event/Event/NRE_Event.hpp"
     #include <Windows.h>
 
     using namespace NRE::Graphics;
@@ -27,12 +28,7 @@
                          }
                          case (WM_KEYDOWN) :
                          case (WM_SYSKEYDOWN) : {
-                             Key translated = inputManager.translateKey(wParam, lParam);
-                             std::cout << translated << std::endl;
-
-                             if (translated == Key::NONE) {
-                                 std::cerr << "Not find : " <<  wParam << std::endl;
-                             }
+                             emit<KeyEvent>(inputManager.translateKey(wParam, lParam));
                              break;
                          }
                          default : {

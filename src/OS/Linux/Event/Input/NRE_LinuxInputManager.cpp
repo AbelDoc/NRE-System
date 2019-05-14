@@ -12,7 +12,7 @@
      namespace NRE {
          namespace Event {
 
-                Key InputManager::translateKey(XKeyEvent const& keyEvent) const {
+                KeyCode InputManager::translateKey(XKeyEvent const& keyEvent) const {
                     return keyTranslater.translateKey(keyEvent);
                 }
 

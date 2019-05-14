@@ -9,15 +9,26 @@
 
     #pragma once
 
+    #include <memory>
+
     #include "../Graphics/Window/NRE_Window.hpp"
     #include "Input/NRE_InputManager.hpp"
-    #include "Emitter/NRE_AbstractEventEmitter.hpp"
+    #include "Emitter/NRE_EventEmitter.hpp"
+    #include "Event/NRE_Event.hpp"
 
     /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
      */
     namespace NRE {
+        /**
+         * @namespace Event
+         * @brief Event's API
+         */
+        namespace Event {
+            template<class> class EventHandler;
+        }
+
         /**
          * @namespace System
          * @brief System's API
@@ -30,14 +41,17 @@
              */
             class EventSystem {
                 private :   // Fields
-                    Event::InputManager inputManager;   /**< The input manager */
+                    Event::InputManager inputManager;               /**< The input manager */
+                    std::vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
 
                 public :    // Methods
                     //## Constructor ##//
                         /**
                          * Construct the sub system
                          */
-                        EventSystem() = default;
+                        EventSystem() {
+                            registerEvent<Event::KeyEvent>();
+                        }
 
                     //## Copy Constructor ##//
                         /**
@@ -86,6 +100,38 @@
                          * Update the event system and dispatch event
                          */
                         void update();
+                        /**
+                         * Emit a T event by the corresponding emitter
+                         * @param  args pack of parameter forwarded to the emitters
+                         * @return      if the emitted event has been consumed
+                         */
+                        template <class T, class ... Args>
+                        bool emit(Args && ... args) {
+                            return getEmitter<T>().emit(args...);
+                        }
+                        /**
+                         * Add an event handler
+                         * @param handler the handler to add
+                         */
+                        template <class T>
+                        void addHandler(Event::EventHandler<T>* handler) {
+                            getEmitter<T>().addObserver(handler);
+                        }
+                        /**
+                         * Remove an event handler
+                         * @param handler the handler to remove
+                         */
+                        template <class T>
+                        void removeHandler(Event::EventHandler<T>* handler) {
+                            getEmitter<T>().removeObserver(handler);
+                        }
+                        /**
+                         * Register an event to be supported by the system
+                         */
+                        template <class T>
+                        void registerEvent() {
+                            emitters.emplace_back(new Event::EventEmitter<T>());
+                        }
 
                     //## Assignment Operator ##//
                         /**
@@ -100,6 +146,15 @@
                          * @return    the reference of himself
                          */
                         EventSystem& operator =(EventSystem && sys) = delete;
+
+                private :   // Static
+                    /**
+                     * @return the T event emitter
+                     */
+                    template <class T>
+                    Event::EventEmitter<T>& getEmitter() {
+                        return *(static_cast <Event::EventEmitter<T>*> (emitters[Event::EventEmitter<T>::getCategory()].get()));
+                    }
             };
         }
     }

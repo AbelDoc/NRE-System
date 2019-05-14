@@ -59,15 +59,17 @@
                         /**
                          * Emit a T event, created from passed argument pack
                          * @param args the T event construction's argument
+                         * @return     if the event has been consumed
                          */
                         template <class ... Args>
-                        inline void emit(Args && ... args) {
+                        inline bool emit(Args && ... args) {
                             T event(std::forward<Args>(args)...);
                             auto it = begin();
                             while (!event.isConsumed() && it != end()) {
                                 (*it)->update(this, &event);
                                 it++;
                             }
+                            return event.isConsumed();
                         }
 
                     //## Assignment Operator ##//

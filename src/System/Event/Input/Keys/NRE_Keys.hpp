@@ -36,10 +36,10 @@
             };
 
             /**
-             * @enum Key
-             * Regroup all keys, derived from https://source.android.com/devices/input/keyboard-devices.html
+             * @enum KeyCode
+             * Regroup all key codes, derived from https://source.android.com/devices/input/keyboard-devices.html
              */
-            enum Key : unsigned char {
+            enum KeyCode : unsigned char {
                 NONE                        = 0x00,
                 ERR_ROV                     = 0x01,
                 ERR_POST                    = 0x02,

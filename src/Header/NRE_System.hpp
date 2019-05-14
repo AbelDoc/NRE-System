@@ -10,3 +10,4 @@
     #pragma once
 
     #include "../System/NRE_System.hpp"
+    #include "../System/Event/Handler/NRE_EventHandler.hpp"
