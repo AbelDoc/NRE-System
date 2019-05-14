@@ -51,6 +51,8 @@
                          */
                         EventSystem() {
                             registerEvent<Event::KeyEvent>();
+                            registerEvent<Event::ButtonEvent>();
+                            registerEvent<Event::MotionEvent>();
                             registerEvent<Event::WindowCloseEvent>();
                         }
 

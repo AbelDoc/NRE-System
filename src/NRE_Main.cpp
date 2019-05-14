@@ -28,6 +28,17 @@
             return true;
         });
 
+        EventHandler<ButtonEvent> buttonHandler([&](ButtonEvent& event) {
+            std::cout << event.getCode() << std::endl;
+            std::cout << "Cursor : " << event.getPosition() << std::endl;
+            return false;
+        });
+
+        EventHandler<MotionEvent> motionHandler([&](MotionEvent& event) {
+            std::cout << "Motion : " << event.getPosition() << std::endl;
+            return true;
+        });
+
         getClock().update();
         getClock().showFPS();
         while (getGraphicsSystem().isRunning()) {

@@ -10,9 +10,11 @@
     #include "../../../System/NRE_System.hpp"
     #include "../../../System/Event/Event/NRE_Event.hpp"
     #include <Windows.h>
+    #include <Windowsx.h>
 
     using namespace NRE::Graphics;
     using namespace NRE::Event;
+    using namespace NRE::Math;
 
      namespace NRE {
          namespace System {
@@ -35,7 +37,7 @@
                                      emit<WindowCloseEvent>(id);
                                      getGraphicsSystem().closeWindow(id);
                                  } else {
-                                     if (!inputManager.isPressed(code)) {
+                                     if (!inputManager.isKeyPressed(code)) {
                                          inputManager.processPressedKey(code);
                                      }
                                  }
@@ -48,6 +50,77 @@
                              KeyCode code = inputManager.translateKey(wParam, lParam);
                              if (code != KeyCode::NONE) {
                                  inputManager.processReleasedKey(code);
+                             }
+                             break;
+                         }
+                         case (WM_LBUTTONDOWN) : {
+                             inputManager.processPressedButton(ButtonEventData(ButtonCode::LEFT_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_MBUTTONDOWN) : {
+                             inputManager.processPressedButton(ButtonEventData(ButtonCode::MIDDLE_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_RBUTTONDOWN) : {
+                             inputManager.processPressedButton(ButtonEventData(ButtonCode::RIGHT_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_XBUTTONDOWN) : {
+                             if (GET_XBUTTON_WPARAM(wParam) == XBUTTON1) {
+                                 inputManager.processPressedButton(ButtonEventData(ButtonCode::X1_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             } else {
+                                 inputManager.processPressedButton(ButtonEventData(ButtonCode::X2_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             }
+                             break;
+                         }
+                         case (WM_MOUSEMOVE) : {
+                             ButtonCode code = ButtonCode::NO_BUTTON;
+                             switch (wParam) {
+                                 case (MK_LBUTTON) : {
+                                     code = ButtonCode::LEFT_BUTTON;
+                                     break;
+                                 }
+                                 case (MK_MBUTTON) : {
+                                     code = ButtonCode::MIDDLE_BUTTON;
+                                     break;
+                                 }
+                                 case (MK_RBUTTON) : {
+                                     code = ButtonCode::RIGHT_BUTTON;
+                                     break;
+                                 }
+                                 case (MK_XBUTTON1) : {
+                                     code = ButtonCode::X1_BUTTON;
+                                     break;
+                                 }
+                                 case (MK_XBUTTON2) : {
+                                     code = ButtonCode::X2_BUTTON;
+                                     break;
+                                 }
+                             }
+                             Point2D<unsigned int> position(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+                             if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
+                                 inputManager.updateButtonEventData(ButtonEventData(code, position));
+                             }
+                             emit<MotionEvent>(code, position);
+                             break;
+                         }
+                         case (WM_LBUTTONUP) : {
+                             inputManager.processReleasedButton(ButtonEventData(ButtonCode::LEFT_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_MBUTTONUP) : {
+                             inputManager.processReleasedButton(ButtonEventData(ButtonCode::MIDDLE_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_RBUTTONUP) : {
+                             inputManager.processReleasedButton(ButtonEventData(ButtonCode::RIGHT_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             break;
+                         }
+                         case (WM_XBUTTONUP) : {
+                             if (GET_XBUTTON_WPARAM(wParam) == XBUTTON1) {
+                                 inputManager.processReleasedButton(ButtonEventData(ButtonCode::X1_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
+                             } else {
+                                 inputManager.processReleasedButton(ButtonEventData(ButtonCode::X2_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
                              }
                              break;
                          }
@@ -73,6 +146,5 @@
                      }
                      inputManager.update();
                  }
-
          }
      }

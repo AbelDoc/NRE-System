@@ -75,7 +75,7 @@
                          * @param  c a key code
                          * @return   the test's result
                          */
-                        bool isCode(KeyCode c) const {
+                        inline bool isCode(KeyCode c) const {
                             return code == c;
                         }
 
