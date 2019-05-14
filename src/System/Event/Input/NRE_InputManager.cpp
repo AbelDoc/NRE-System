@@ -18,7 +18,7 @@
          namespace Event {
 
              bool InputManager::isPressed(KeyCode code) const {
-                 return std::find(keys.begin(), keys.end(), Key(code)) != keys.end();
+                 return std::find(keys.begin(), keys.end(), code) != keys.end();
              }
 
              void InputManager::processPressedKey(KeyCode key) {
@@ -26,7 +26,7 @@
              }
 
              void InputManager::processReleasedKey(KeyCode key) {
-                 auto it = std::remove(keys.begin(), keys.end(), Key(key));
+                 auto it = std::remove(keys.begin(), keys.end(), key);
                  if (it != keys.end()) {
                      keys.erase(it);
                  }
@@ -34,8 +34,8 @@
 
              void InputManager::update() {
                 keys.erase(std::remove_if(keys.begin(), keys.end(),
-                            [=] (Key const& k) {
-                                return getEventSystem().emit<KeyEvent>(k.getCode());
+                            [=] (KeyCode k) {
+                                return getEventSystem().emit<KeyEvent>(k);
                             }
                         ), keys.end());
              }

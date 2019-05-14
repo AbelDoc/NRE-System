@@ -17,8 +17,6 @@
        #error "Not Supported Yet or Unknown compiler"
     #endif
 
-    #include "Keys/NRE_Key.hpp"
-
     #pragma once
 
     /**
@@ -39,7 +37,7 @@
             class InputManager {
                 private :   // Fields
                     KeyTranslater keyTranslater;    /**< Manage the translation of key event */
-                    std::vector<Key> keys;          /**< The active keys */
+                    std::vector<KeyCode> keys;      /**< The active keys */
 
                 public :    // Methods
                     //## Getter ##//
