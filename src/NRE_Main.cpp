@@ -17,15 +17,15 @@
 
     int main(int, char**) {
         getGraphicsSystem().createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
-        getGraphicsSystem().createWindow("NRE-System Devlopment 2", {1280, 720}, WindowStyle::RESIZEABLE);
 
         EventHandler<KeyEvent> keyHandler([&](KeyEvent& event) {
             std::cout << event.getCode() << std::endl;
-            event.consume();
+            return true;
         });
 
         EventHandler<WindowCloseEvent> closeHandler([&](WindowCloseEvent& event) {
             std::cout << "One window is closing : " << event.getWindow().getId() << std::endl;
+            return true;
         });
 
         getClock().update();

@@ -65,11 +65,13 @@
                         inline bool emit(Args && ... args) {
                             T event(std::forward<Args>(args)...);
                             auto it = begin();
-                            while (!event.isConsumed() && it != end()) {
+                            while (!isConsumed() && it != end()) {
                                 (*it)->update(this, &event);
                                 it++;
                             }
-                            return event.isConsumed();
+                            bool res = isConsumed();
+                            setConsumed(false);
+                            return res;
                         }
 
                     //## Assignment Operator ##//

@@ -9,7 +9,6 @@
 
     #pragma once
 
-    #include "../NRE_AbstractEvent.hpp"
     #include "../../../Graphics/NRE_GraphicsSystem.hpp"
 
     /**
@@ -27,7 +26,7 @@
              * @class WindowCloseEvent
              * @brief Manage a window close event
              */
-            class WindowCloseEvent : public AbstractEvent {
+            class WindowCloseEvent {
                 private:    //Fields
                     Graphics::Window& window;
 

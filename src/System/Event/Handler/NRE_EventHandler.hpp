@@ -32,7 +32,7 @@
             class EventHandler : public Utility::Observer {
                 public :     // Fields
                     /** Shortcut for handler type abstraction */
-                    typedef std::function<void(T&)> Handler;
+                    typedef std::function<bool(T&)> Handler;
 
                 private :    // Fields
                     Handler handler;    /**< The handling function */
@@ -76,10 +76,11 @@
                     //## Methods ##//
                         /**
                          * Update the observer when the observable notify it
+                         * @param obs the observed object
                          * @param arg notification data
                          */
-                        void update(Utility::Observable*, void* arg) override {
-                            handler(*(static_cast <T*> (arg)));
+                        void update(Utility::Observable* obs, void* arg) override {
+                            static_cast <EventEmitter<T>*> (obs)->setConsumed(handler(*(static_cast <T*> (arg))));
                         }
 
                     //## Assignment Operator ##//

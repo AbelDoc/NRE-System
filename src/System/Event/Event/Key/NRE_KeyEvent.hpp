@@ -9,7 +9,6 @@
 
     #pragma once
 
-    #include "../NRE_AbstractEvent.hpp"
     #include "../../Input/Keys/NRE_Keys.hpp"
 
     /**
@@ -27,7 +26,7 @@
              * @class KeyEvent
              * @brief Manage a key event
              */
-            class KeyEvent : public AbstractEvent {
+            class KeyEvent {
                 private:    //Fields
                     KeyCode code;   /**< The key's code */
 

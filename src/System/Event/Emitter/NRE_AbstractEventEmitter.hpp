@@ -31,6 +31,9 @@
                     /**< Shortcut to hide the Category type */
                     typedef std::size_t Category;
 
+                private :   // Fields
+                    bool consumed;  /**< Used for event emission, tell if the emission has to be stopped */
+
                 public  :   // Methods
                     //## Constructor ##//
                         /**
@@ -58,6 +61,22 @@
                          */
                         virtual ~AbstractEventEmitter() = default;
 
+                    //## Getter ##//
+                        /**
+                         * @return the consuemed state
+                         */
+                        inline bool isConsumed() const {
+                            return consumed;
+                        }
+
+                    //## Setter ##//
+                        /**
+                         * Set the consumed state
+                         * @param state the new consumed state
+                         */
+                        inline void setConsumed(bool state) {
+                            consumed = state;
+                        }
 
                     //## Assignment Operator ##//
                         /**
