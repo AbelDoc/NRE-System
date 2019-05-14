@@ -51,6 +51,7 @@
                          */
                         EventSystem() {
                             registerEvent<Event::KeyEvent>();
+                            registerEvent<Event::WindowCloseEvent>();
                         }
 
                     //## Copy Constructor ##//

@@ -30,7 +30,7 @@
                  running = false;
                  auto it = windows.begin();
                  while (!running && it != windows.end()) {
-                     running = !it->second->isRunning();
+                     running = it->second->isRunning();
                      it++;
                  }
              }

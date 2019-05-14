@@ -89,6 +89,10 @@
                             return !status.isClosed();
                         }
 
+                        inline WindowId getId() const {
+                            return id;
+                        }
+
                     //## Methods ##//
                         /**
                          * Close the window and free all resources, don't use it after this operation

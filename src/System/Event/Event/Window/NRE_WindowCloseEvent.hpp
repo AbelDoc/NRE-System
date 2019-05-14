@@ -1,7 +1,7 @@
 
     /**
-     * @file NRE_KeyEvent.hpp
-     * @brief Declaration of Event's API's Object : KeyEvent
+     * @file NRE_WindowCloseEvent.hpp
+     * @brief Declaration of Event's API's Object : WindowCloseEvent
      * @author Louis ABEL
      * @date 14/05/2019
      * @copyright CC-BY-NC-SA
@@ -10,7 +10,7 @@
     #pragma once
 
     #include "../NRE_AbstractEvent.hpp"
-    #include "../../Input/Keys/NRE_Keys.hpp"
+    #include "../../../Graphics/NRE_GraphicsSystem.hpp"
 
     /**
      * @namespace NRE
@@ -24,61 +24,50 @@
         namespace Event {
 
             /**
-             * @class KeyEvent
-             * @brief Manage a key event
+             * @class WindowCloseEvent
+             * @brief Manage a window close event
              */
-            class KeyEvent : public AbstractEvent {
+            class WindowCloseEvent : public AbstractEvent {
                 private:    //Fields
-                    KeyCode code;   /**< The key's code */
+                    Graphics::Window& window;
 
                 public:    // Methods
                     //## Constructor ##//
                         /**
                          * Default constructor
                          */
-                        KeyEvent() = delete;
+                        WindowCloseEvent() = delete;
                         /**
-                         * Construct the event from the key code
-                         * @param c the key code
+                         * Construct the event from the if of the closing window
+                         * @param id the closing window
                          */
-                        KeyEvent(KeyCode c) : code(c) {
-                        }
+                        WindowCloseEvent(Graphics::WindowId id);
 
                     //## Copy-Constructor ##//
                         /**
                          * Copy e into this
-                         * @param e the key event to copy
+                         * @param e the window close event to copy
                          */
-                        KeyEvent(KeyEvent const& e) = default;
+                        WindowCloseEvent(WindowCloseEvent const& e) = default;
 
                     //## Move-Constructor ##//
                         /**
                          * Move e into this
-                         * @param e the key event to move
+                         * @param e the window close event to move
                          */
-                        KeyEvent(KeyEvent && e) = default;
+                        WindowCloseEvent(WindowCloseEvent && e) = default;
 
                     //## Deconstructor ##//
                         /**
-                         * KeyEvent Deconstructor
+                         * WindowCloseEvent Deconstructor
                          */
-                        ~KeyEvent() = default;
+                        ~WindowCloseEvent() = default;
 
                     //## Getter ##//
                         /**
-                         * @return the key's code
+                         * @return the closing window
                          */
-                        inline KeyCode getCode() const {
-                            return code;
-                        }
-                        /**
-                         * Compare the event code to the given one
-                         * @param  c a key code
-                         * @return   the test's result
-                         */
-                        bool isCode(KeyCode c) const {
-                            return code == c;
-                        }
+                        Graphics::Window& getWindow();
 
                     //## Assignment Operator ##//
                         /**
@@ -86,13 +75,13 @@
                          * @param e the object to copy into this
                          * @return  the reference of himself
                          */
-                        KeyEvent& operator =(KeyEvent const& e) = default;
+                        WindowCloseEvent& operator =(WindowCloseEvent const& e) = default;
                         /**
                          * Copy e into this
                          * @param e the object to copy into this
                          * @return  the reference of himself
                          */
-                        KeyEvent& operator =(KeyEvent && e) = default;
+                        WindowCloseEvent& operator =(WindowCloseEvent && e) = default;
             };
         }
     }

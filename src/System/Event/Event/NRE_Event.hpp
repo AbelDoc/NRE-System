@@ -10,3 +10,4 @@
     #pragma once
 
     #include "Key/NRE_KeyEvent.hpp"
+    #include "Window/NRE_WindowCloseEvent.hpp"

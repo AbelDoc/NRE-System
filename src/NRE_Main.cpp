@@ -16,11 +16,16 @@
     using namespace std::chrono_literals;
 
     int main(int, char**) {
-        getGraphicsSystem().createWindow("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE);
+        getGraphicsSystem().createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
+        getGraphicsSystem().createWindow("NRE-System Devlopment 2", {1280, 720}, WindowStyle::RESIZEABLE);
 
-        EventHandler<KeyEvent> handler([&](KeyEvent& event) {
+        EventHandler<KeyEvent> keyHandler([&](KeyEvent& event) {
             std::cout << event.getCode() << std::endl;
             event.consume();
+        });
+
+        EventHandler<WindowCloseEvent> closeHandler([&](WindowCloseEvent& event) {
+            std::cout << "One window is closing : " << event.getWindow().getId() << std::endl;
         });
 
         getClock().update();

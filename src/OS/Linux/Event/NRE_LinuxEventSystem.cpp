@@ -22,20 +22,24 @@
             				if ((event.xclient.format == 32) && (event.xclient.data.l[0] ) == static_cast <long> (GraphicsDriver::getDriver().getCloseAtom())) {
                                 WindowId id = GraphicsDriver::getDriver().findId(event.xany.window);
                                 if (id != 0) {
+                                    emit<WindowCloseEvent>(id);
                                     getGraphicsSystem().closeWindow(id);
                                 }
             				}
             				break;
                         }
                         case KeyPress : {
-                            NRE::Event::KeyCode code = inputManager.translateKey(event.xkey);
-                            if (!inputManager.isPressed(code)) {
+                            Event::KeyCode code = inputManager.translateKey(event.xkey);
+                            if (code != Event::KeyCode::NONE && !inputManager.isPressed(code)) {
                                 inputManager.processPressedKey(code);
                             }
                             break;
                         }
                         case KeyRelease : {
-                            inputManager.processReleasedKey(inputManager.translateKey(event.xkey));
+                            Event::KeyCode code = inputManager.translateKey(event.xkey);
+                            if (code != Event::KeyCode::NONE) {
+                                inputManager.processReleasedKey(code);
+                            }
                             break;
                         }
                      }
