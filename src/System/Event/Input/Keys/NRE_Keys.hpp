@@ -21,21 +21,6 @@
         namespace Event {
 
             /**
-             * @enum KeyModifiers
-             * Regroup key modifiers mask
-             */
-            enum class KeyModifiers {
-                LEFT_CONTROL  = 0b00000001,
-                LEFT_SHIFT    = 0b00000010,
-                LEFT_ALT      = 0b00000100,
-                LEFT_META     = 0b00001000,
-                RIGHT_CONTROL = 0b00010000,
-                RIGHT_SHIFT   = 0b00100000,
-                RIGHT_ALT     = 0b01000000,
-                RIGHT_META    = 0b10000000
-            };
-
-            /**
              * @enum KeyCode
              * Regroup all key codes, derived from https://source.android.com/devices/input/keyboard-devices.html
              */

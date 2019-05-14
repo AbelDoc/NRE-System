@@ -41,7 +41,7 @@
              */
             class EventSystem {
                 private :   // Fields
-                    Event::InputManager inputManager;               /**< The input manager */
+                    Event::InputManager inputManager;                                      /**< The input manager */
                     std::vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
 
                 public :    // Methods

@@ -28,7 +28,14 @@
             				break;
                         }
                         case KeyPress : {
-                            emit<KeyEvent>(inputManager.translateKey(event.xkey));
+                            NRE::Event::KeyCode code = inputManager.translateKey(event.xkey);
+                            if (!inputManager.isPressed(code)) {
+                                inputManager.processPressedKey(code);
+                            }
+                            break;
+                        }
+                        case KeyRelease : {
+                            inputManager.processReleasedKey(inputManager.translateKey(event.xkey));
                             break;
                         }
                      }
@@ -50,6 +57,7 @@
                          XNextEvent(GraphicsDriver::getDriver().getDisplay(), &event);
                          internalDispatcher(event);
                      }
+                     inputManager.update();
                  }
 
          }

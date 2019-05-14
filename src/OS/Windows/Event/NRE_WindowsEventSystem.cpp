@@ -28,7 +28,15 @@
                          }
                          case (WM_KEYDOWN) :
                          case (WM_SYSKEYDOWN) : {
-                             emit<KeyEvent>(inputManager.translateKey(wParam, lParam));
+                             KeyCode code = inputManager.translateKey(wParam, lParam);
+                             if (!inputManager.isPressed(code)) {
+                                 inputManager.processPressedKey(code);
+                             }
+                             break;
+                         }
+                         case (WM_KEYUP) :
+                         case (WM_SYSKEYUP) : {
+                             inputManager.processReleasedKey(inputManager.translateKey(wParam, lParam));
                              break;
                          }
                          default : {
@@ -51,6 +59,7 @@
                              timeout = true;
                          }
                      }
+                     inputManager.update();
                  }
 
          }

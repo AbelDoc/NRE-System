@@ -18,8 +18,9 @@
     int main(int, char**) {
         getGraphicsSystem().createWindow("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE);
 
-        EventHandler<KeyEvent> handler([&](KeyEvent const& event) {
+        EventHandler<KeyEvent> handler([&](KeyEvent& event) {
             std::cout << event.getCode() << std::endl;
+            event.consume();
         });
 
         getClock().update();

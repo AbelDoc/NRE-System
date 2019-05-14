@@ -7,6 +7,8 @@
      * @copyright CC-BY-NC-SA
      */
 
+    #include <vector>
+
     #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Event/Input/Keys/NRE_WindowsKeyTranslater.hpp"
     #elif __linux__                         // Linux
@@ -14,6 +16,8 @@
     #else
        #error "Not Supported Yet or Unknown compiler"
     #endif
+
+    #include "Keys/NRE_Key.hpp"
 
     #pragma once
 
@@ -35,24 +39,48 @@
             class InputManager {
                 private :   // Fields
                     KeyTranslater keyTranslater;    /**< Manage the translation of key event */
+                    std::vector<Key> keys;          /**< The active keys */
 
                 public :    // Methods
-                    #ifdef _WIN32                           // Windows
+                    //## Getter ##//
                         /**
-                         * Translate a native key code into an NRE key
-                         * @param  wParam additionnal message-specific information
-                         * @param  lParam additionnal message-specific information
-                         * @return        the translated key
+                         * Tell if key is currently pressed
+                         * @param  code the key code
+                         * @return      if the key is pressed
                          */
-                        KeyCode translateKey(WPARAM wParam, LPARAM lParam) const;
-                    #elif __linux__                         // Linux
+                        bool isPressed(KeyCode code) const;
+
+                    //## Methods ##//
+                        #ifdef _WIN32                           // Windows
+                            /**
+                             * Translate a native key code into an NRE key
+                             * @param  wParam additionnal message-specific information
+                             * @param  lParam additionnal message-specific information
+                             * @return        the translated key
+                             */
+                            KeyCode translateKey(WPARAM wParam, LPARAM lParam) const;
+                        #elif __linux__                         // Linux
+                            /**
+                             * Translate a native key code into an NRE key
+                             * @param keyEvent the native key press event
+                             * @return         the translated key
+                             */
+                            KeyCode translateKey(XKeyEvent const& keyEvent) const;
+                        #endif
                         /**
-                         * Translate a native key code into an NRE key
-                         * @param keyEvent the native key press event
-                         * @return         the translated key
+                         * Process a pressed key event
+                         * @param key the pressed key
                          */
-                        KeyCode translateKey(XKeyEvent const& keyEvent) const;
-                    #endif
+                        void processPressedKey(KeyCode key);
+                        /**
+                         * Process a released key event
+                         * @param key the released key
+                         */
+                        void processReleasedKey(KeyCode key);
+                        /**
+                         * Update the active keys
+                         */
+                        void update();
             };
         }
     }

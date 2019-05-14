@@ -32,7 +32,7 @@
             class EventHandler : public Utility::Observer {
                 public :     // Fields
                     /** Shortcut for handler type abstraction */
-                    typedef std::function<void(T const&)> Handler;
+                    typedef std::function<void(T&)> Handler;
 
                 private :    // Fields
                     Handler handler;    /**< The handling function */
