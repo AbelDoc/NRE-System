@@ -27,7 +27,7 @@
                 XGetWindowAttributes(display, root, &monitorAttributes);
 
                 XSetWindowAttributes attributes;
-                attributes.event_mask = KeyPressMask;
+                attributes.event_mask = ButtonPressMask | ButtonReleaseMask | ButtonMotionMask | KeyPressMask | KeyReleaseMask | PointerMotionMask;
                 attributes.background_pixel = XWhitePixel(display, xId);
                 attributes.border_pixel = XBlackPixel(display, xId);
 
@@ -52,7 +52,7 @@
                 XGetWindowAttributes(display, root, &monitorAttributes);
 
                 XSetWindowAttributes attributes;
-                attributes.event_mask = KeyPressMask;
+                attributes.event_mask = ButtonPressMask | ButtonReleaseMask | ButtonMotionMask | KeyPressMask | KeyReleaseMask | PointerMotionMask;
                 attributes.background_pixel = XWhitePixel(display, xId);
                 attributes.border_pixel = XBlackPixel(display, xId);
 
@@ -103,7 +103,7 @@
                 GraphicsDriver::getDriver().registerWindow(internal, id);
 
                 Display* display = GraphicsDriver::getDriver().getDisplay();
-                XStoreName(display, internal, title.c_str());
+                XStoreName(display, internal, title.getCData());
 
                 updateStyle(style);
                 XSetWMProtocols(display, internal, &(GraphicsDriver::getDriver().getCloseAtom()), 1);

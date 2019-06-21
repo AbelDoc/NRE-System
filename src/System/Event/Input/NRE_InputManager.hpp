@@ -69,6 +69,12 @@
                              * @return        the translated key
                              */
                             KeyCode translateKey(WPARAM wParam, LPARAM lParam) const;
+                            /**
+                             * Translate a native button code into an NRE button
+                             * @param  wParam additionnal message-specific information
+                             * @return        the translated button
+                             */
+                            ButtonCode translateButton(WPARAM wParam) const;
                         #elif __linux__                         // Linux
                             /**
                              * Translate a native key code into an NRE key
@@ -76,6 +82,12 @@
                              * @return         the translated key
                              */
                             KeyCode translateKey(XKeyEvent const& keyEvent) const;
+                            /**
+                             * Translate a native button code into an NRE button
+                             * @param  buttonEvent the native button event
+                             * @return             the translated button
+                             */
+                            ButtonCode translateButton(XButtonEvent const& buttonEvent) const;
                         #endif
                         /**
                          * Process a pressed key event

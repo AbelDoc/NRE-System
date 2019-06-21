@@ -74,29 +74,7 @@
                              break;
                          }
                          case (WM_MOUSEMOVE) : {
-                             ButtonCode code = ButtonCode::NO_BUTTON;
-                             switch (wParam) {
-                                 case (MK_LBUTTON) : {
-                                     code = ButtonCode::LEFT_BUTTON;
-                                     break;
-                                 }
-                                 case (MK_MBUTTON) : {
-                                     code = ButtonCode::MIDDLE_BUTTON;
-                                     break;
-                                 }
-                                 case (MK_RBUTTON) : {
-                                     code = ButtonCode::RIGHT_BUTTON;
-                                     break;
-                                 }
-                                 case (MK_XBUTTON1) : {
-                                     code = ButtonCode::X1_BUTTON;
-                                     break;
-                                 }
-                                 case (MK_XBUTTON2) : {
-                                     code = ButtonCode::X2_BUTTON;
-                                     break;
-                                 }
-                             }
+                             ButtonCode code = inputManager.translateButton(wParam);
                              Point2D<unsigned int> position(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
                              if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                  inputManager.updateButtonEventData(ButtonEventData(code, position));

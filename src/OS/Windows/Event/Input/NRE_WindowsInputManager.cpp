@@ -16,5 +16,32 @@
                     return keyTranslater.translateKey(wParam, lParam);
                 }
 
+                ButtonCode InputManager::translateButton(WPARAM wParam) const {
+                    ButtonCode code = ButtonCode::NO_BUTTON;
+                    switch (wParam) {
+                        case (MK_LBUTTON) : {
+                            code = ButtonCode::LEFT_BUTTON;
+                            break;
+                        }
+                        case (MK_MBUTTON) : {
+                            code = ButtonCode::MIDDLE_BUTTON;
+                            break;
+                        }
+                        case (MK_RBUTTON) : {
+                            code = ButtonCode::RIGHT_BUTTON;
+                            break;
+                        }
+                        case (MK_XBUTTON1) : {
+                            code = ButtonCode::X1_BUTTON;
+                            break;
+                        }
+                        case (MK_XBUTTON2) : {
+                            code = ButtonCode::X2_BUTTON;
+                            break;
+                        }
+                    }
+                    return code;
+                }
+
          }
      }

@@ -12,6 +12,7 @@
 
     using namespace NRE::Graphics;
     using namespace NRE::Event;
+    using namespace NRE::Math;
 
      namespace NRE {
          namespace System {
@@ -30,7 +31,7 @@
                         }
                         case KeyPress : {
                             Event::KeyCode code = inputManager.translateKey(event.xkey);
-                            if (code != Event::KeyCode::NONE && !inputManager.isPressed(code)) {
+                            if (code != Event::KeyCode::NONE && !inputManager.isKeyPressed(code)) {
                                 inputManager.processPressedKey(code);
                             }
                             break;
@@ -40,6 +41,23 @@
                             if (code != Event::KeyCode::NONE) {
                                 inputManager.processReleasedKey(code);
                             }
+                            break;
+                        }
+                        case ButtonPress : {
+                            inputManager.processPressedButton(ButtonEventData(inputManager.translateButton(event.xbutton), Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                            break;
+                        }
+                        case ButtonRelease : {
+                            inputManager.processReleasedButton(ButtonEventData(inputManager.translateButton(event.xbutton), Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                            break;
+                        }
+                        case MotionNotify : {
+                            ButtonCode code = inputManager.translateButton(event.xbutton);
+                            Point2D<unsigned int> position(event.xbutton.x, event.xbutton.y);
+                            if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
+                                inputManager.updateButtonEventData(ButtonEventData(code, position));
+                            }
+                            emit<MotionEvent>(code, position);
                             break;
                         }
                      }
