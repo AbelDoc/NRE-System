@@ -10,9 +10,10 @@
      #pragma once
 
     #include <iostream>
-    #include <string>
     #include <thread>
     #include <chrono>
+
+    #include <Utility/String/NRE_String.hpp>
 
      /**
      * @namespace NRE
@@ -125,7 +126,7 @@
                          * Convert the clock into a string
                          * @return the converted clock
                          */
-                        std::string toString() const;
+                        Utility::String toString() const;
 
                 private:   // Methods
                     /**

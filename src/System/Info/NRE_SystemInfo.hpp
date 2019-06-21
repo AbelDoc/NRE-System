@@ -9,8 +9,9 @@
 
     #pragma once
 
-    #include <string>
     #include <iostream>
+
+    #include <Utility/String/NRE_String.hpp>
 
     /**
      * @namespace NRE
@@ -29,8 +30,8 @@
              */
             class SystemInfo {
                 private :   // Fields
-                    std::string cpuName;                /**< The CPU's name */
-                    std::string architecture;           /**< The System Architecture */
+                    Utility::String cpuName;                     /**< The CPU's name */
+                    Utility::String architecture;                /**< The System Architecture */
                     std::size_t nbProcessors;           /**< The number of CPU */
                     std::size_t memorySize;             /**< The RAM size */
                     std::size_t memoryUsed;             /**< The RAM totally used */
@@ -41,20 +42,20 @@
                         /**
                          * Construct an empty system information set
                          */
-                        inline SystemInfo() : cpuName(""), architecture(""), nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
+                        inline SystemInfo() : nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
                         }
 
                     //## Getter ##//
                         /**
                          * @return the CPU's name
                          */
-                        inline std::string const& getCPUName() const {
+                        inline Utility::String const& getCPUName() const {
                             return cpuName;
                         }
                         /**
                          * @return the System Architecture
                          */
-                        inline std::string const& getArchitecture() const {
+                        inline Utility::String const& getArchitecture() const {
                             return architecture;
                         }
                         /**
@@ -87,14 +88,14 @@
                          * CPU Name Setter
                          * @param name the new cpu's name
                          */
-                        inline void setCPUName(std::string const& name) {
+                        inline void setCPUName(Utility::String const& name) {
                             cpuName = name;
                         }
                         /**
                          * Architecture Setter
                          * @param arc the new architecture value
                          */
-                        inline void setArchitecture(std::string const& arc) {
+                        inline void setArchitecture(Utility::String const& arc) {
                             architecture = arc;
                         }
                         /**
@@ -131,7 +132,7 @@
                          * Convert the system info into a string
                          * @return the converted system info
                          */
-                        std::string toString() const;
+                        Utility::String toString() const;
 
             };
 

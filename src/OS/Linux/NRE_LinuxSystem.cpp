@@ -12,10 +12,12 @@
     #include <sys/types.h>
     #include <sys/sysinfo.h>
 
+    using namespace NRE::Utility;
+
      namespace NRE {
          namespace System {
 
-                 std::string System::getSystemName() const {
+                 String System::getSystemName() const {
                      return "Linux System";
                  }
 

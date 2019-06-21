@@ -13,11 +13,12 @@
 
     using namespace NRE::Math;
     using namespace NRE::System;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace Graphics {
 
-            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
+            InternalWindow::InternalWindow(WindowId i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
                 WNDCLASSEXA windowClass;
                 windowClass.cbSize = sizeof(WNDCLASSEX);
                 windowClass.style = CS_OWNDC;
@@ -34,14 +35,14 @@
 
                 RegisterClassExA(&windowClass);
 
-                internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.c_str(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
+                internal = CreateWindowExA(WS_EX_APPWINDOW, "NRE_Window", title.getCData(), style.toNativeStyle(), position.getX(), position.getY(), size.getW(), size.getH(), NULL, NULL, NULL, &id);
                 if (style & WindowStyle::FULLSCREEN) {
                     toggleFullscreen(true);
                 }
                 GraphicsDriver::getDriver().registerWindow(internal, id);
             }
 
-            InternalWindow::InternalWindow(WindowId i, std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
+            InternalWindow::InternalWindow(WindowId i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
             }
 
             Point2D<unsigned int> InternalWindow::getPosition() const {

@@ -13,6 +13,8 @@
      #include "Status/NRE_WindowStatus.hpp"
      #include "Internal/NRE_InternalWindow.hpp"
 
+     #include <Utility/String/NRE_String.hpp>
+
      /**
       * @namespace NRE
       * @brief The NearlyRealEngine's global namespace
@@ -51,7 +53,7 @@
                          * @param s   the window size
                          * @param ws  the window style value
                          */
-                        Window(WindowId const& i, std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
+                        Window(WindowId const& i, Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
                         /**
                          * Construct the window with centered position
                          * @param i   the window id
@@ -59,7 +61,7 @@
                          * @param s   the window size
                          * @param ws  the window style value
                          */
-                        Window(WindowId const& i, std::string const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
+                        Window(WindowId const& i, Utility::String const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
 
                     //## Copy Constructor ##//
                         /**
@@ -119,7 +121,7 @@
                          * Convert the window into a string
                          * @return the converted window
                          */
-                        std::string toString() const;
+                        Utility::String toString() const;
 
             };
 

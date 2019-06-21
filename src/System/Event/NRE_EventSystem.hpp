@@ -16,6 +16,8 @@
     #include "Emitter/NRE_EventEmitter.hpp"
     #include "Event/NRE_Event.hpp"
 
+    #include <Header/NRE_Utility.hpp>
+
     /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -41,8 +43,8 @@
              */
             class EventSystem {
                 private :   // Fields
-                    Event::InputManager inputManager;                                      /**< The input manager */
-                    std::vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
+                    Event::InputManager inputManager;                                          /**< The input manager */
+                    Utility::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -118,7 +120,7 @@
                          */
                         template <class T>
                         void addHandler(Event::EventHandler<T>* handler) {
-                            getEmitter<T>().addObserver(handler);
+                            getEmitter<T>().add(handler);
                         }
                         /**
                          * Remove an event handler
@@ -126,14 +128,14 @@
                          */
                         template <class T>
                         void removeHandler(Event::EventHandler<T>* handler) {
-                            getEmitter<T>().removeObserver(handler);
+                            getEmitter<T>().remove(handler);
                         }
                         /**
                          * Register an event to be supported by the system
                          */
                         template <class T>
                         void registerEvent() {
-                            emitters.emplace_back(new Event::EventEmitter<T>());
+                            emitters.emplaceBack(new Event::EventEmitter<T>());
                         }
 
                     //## Assignment Operator ##//

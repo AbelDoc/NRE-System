@@ -9,6 +9,7 @@
 
     #include <vector>
     #include <Header/NRE_Math.hpp>
+    #include <Header/NRE_Utility.hpp>
 
     #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Event/Input/Keys/NRE_WindowsKeyTranslater.hpp"
@@ -40,9 +41,9 @@
              */
             class InputManager {
                 private :   // Fields
-                    KeyTranslater keyTranslater;              /**< Manage the translation of key event */
-                    std::vector<KeyCode> keys;                /**< The active keys */
-                    std::vector<ButtonEventData> buttons;     /**< The active buttons */
+                    KeyTranslater keyTranslater;         /**< Manage the translation of key event */
+                    Utility::Vector<KeyCode> keys;                /**< The active keys */
+                    Utility::Vector<ButtonEventData> buttons;     /**< The active buttons */
 
                 public :    // Methods
                     //## Getter ##//

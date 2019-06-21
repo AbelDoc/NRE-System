@@ -9,23 +9,27 @@
 
     #include "NRE_SystemInfo.hpp"
 
+    using namespace NRE::Utility;
+
      namespace NRE {
          namespace System {
 
-             std::string SystemInfo::toString() const {
-                 std::string res("Architecture : ");
-                 res += architecture;
-                 res += "\nCPU Model : ";
-                 res += std::to_string(nbProcessors);
-                 res += "x ";
-                 res += cpuName;
-                 res += "\nMemory : ";
-                 res += std::to_string(memoryUsed);
-                 res += " / ";
-                 res += std::to_string(memorySize);
-                 res += " Mo\nMemory Used by this Process : ";
-                 res += std::to_string(memoryUsedByProcess);
-                 res += " Mo";
+             String SystemInfo::toString() const {
+                 String res;
+                 res.reserve(130);
+                 res << "Architecture : ";
+                 res << architecture;
+                 res << "\nCPU Model : ";
+                 res << nbProcessors;
+                 res << "x ";
+                 res << cpuName;
+                 res << "\nMemory : ";
+                 res << memoryUsed;
+                 res << " / ";
+                 res << memorySize;
+                 res << " Mo\nMemory Used by this Process : ";
+                 res << memoryUsedByProcess;
+                 res << " Mo";
                  return res;
              }
 

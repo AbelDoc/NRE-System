@@ -9,6 +9,8 @@
 
     #include "NRE_Clock.hpp"
 
+    using namespace NRE::Utility;
+
     namespace NRE {
         namespace Time {
 
@@ -78,8 +80,11 @@
                 TIMESTEP = getDelta();
             }
 
-            std::string Clock::toString() const {
-                return std::to_string(getTimestep().count()) + "ms";
+            String Clock::toString() const {
+                String res;
+                res << getTimestep().count();
+                res << "ms";
+                return res;
             }
 
             std::ostream& operator <<(std::ostream& stream, Clock const& o) {

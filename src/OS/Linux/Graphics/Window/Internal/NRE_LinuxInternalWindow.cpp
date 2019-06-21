@@ -11,11 +11,12 @@
      #include  <X11/Xatom.h>
 
      using namespace NRE::Math;
+     using namespace NRE::Utility;
 
      namespace NRE {
          namespace Graphics {
 
-            InternalWindow::InternalWindow(WindowId i, std::string const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+            InternalWindow::InternalWindow(WindowId i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
 
@@ -40,7 +41,7 @@
                 finishCreation(style, title);
             }
 
-            InternalWindow::InternalWindow(WindowId i, std::string const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+            InternalWindow::InternalWindow(WindowId i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = GraphicsDriver::getDriver().getDisplay();
                 xId = XDefaultScreen(display);
 
@@ -98,7 +99,7 @@
                 }
             }
 
-            void InternalWindow::finishCreation(WindowStyle const& style, std::string const& title) {
+            void InternalWindow::finishCreation(WindowStyle const& style, String const& title) {
                 GraphicsDriver::getDriver().registerWindow(internal, id);
 
                 Display* display = GraphicsDriver::getDriver().getDisplay();

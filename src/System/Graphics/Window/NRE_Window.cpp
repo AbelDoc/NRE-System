@@ -12,17 +12,18 @@
 
     using namespace NRE::Math;
     using namespace NRE::System;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace Graphics {
 
-             Window::Window(WindowId const& i, std::string const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
+             Window::Window(WindowId const& i, String const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i) {
                  if (ws & WindowStyle::FULLSCREEN) {
                      status.setFullscreen(true);
                  }
              }
 
-             Window::Window(WindowId const& i, std::string const& t, Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, s, ws), attributes(t, s), style(ws), id(i) {
+             Window::Window(WindowId const& i, String const& t, Vector2D<unsigned int> const& s, WindowStyle const& ws) : window(i, t, s, ws), attributes(t, s), style(ws), id(i) {
                  if (ws & WindowStyle::FULLSCREEN) {
                      status.setFullscreen(true);
                  }
@@ -43,7 +44,7 @@
                  }
              }
 
-             std::string Window::toString() const {
+             String Window::toString() const {
                  return attributes.toString();
              }
 

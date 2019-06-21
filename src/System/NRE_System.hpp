@@ -9,7 +9,6 @@
 
     #pragma once
 
-    #include <string>
     #include <cstring>
     #include <iostream>
     #include <fstream>
@@ -19,6 +18,8 @@
     #include "Graphics/NRE_GraphicsSystem.hpp"
     #include "Event/NRE_EventSystem.hpp"
     #include "Time/Clock/NRE_Clock.hpp"
+
+    #include <Utility/String/NRE_String.hpp>
 
     /**
      * @namespace NRE
@@ -73,7 +74,7 @@
                         /**
                          * @return the system's name
                          */
-                        std::string getSystemName() const;
+                        Utility::String getSystemName() const;
                         /**
                          * @return the System info
                          */
@@ -129,7 +130,7 @@
                          * Convert the system into a string
                          * @return the converted system
                          */
-                        std::string toString() const;
+                        Utility::String toString() const;
             };
 
             /**

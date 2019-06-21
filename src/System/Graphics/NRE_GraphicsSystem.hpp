@@ -14,6 +14,8 @@
 
     #include "Window/NRE_Window.hpp"
 
+    #include <Utility/String/NRE_String.hpp>
+
     /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -93,7 +95,7 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        Graphics::Window& createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Create a window and register it in the system
                          * @param title    the window title
@@ -101,7 +103,7 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        Graphics::Window& createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
                         /**
                          * Remove the window corresponding to the given id
                          * @param id the window to remove

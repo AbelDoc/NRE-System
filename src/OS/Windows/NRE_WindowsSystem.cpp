@@ -11,10 +11,12 @@
     #include <Windows.h>
     #include <Psapi.h>
 
+    using namespace NRE::Utility;
+
      namespace NRE {
          namespace System {
 
-                 std::string System::getSystemName() const {
+                 String System::getSystemName() const {
                      return "Windows System";
                  }
 

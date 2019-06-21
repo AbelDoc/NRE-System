@@ -9,8 +9,8 @@
 
      #pragma once
 
-     #include <string>
      #include <Header/NRE_Math.hpp>
+     #include <Utility/String/NRE_String.hpp>
 
      /**
       * @namespace NRE
@@ -29,7 +29,7 @@
               */
              class WindowAttributes {
                  private :  // Fields
-                     std::string title;                      /**< The window title */
+                     Utility::String title;                  /**< The window title */
                      Math::Point2D<unsigned int> position;   /**< The window top-left corner position */
                      Math::Vector2D<unsigned int> size;      /**< The window size */
 
@@ -45,14 +45,14 @@
                          * @param pos the window top-left corner position
                          * @param s   the window size
                          */
-                        inline WindowAttributes(std::string const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
+                        inline WindowAttributes(Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
                         }
                         /**
                          * Construct the window attributes
                          * @param t   the window title
                          * @param s   the window size
                          */
-                        inline WindowAttributes(std::string const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
+                        inline WindowAttributes(Utility::String const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
                         }
 
                     //## Copy Constructor ##//
@@ -103,7 +103,7 @@
                          * Convert the window attributes into a string
                          * @return the converted window attributes
                          */
-                        std::string toString() const;
+                        Utility::String toString() const;
 
             };
 

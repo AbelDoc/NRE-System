@@ -27,11 +27,11 @@
              }
 
              void InputManager::processPressedKey(KeyCode key) {
-                 keys.emplace_back(key);
+                 keys.emplaceBack(key);
              }
 
              void InputManager::processPressedButton(ButtonEventData const& buttonData) {
-                 buttons.emplace_back(buttonData);
+                 buttons.emplaceBack(buttonData);
              }
 
              void InputManager::processReleasedKey(KeyCode key) {

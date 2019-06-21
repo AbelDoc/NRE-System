@@ -10,6 +10,8 @@
      #pragma once
 
      #include <Header/NRE_Math.hpp>
+     #include <Utility/String/NRE_String.hpp>
+
      #include "../Style/NRE_WindowStyle.hpp"
      #include "../../Driver/NRE_GraphicsDriver.hpp"
 
@@ -55,7 +57,7 @@
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(WindowId i, std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
                          * @param i        the window id
@@ -63,7 +65,7 @@
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(WindowId i, std::string const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(WindowId i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**
@@ -143,7 +145,7 @@
                          * @param style the window style to set
                          * @param title the window title
                          */
-                        void finishCreation(WindowStyle const& style, std::string const& title);
+                        void finishCreation(WindowStyle const& style, Utility::String const& title);
                     #endif
             };
         }

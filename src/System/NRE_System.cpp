@@ -9,6 +9,8 @@
 
     #include "NRE_System.hpp"
 
+    using namespace NRE::Utility;
+
      namespace NRE {
          namespace System {
 
@@ -18,10 +20,11 @@
                  queryMemoryInfo();
              }
 
-             std::string System::toString() const {
-                 std::string res(getSystemName());
-                 res += " :\n";
-                 res += infos.toString();
+             String System::toString() const {
+                 String res;
+                 res << getSystemName();
+                 res << " :\n";
+                 res << infos.toString();
                  return res;
              }
 

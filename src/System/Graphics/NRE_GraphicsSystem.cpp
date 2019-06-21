@@ -11,6 +11,7 @@
 
     using namespace NRE::Math;
     using namespace NRE::Graphics;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace System {
@@ -35,14 +36,14 @@
                  }
              }
 
-             Graphics::Window& GraphicsSystem::createWindow(std::string const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style) {
+             Graphics::Window& GraphicsSystem::createWindow(String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style) {
                  windows.emplace(std::make_pair(counter, new Graphics::Window(counter, title, position, size, WindowStyle(style))));
                  counter++;
                  running = true;
                  return *(windows[counter - 1]);
              }
 
-             Graphics::Window& GraphicsSystem::createWindow(std::string const& title, Math::Vector2D<unsigned int> const& size, unsigned int style) {
+             Graphics::Window& GraphicsSystem::createWindow(String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style) {
                  windows.emplace(std::make_pair(counter, new Graphics::Window(counter, title, size, WindowStyle(style))));
                  counter++;
                  running = true;

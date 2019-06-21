@@ -9,6 +9,8 @@
 
     #include "NRE_CpuID.hpp"
 
+    using namespace NRE::Utility;
+
      namespace NRE {
         namespace System {
 
@@ -20,11 +22,12 @@
                 #endif
             }
 
-            std::string CpuID::toString() const {
-                std::string res((const char *)&registers[0]);
-                res += (const char *)&registers[1];
-                res += (const char *)&registers[2];
-                res += (const char *)&registers[3];
+            String CpuID::toString() const {
+                String res;
+                res << (const char *)&registers[0];
+                res << (const char *)&registers[1];
+                res << (const char *)&registers[2];
+                res << (const char *)&registers[3];
                 return res;
             }
 

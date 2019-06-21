@@ -10,18 +10,21 @@
     #include "NRE_WindowAttributes.hpp"
 
     using namespace NRE::Math;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace Graphics {
 
-             std::string WindowAttributes::toString() const {
-                std::string res(title);
-                res += " | ";
-                res += position.toString();
-                res += " - ";
-                res += std::to_string(size.getW());
-                res += "x";
-                res += std::to_string(size.getH());
+             Utility::String WindowAttributes::toString() const {
+                Utility::String res;
+                res.reserve(30);
+                res << title;
+                res << " | ";
+                res << position.toString().c_str();
+                res << " - ";
+                res << size.getW();
+                res << "x";
+                res << size.getH();
                 return res;
              }
 
