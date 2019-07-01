@@ -11,7 +11,6 @@
 
      #include <cstdlib>
      #include <iostream>
-     #include <unordered_map>
 
      #ifdef _WIN32                           // Windows
         #include <Windows.h>
@@ -20,6 +19,8 @@
      #else
         #error "Not Supported Yet or Unknown compiler"
      #endif
+
+     #include <Utility/UnorderedMap/NRE_UnorderedMap.hpp>
 
      /**
       * @namespace NRE
@@ -47,10 +48,10 @@
             class GraphicsDriver {
                 private :   // Fields
                     #ifdef __linux__               // Linux
-                        Display* display;                               /**< The X11 display connection */
-                        Atom closeAtom;                                 /**< The internal atom for close */
+                        Display* display;                                       /**< The X11 display connection */
+                        Atom closeAtom;                                         /**< The internal atom for close */
                     #endif
-                    std::unordered_map<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
+                    Utility::UnorderedMap<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -96,7 +97,7 @@
                          * @param id     the window id
                          */
                         inline void registerWindow(NativeWindowType window, WindowId id) {
-                            windows.emplace(std::make_pair(window, id));
+                            windows.emplace(Utility::Pair<NativeWindowType, WindowId>(window, id));
                         }
                         /**
                          * Unregister a window from the driver

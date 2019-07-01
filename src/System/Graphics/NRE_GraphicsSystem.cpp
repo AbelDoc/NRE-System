@@ -32,20 +32,20 @@
                  auto it = windows.begin();
                  while (!running && it != windows.end()) {
                      running = it->second->isRunning();
-                     it++;
+                     ++it;
                  }
              }
 
              Graphics::Window& GraphicsSystem::createWindow(String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style) {
-                 windows.emplace(std::make_pair(counter, new Graphics::Window(counter, title, position, size, WindowStyle(style))));
-                 counter++;
+                 windows.emplace(Pair<WindowId, Graphics::Window*>(counter, new Graphics::Window(counter, title, position, size, WindowStyle(style))));
+                 ++counter;
                  running = true;
                  return *(windows[counter - 1]);
              }
 
              Graphics::Window& GraphicsSystem::createWindow(String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style) {
-                 windows.emplace(std::make_pair(counter, new Graphics::Window(counter, title, size, WindowStyle(style))));
-                 counter++;
+                 windows.emplace(Pair<WindowId, Graphics::Window*>(counter, new Graphics::Window(counter, title, size, WindowStyle(style))));
+                 ++counter;
                  running = true;
                  return *(windows[counter - 1]);
              }

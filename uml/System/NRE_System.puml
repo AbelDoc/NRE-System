@@ -4,8 +4,8 @@
     class GraphicsSystem {
     }
     class SystemInfo {
-        private std::string cpuName
-        private std::string architecture
+        private String cpuName
+        private String architecture
         private std::size_t nbProcessors
         private std::size_t memorySize
         private std::size_t memoryUsed
@@ -14,7 +14,7 @@
     class Window {
     }
     class WindowAttributes {
-        private std::string title
+        private String title
     }
     class WindowStatus {
         private bool closed

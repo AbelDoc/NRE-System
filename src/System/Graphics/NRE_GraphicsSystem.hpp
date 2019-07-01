@@ -9,12 +9,10 @@
 
     #pragma once
 
-    #include <string>
-    #include <unordered_map>
-
     #include "Window/NRE_Window.hpp"
 
     #include <Utility/String/NRE_String.hpp>
+    #include <Utility/UnorderedMap/NRE_UnorderedMap.hpp>
 
     /**
      * @namespace NRE
@@ -33,9 +31,9 @@
              */
             class GraphicsSystem {
                 private :   // Fields
-                    std::unordered_map<Graphics::WindowId, Graphics::Window*> windows;  /**< The system windows */
-                    Graphics::WindowId counter;                                         /**< The window id counter */
-                    bool running;                                                       /**< Tell if the system is running */
+                    Utility::UnorderedMap<Graphics::WindowId, Graphics::Window*> windows;  /**< The system windows */
+                    Graphics::WindowId counter;                                            /**< The window id counter */
+                    bool running;                                                          /**< Tell if the system is running */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -72,7 +70,7 @@
                          * @return    the corresponding window
                          */
                         inline Graphics::Window& getWindow(Graphics::WindowId id) {
-                            return *(windows.at(id));
+                            return *(windows.get(id));
                         }
                         /**
                          * Close a specific window
