@@ -62,17 +62,7 @@
                          * @return     if the event has been consumed
                          */
                         template <class ... Args>
-                        inline bool emit(Args && ... args) {
-                            T event(std::forward<Args>(args)...);
-                            auto it = begin();
-                            while (!isConsumed() && it != end()) {
-                                (*it)->update(this, &event);
-                                it++;
-                            }
-                            bool res = isConsumed();
-                            setConsumed(false);
-                            return res;
-                        }
+                        bool emit(Args && ... args);
 
                     //## Assignment Operator ##//
                         /**
@@ -92,10 +82,9 @@
                     /**
                      * @return the T event emitter category
                      */
-                    static Category getCategory() {
-                        static Category category = counter++;
-                        return category;
-                    }
+                    static Category getCategory();
             };
         }
     }
+
+    #include "NRE_EventEmitter.tpp"

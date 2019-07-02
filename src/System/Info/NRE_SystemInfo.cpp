@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_SystemInfo.tpp
+     * @file NRE_SystemInfo.cpp
      * @brief Implementation of System's API's Object : SystemInfo
      * @author Louis ABEL
      * @date 07/04/2019

@@ -41,7 +41,7 @@
                     SystemInfo infos;           /**< The system's info */
                     GraphicsSystem graphics;    /**< The graphics sub system */
                     EventSystem events;         /**< The events sub system */
-                    Time::Clock clock;                /**< The system clock */
+                    Time::Clock clock;          /**< The system clock */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -78,24 +78,19 @@
                         /**
                          * @return the System info
                          */
-                        inline SystemInfo const& getSystemInfo() const {
-                            return infos;
-                        }
+                        SystemInfo const& getSystemInfo() const;
                         /**
                          * @return the graphics sub system
                          */
-                        inline GraphicsSystem& getGraphicsSystem() {
-                            return graphics;
-                        }
+                        GraphicsSystem& getGraphicsSystem();
                         /**
                          * @return the events sub system
                          */
-                        inline EventSystem& getEventSystem() {
-                            return events;
-                        }
-                        inline Time::Clock& getClock() {
-                            return clock;
-                        }
+                        EventSystem& getEventSystem();
+                        /**
+                         * @return the system clock
+                         */
+                        Time::Clock& getClock();
 
                     //## Methods ##//
                         /**
@@ -144,24 +139,20 @@
             /**
              * @return the system instance
              */
-            inline System& getSystem() {
-                static System instance;
-                return instance;
-            }
+            System& getSystem();
             /**
              * @return the system graphics sub system
              */
-            inline GraphicsSystem& getGraphicsSystem() {
-                return getSystem().getGraphicsSystem();
-            }
+            GraphicsSystem& getGraphicsSystem();
             /**
              * @return the system events sub system
              */
-            inline EventSystem& getEventSystem() {
-                return getSystem().getEventSystem();
-            }
-            inline Time::Clock& getClock() {
-                return getSystem().getClock();
-            }
+            EventSystem& getEventSystem();
+            /**
+             * @return the system clock
+             */
+            Time::Clock& getClock();
         }
     }
+
+    #include "NRE_System.tpp"

@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_System.tpp
+     * @file NRE_System.cpp
      * @brief Implementation of System's API's Object : System
      * @author Louis ABEL
      * @date 07/05/2019

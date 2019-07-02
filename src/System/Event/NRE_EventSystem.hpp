@@ -51,12 +51,7 @@
                         /**
                          * Construct the sub system
                          */
-                        EventSystem() {
-                            registerEvent<Event::KeyEvent>();
-                            registerEvent<Event::ButtonEvent>();
-                            registerEvent<Event::MotionEvent>();
-                            registerEvent<Event::WindowCloseEvent>();
-                        }
+                        EventSystem();
 
                     //## Copy Constructor ##//
                         /**
@@ -111,32 +106,24 @@
                          * @return      if the emitted event has been consumed
                          */
                         template <class T, class ... Args>
-                        bool emit(Args && ... args) {
-                            return getEmitter<T>().emit(args...);
-                        }
+                        bool emit(Args && ... args);
                         /**
                          * Add an event handler
                          * @param handler the handler to add
                          */
                         template <class T>
-                        void addHandler(Event::EventHandler<T>* handler) {
-                            getEmitter<T>().add(handler);
-                        }
+                        void addHandler(Event::EventHandler<T>* handler);
                         /**
                          * Remove an event handler
                          * @param handler the handler to remove
                          */
                         template <class T>
-                        void removeHandler(Event::EventHandler<T>* handler) {
-                            getEmitter<T>().remove(handler);
-                        }
+                        void removeHandler(Event::EventHandler<T>* handler);
                         /**
                          * Register an event to be supported by the system
                          */
                         template <class T>
-                        void registerEvent() {
-                            emitters.emplaceBack(new Event::EventEmitter<T>());
-                        }
+                        void registerEvent();
 
                     //## Assignment Operator ##//
                         /**
@@ -157,9 +144,9 @@
                      * @return the T event emitter
                      */
                     template <class T>
-                    Event::EventEmitter<T>& getEmitter() {
-                        return *(static_cast <Event::EventEmitter<T>*> (emitters[Event::EventEmitter<T>::getCategory()].get()));
-                    }
+                    Event::EventEmitter<T>& getEmitter();
             };
         }
     }
+
+    #include "NRE_EventSystem.tpp"

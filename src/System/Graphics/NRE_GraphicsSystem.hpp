@@ -40,8 +40,7 @@
                         /**
                          * Construct the sub system
                          */
-                        GraphicsSystem() : counter(1), running(false) {
-                        }
+                        GraphicsSystem();
 
                     //## Copy Constructor ##//
                         /**
@@ -69,9 +68,7 @@
                          * @param  id the window id
                          * @return    the corresponding window
                          */
-                        inline Graphics::Window& getWindow(Graphics::WindowId id) {
-                            return *(windows.get(id));
-                        }
+                        Graphics::Window& getWindow(Graphics::WindowId id);
                         /**
                          * Close a specific window
                          * @param id the window id
@@ -80,9 +77,7 @@
                         /**
                          * @return if at least one window is opened
                          */
-                        inline bool isRunning() const {
-                            return running;
-                        }
+                        bool isRunning() const;
 
                     //## Methods ##//
                         /**
@@ -106,9 +101,7 @@
                          * Remove the window corresponding to the given id
                          * @param id the window to remove
                          */
-                        inline void removeWindow(Graphics::WindowId const& id) {
-                            windows.erase(id);
-                        }
+                        void removeWindow(Graphics::WindowId const& id);
 
                     //## Assignment Operator ##//
                         /**
@@ -132,3 +125,5 @@
             };
         }
     }
+
+    #include "NRE_GraphicsSystem.tpp"

@@ -36,8 +36,7 @@
                         /**
                          * Construct the window default status
                          */
-                        WindowStatus() : closed(false), inFullscreen(false) {
-                        }
+                        WindowStatus();
 
                     //## Copy Constructor ##//
                         /**
@@ -63,31 +62,23 @@
                         /**
                          * @return the closed status
                          */
-                        inline bool isClosed() const {
-                            return closed;
-                        }
+                        bool isClosed() const;
                         /**
                          * @return the fullscreen status
                          */
-                        inline bool isInFullscreen() const {
-                            return inFullscreen;
-                        }
+                        bool isInFullscreen() const;
 
                     //## Setter ##//
                         /**
                          * Set the closed status
                          * @param status the new closed status
                          */
-                        inline void setClosed(bool status) {
-                            closed = status;
-                        }
+                        void setClosed(bool status);
                         /**
                          * Set the fullscreen status
                          * @param status the new fullscreen status
                          */
-                        inline void setFullscreen(bool status) {
-                            inFullscreen = status;
-                        }
+                        void setFullscreen(bool status);
 
                     //## Assignment Operator ##//
                         /**
@@ -105,3 +96,5 @@
              };
          }
      }
+
+     #include "NRE_WindowStatus.tpp"

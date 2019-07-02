@@ -40,8 +40,7 @@
                          * Construct the event from the key code
                          * @param c the key code
                          */
-                        KeyEvent(KeyCode c) : code(c) {
-                        }
+                        KeyEvent(KeyCode c);
 
                     //## Copy-Constructor ##//
                         /**
@@ -67,17 +66,13 @@
                         /**
                          * @return the key's code
                          */
-                        inline KeyCode getCode() const {
-                            return code;
-                        }
+                        inline KeyCode getCode() const;
                         /**
                          * Compare the event code to the given one
                          * @param  c a key code
                          * @return   the test's result
                          */
-                        inline bool isCode(KeyCode c) const {
-                            return code == c;
-                        }
+                        inline bool isCode(KeyCode c) const;
 
                     //## Assignment Operator ##//
                         /**
@@ -95,3 +90,5 @@
             };
         }
     }
+
+    #include "NRE_KeyEvent.tpp"

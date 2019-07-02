@@ -12,11 +12,16 @@
     using namespace NRE::System;
     using namespace NRE::Math;
     using namespace NRE::Event;
+    using namespace NRE::Time;
     using namespace NRE::Graphics;
     using namespace std::chrono_literals;
 
     int main(int, char**) {
-        getGraphicsSystem().createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
+        GraphicsSystem& gSys = getGraphicsSystem();
+        EventSystem& eSys = getEventSystem();
+        Clock& sysClock = getClock();
+
+        gSys.createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
 
         EventHandler<KeyEvent> keyHandler([&](KeyEvent& event) {
             std::cout << event.getCode() << std::endl;
@@ -39,11 +44,11 @@
             return true;
         });
 
-        getClock().update();
-        getClock().showFPS();
-        while (getGraphicsSystem().isRunning()) {
-            getClock().updateAndSleep(16ms);
-            getEventSystem().update();
+        sysClock.update();
+        sysClock.showFPS();
+        while (gSys.isRunning()) {
+            sysClock.updateAndSleep(16ms);
+            eSys.update();
         }
 
         return 0;

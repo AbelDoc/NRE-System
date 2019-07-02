@@ -87,13 +87,11 @@
                         /**
                          * @return if the window is running
                          */
-                        inline bool isRunning() const {
-                            return !status.isClosed();
-                        }
-
-                        inline WindowId getId() const {
-                            return id;
-                        }
+                        bool isRunning() const;
+                        /**
+                         * @return the window id
+                         */
+                        WindowId getId() const;
 
                     //## Methods ##//
                         /**
@@ -134,3 +132,5 @@
             std::ostream& operator <<(std::ostream& stream, Window const& o);
          }
      }
+
+     #include "NRE_Window.tpp"

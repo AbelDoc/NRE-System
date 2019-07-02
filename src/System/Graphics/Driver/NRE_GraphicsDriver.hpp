@@ -33,6 +33,31 @@
           */
          namespace Graphics {
 
+            /**
+             * @enum GLAttributes
+             * @brief Regroup all attributes that the user can modiy before create a GL context
+             */
+            enum class GLAttributes {
+                RED_SIZE,               /**< The minimum number of bits for the red channel */
+                GREEN_SIZE,             /**< The minimum number of bits for the green channel */
+                BLUE_SIZE,              /**< The minimum number of bits for the blue channel */
+                ALPHA_SIZE,             /**< The minimum number of bits for the alpha channel */
+                BUFFER_SIZE,            /**< The minimum number of bits for the frame buffer size */
+                DOUBLEBUFFER,           /**< Tell if the frame buffer is single or double buffered */
+                DEPTH_SIZE,             /**< The minimum number of bits for the depth buffer size */
+                STENCIL_SIZE,           /**< The minimum number of bits for the stencil buffer size */
+                ACCUM_RED_SIZE,         /**< The minimum number of bits for the red channel of accumulation */
+                ACCUM_GREEN_SIZE,       /**< The minimum number of bits for the green channel of accumulation */
+                ACCUM_BLUE_SIZE,        /**< The minimum number of bits for the blue channel of accumulation */
+                ACCUM_ALPHA_SIZE,       /**< The minimum number of bits for the alpha channel of accumulation */
+                STEREO,                 /**< Tell if the output is Stereo 3D */
+                MULTISAMPLE_BUFFERS,    /**< The number of buffer used for multisamples anti-aliasing */
+                MULTISAMPLE_SAMPLES,    /**< The number of samples for each buffer used in multisamples anti-aliasing */
+                ACCELERATED_VISUAL,     /**< Tell if we use hardware accelerated */
+                MAJOR_VERSION,          /**< The major version of OpenGL */
+                MINOR_VERSION           /**< The minor version of OpenGL */
+            };
+
             typedef std::size_t WindowId;
 
             #ifdef _WIN32                           // Windows
@@ -52,6 +77,7 @@
                         Atom closeAtom;                                         /**< The internal atom for close */
                     #endif
                     Utility::UnorderedMap<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
+
 
                 public :    // Methods
                     //## Constructor ##//
@@ -96,16 +122,12 @@
                          * @param window the window to store
                          * @param id     the window id
                          */
-                        inline void registerWindow(NativeWindowType window, WindowId id) {
-                            windows.emplace(Utility::Pair<NativeWindowType, WindowId>(window, id));
-                        }
+                        void registerWindow(NativeWindowType window, WindowId id);
                         /**
                          * Unregister a window from the driver
                          * @param window the window to remove
                          */
-                        inline void unregisterWindow(NativeWindowType window) {
-                            windows.erase(window);
-                        }
+                        void unregisterWindow(NativeWindowType window);
                         /**
                          * Find the window id associated with the given window
                          * @param  window the window to retrive the id
@@ -131,10 +153,14 @@
                     /**
                      * @return the driver instance
                      */
-                    inline static GraphicsDriver& getDriver() {
-                        static GraphicsDriver instance;
-                        return instance;
-                    }
+                    static GraphicsDriver& getDriver();
             };
         }
     }
+
+    #include "NRE_GraphicsDriver.tpp"
+    #ifdef _WIN32                           // Windows
+        #include "../../../OS/Windows/Graphics/Driver/NRE_WindowsGraphicsDriver.tpp"
+    #elif __linux__                         // Linux
+        #include "../../../OS/Linux/Graphics/Driver/NRE_LinuxGraphicsDriver.tpp"
+    #endif

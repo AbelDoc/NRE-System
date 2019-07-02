@@ -44,8 +44,7 @@
                          * @param c   the button code
                          * @param pos the curosr position
                          */
-                        MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos) : code(c), position(pos) {
-                        }
+                        MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos);
 
                     //## Copy-Constructor ##//
                         /**
@@ -71,23 +70,17 @@
                         /**
                          * @return the button's code
                          */
-                        inline ButtonCode getCode() const {
-                            return code;
-                        }
+                        ButtonCode getCode() const;
                         /**
                          * @return the cursor position
                          */
-                        inline Math::Point2D<unsigned int> const& getPosition() const {
-                            return position;
-                        }
+                        Math::Point2D<unsigned int> const& getPosition() const;
                         /**
                          * Compare the event code to the given one
                          * @param  c a button code
                          * @return   the test's result
                          */
-                        inline bool isCode(ButtonCode c) const {
-                            return code == c;
-                        }
+                        bool isCode(ButtonCode c) const;
 
                     //## Assignment Operator ##//
                         /**
@@ -109,9 +102,9 @@
                          * @param e the other object
                          * @return  the test result
                          */
-                        bool operator ==(MotionEvent const& e) const {
-                            return code == e.code;
-                        }
+                        bool operator ==(MotionEvent const& e) const;
             };
         }
     }
+
+    #include "NRE_MotionEvent.tpp"

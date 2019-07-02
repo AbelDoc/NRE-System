@@ -65,18 +65,14 @@
                         /**
                          * @return the consuemed state
                          */
-                        inline bool isConsumed() const {
-                            return consumed;
-                        }
+                        bool isConsumed() const;
 
                     //## Setter ##//
                         /**
                          * Set the consumed state
                          * @param state the new consumed state
                          */
-                        inline void setConsumed(bool state) {
-                            consumed = state;
-                        }
+                        void setConsumed(bool state);
 
                     //## Assignment Operator ##//
                         /**
@@ -97,3 +93,5 @@
             };
         }
     }
+
+    #include "NRE_AbstractEventEmitter.tpp"

@@ -121,3 +121,10 @@
             };
         }
     }
+
+    #include "NRE_InputManager.tpp"
+    #ifdef _WIN32                           // Windows
+        #include "../../../OS/Windows/Event/Input/NRE_WindowsInputManager.tpp"
+    #elif __linux__                         // Linux
+        #include "../../../OS/Linux/Event/Input/NRE_LinuxInputManager.tpp"
+    #endif

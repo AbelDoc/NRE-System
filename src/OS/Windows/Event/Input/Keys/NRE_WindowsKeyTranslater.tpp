@@ -1,18 +1,16 @@
 
     /**
-     * @file NRE_WindowsKeyTranslater.cpp
+     * @file NRE_WindowsKeyTranslater.tpp
      * @brief Implementation of Event's API's Object : KeyTranslater
      * @author Louis ABEL
      * @date 12/05/2019
      * @copyright CC-BY-NC-SA
      */
 
-    #include "NRE_WindowsKeyTranslater.hpp"
-
      namespace NRE {
          namespace Event {
 
-            KeyCode KeyTranslater::translateKey(WPARAM wParam, LPARAM lParam) const {
+            inline KeyCode KeyTranslater::translateKey(WPARAM wParam, LPARAM lParam) const {
                 KeyCode code = translationMap[static_cast <unsigned char> (wParam)];
 
                 if (code == KeyCode::CONTROL || code == KeyCode::SHIFT || code == KeyCode::ALT) {

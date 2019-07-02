@@ -9,7 +9,7 @@
 
      #pragma once
 
-     #ifdef _WIN32
+    #ifdef _WIN32
         #include <limits.h>
         #include <intrin.h>
         typedef unsigned __int32 Register;
@@ -57,45 +57,31 @@
                          * @param  index the register index
                          * @return       the corresponding register
                          */
-                        inline Register const& getRegister(unsigned int index) const {
-                            return registers[index];
-                        }
+                        Register const& getRegister(unsigned int index) const;
                         /**
                          * @return all registers
                          */
-                        inline const Register* getRegisters() const {
-                            return registers;
-                        }
+                        const Register* getRegisters() const;
                         /**
                          * @return registers size
                          */
-                        inline std::size_t getRegistersSize() const {
-                            return sizeof(registers);
-                        }
+                        std::size_t getRegistersSize() const;
                         /**
                          * @return the eax register, equivalent to getRegister(0)
                          */
-                        inline Register const& getEax() const {
-                            return registers[0];
-                        }
+                        Register const& getEax() const;
                         /**
                          * @return the ebx register, equivalent to getRegister(1)
                          */
-                        inline Register const& getEbx() const {
-                            return registers[1];
-                        }
+                        Register const& getEbx() const;
                         /**
                          * @return the ecx register, equivalent to getRegister(2)
                          */
-                        inline Register const& getEcx() const {
-                            return registers[2];
-                        }
+                        Register const& getEcx() const;
                         /**
                          * @return the edx register, equivalent to getRegister(3)
                          */
-                        inline Register const& getEdx() const {
-                            return registers[3];
-                        }
+                        Register const& getEdx() const;
 
                     //## Access Operator ##//
                         /**
@@ -103,9 +89,7 @@
                          * @param index the point's object index
                          * @return      a const-reference on the index's register
                          */
-                        Register const& operator [](unsigned int index) const {
-                            return registers[index];
-                        }
+                        Register const& operator [](unsigned int index) const;
 
                     //## Stream Operator ##//
                         /**
@@ -124,3 +108,5 @@
             std::ostream& operator <<(std::ostream& stream, CpuID const& o);
         }
     }
+
+    #include "NRE_CpuID.tpp"

@@ -1,4 +1,4 @@
-OBJ = $(OBJDIR)NRE_LinuxInputManager.o 
+OBJ = 
 OBJDIR = ../../../../../obj/OS/Linux/Event/Input/
 
 KEYS = Keys
@@ -8,5 +8,5 @@ all : childs $(OBJ)
 childs:
 	@(cd $(KEYS) && $(MAKE))
 
-$(OBJDIR)%.o :  %.cpp
+$(OBJDIR)%.o : 
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

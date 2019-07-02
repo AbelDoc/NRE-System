@@ -304,3 +304,5 @@
             };
         }
     }
+
+    #include "NRE_WindowsKeyTranslater.tpp"

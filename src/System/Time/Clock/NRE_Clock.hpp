@@ -159,3 +159,5 @@
             std::ostream& operator <<(std::ostream& stream, Clock const& o);
         }
     }
+
+    #include "NRE_Clock.tpp"

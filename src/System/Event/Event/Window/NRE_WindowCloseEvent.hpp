@@ -28,7 +28,7 @@
              */
             class WindowCloseEvent {
                 private:    //Fields
-                    Graphics::Window& window;
+                    Graphics::Window& window;   /**< The closing window */
 
                 public:    // Methods
                     //## Constructor ##//
@@ -84,3 +84,5 @@
             };
         }
     }
+
+    #include "NRE_WindowCloseEvent.tpp"

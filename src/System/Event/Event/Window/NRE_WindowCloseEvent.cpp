@@ -19,9 +19,5 @@
              WindowCloseEvent::WindowCloseEvent(WindowId id) : window(getGraphicsSystem().getWindow(id)) {
              }
 
-             Graphics::Window& WindowCloseEvent::getWindow() {
-                 return window;
-             }
-
          }
      }

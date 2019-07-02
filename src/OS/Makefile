@@ -1,7 +1,7 @@
-WINDOWS = Windows
+LINUX = Linux
 
 all : childs 
 
 childs:
-	@(cd $(WINDOWS) && $(MAKE))
+	@(cd $(LINUX) && $(MAKE))
 

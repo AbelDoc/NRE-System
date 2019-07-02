@@ -47,9 +47,7 @@
                          * Construct an EventHandler with a passed lambda expression
                          * @param h the handler function
                          */
-                        EventHandler(Handler && h) : handler(std::move(h)) {
-                            System::getEventSystem().addHandler<T>(this);
-                        }
+                        EventHandler(Handler && h);
 
                     //## Copy Constructor ##//
                         /**
@@ -69,9 +67,7 @@
                         /**
                          * EventHandler Deconstructor
                          */
-                        ~EventHandler() {
-                            System::getEventSystem().removeHandler<T>(this);
-                        }
+                        ~EventHandler();
 
                     //## Methods ##//
                         /**
@@ -79,9 +75,7 @@
                          * @param obs the observed object
                          * @param arg notification data
                          */
-                        void update(Utility::Observable* obs, void* arg) override {
-                            static_cast <EventEmitter<T>*> (obs)->setConsumed(handler(*(static_cast <T*> (arg))));
-                        }
+                        void update(Utility::Observable* obs, void* arg) override;
 
                     //## Assignment Operator ##//
                         /**
@@ -99,3 +93,5 @@
             };
         }
     }
+
+    #include "NRE_EventHandler.tpp"

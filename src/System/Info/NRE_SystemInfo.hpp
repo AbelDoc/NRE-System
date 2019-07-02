@@ -30,8 +30,8 @@
              */
             class SystemInfo {
                 private :   // Fields
-                    Utility::String cpuName;                     /**< The CPU's name */
-                    Utility::String architecture;                /**< The System Architecture */
+                    Utility::String cpuName;            /**< The CPU's name */
+                    Utility::String architecture;       /**< The System Architecture */
                     std::size_t nbProcessors;           /**< The number of CPU */
                     std::size_t memorySize;             /**< The RAM size */
                     std::size_t memoryUsed;             /**< The RAM totally used */
@@ -42,90 +42,65 @@
                         /**
                          * Construct an empty system information set
                          */
-                        inline SystemInfo() : nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
-                        }
+                        SystemInfo();
 
                     //## Getter ##//
                         /**
                          * @return the CPU's name
                          */
-                        inline Utility::String const& getCPUName() const {
-                            return cpuName;
-                        }
+                        Utility::String const& getCPUName() const;
                         /**
                          * @return the System Architecture
                          */
-                        inline Utility::String const& getArchitecture() const {
-                            return architecture;
-                        }
+                        Utility::String const& getArchitecture() const;
                         /**
                          * @return the number of CPU
                          */
-                        inline std::size_t getNbProcessors() const {
-                            return nbProcessors;
-                        }
+                        std::size_t getNbProcessors() const;
                         /**
                          * @return the memory size
                          */
-                        inline std::size_t getMemorySize() const {
-                            return memorySize;
-                        }
+                        std::size_t getMemorySize() const;
                         /**
                          * @return the memory used
                          */
-                        inline std::size_t getMemoryUsed() const {
-                            return memoryUsed;
-                        }
+                        std::size_t getMemoryUsed() const;
                         /**
                          * @return the memory used by the current process
                          */
-                        inline std::size_t getMemoryUsedByProcess() const {
-                            return memoryUsedByProcess;
-                        }
+                        std::size_t getMemoryUsedByProcess() const;
 
                     //## Setter ##//
                         /**
-                         * CPU Name Setter
+                         * Set the cpu name value
                          * @param name the new cpu's name
                          */
-                        inline void setCPUName(Utility::String const& name) {
-                            cpuName = name;
-                        }
+                        void setCPUName(Utility::String const& name);
                         /**
-                         * Architecture Setter
+                         * Set the architecture value
                          * @param arc the new architecture value
                          */
-                        inline void setArchitecture(Utility::String const& arc) {
-                            architecture = arc;
-                        }
+                        void setArchitecture(Utility::String const& arc);
                         /**
-                         * NbProcessors Setter
+                         * Set the number of processors
                          * @param nb the new number of processors
                          */
-                        inline void setNbProcessors(std::size_t nb) {
-                            nbProcessors = nb;
-                        }
+                        void setNbProcessors(std::size_t nb);
                         /**
-                         * Memory Size Setter
+                         * Set the memory size
                          * @param size the new memory size
                          */
-                        inline void setMemorySize(std::size_t size) {
-                            memorySize = size;
-                        }
+                        void setMemorySize(std::size_t size);
                         /**
-                         * Memory Used Setter
+                         * Set the memory used size
                          * @param used the new memory used
                          */
-                        inline void setMemoryUsed(std::size_t used) {
-                            memoryUsed = used;
-                        }
+                        void setMemoryUsed(std::size_t used);
                         /**
-                         * Memory Used By Process Setter
+                         * Set the memory used by this process value
                          * @param used the new memory used by process
                          */
-                        inline void setMemoryUsedByProcess(std::size_t used) {
-                            memoryUsedByProcess = used;
-                        }
+                        void setMemoryUsedByProcess(std::size_t used);
 
                     //## Stream Operator ##//
                         /**
@@ -146,3 +121,5 @@
 
         }
     }
+
+    #include "NRE_SystemInfo.tpp"
