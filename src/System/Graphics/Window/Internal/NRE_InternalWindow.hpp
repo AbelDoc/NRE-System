@@ -40,7 +40,7 @@
                         bool savedInFullscreen;     /**< The window last fullscreen state */
                         RECT savedRect;             /**< The window last size */
                     #elif __linux__             // Linux
-                        int xId;                                 /**< The X11 window id */
+                        int xId;                    /**< The X11 window id */
                     #endif
 
                 public :    // Methods
@@ -92,6 +92,10 @@
                          * @return the window top-left corner position
                          */
                         Math::Point2D<unsigned int> getPosition() const;
+                        /**
+                         * @return the native internal window
+                         */
+                        NativeWindowType& getNative();
 
                     //## Methods ##//
                         /**

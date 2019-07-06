@@ -19,17 +19,12 @@
                 (*this)[GLAttributes::DOUBLEBUFFER] = 1;
                 (*this)[GLAttributes::DEPTH_SIZE] = 24;
                 (*this)[GLAttributes::STENCIL_SIZE] = 8;
-                (*this)[GLAttributes::ACCUM_RED_SIZE] = 0;
-                (*this)[GLAttributes::ACCUM_GREEN_SIZE] = 0;
-                (*this)[GLAttributes::ACCUM_BLUE_SIZE] = 0;
-                (*this)[GLAttributes::ACCUM_ALPHA_SIZE] = 0;
-                (*this)[GLAttributes::ACCUM_ALPHA_SIZE] = 0;
                 (*this)[GLAttributes::STEREO] = 0;
                 (*this)[GLAttributes::MULTISAMPLE_BUFFERS] = 0;
                 (*this)[GLAttributes::MULTISAMPLE_SAMPLES] = 0;
                 (*this)[GLAttributes::ACCELERATED_VISUAL] = 1;
                 (*this)[GLAttributes::MAJOR_VERSION] = 3;
-                (*this)[GLAttributes::MINOR_VERSION] = 2;
+                (*this)[GLAttributes::MINOR_VERSION] = 3;
             }
 
             inline int& ContextAttributes::operator[](GLAttributes index) {

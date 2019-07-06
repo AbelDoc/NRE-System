@@ -51,6 +51,10 @@
                 return Point2D<unsigned int>(internalRect.left, internalRect.top);
             }
 
+            NativeWindowType& InternalWindow::getNative() {
+                return internal;
+            }
+
             void InternalWindow::close() {
                 GraphicsDriver::getDriver().unregisterWindow(internal);
                 DestroyWindow(internal);

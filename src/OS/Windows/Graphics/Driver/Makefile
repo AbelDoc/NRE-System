@@ -1,7 +1,12 @@
-OBJ = $(OBJDIR)NRE_WindowsGraphicsDriver.o 
+OBJ = 
 OBJDIR = ../../../../../obj/OS/Windows/Graphics/Driver/
 
-all : $(OBJ)
+CONTEXT = Context
 
-$(OBJDIR)%.o :  %.cpp
+all : childs $(OBJ)
+
+childs:
+	@(cd $(CONTEXT) && $(MAKE))
+
+$(OBJDIR)%.o : 
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

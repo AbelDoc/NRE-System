@@ -12,6 +12,7 @@
      #include "Attributes/NRE_WindowAttributes.hpp"
      #include "Status/NRE_WindowStatus.hpp"
      #include "Internal/NRE_InternalWindow.hpp"
+     #include "../Driver/Context/NRE_Context.hpp"
 
      #include <Utility/String/NRE_String.hpp>
 
@@ -37,7 +38,7 @@
                     WindowStatus status;            /**< The window status */
                     WindowStyle style;              /**< The window style */
                     WindowId id;                    /**< The window id */
-
+                    Context context;                /**< The window OpenGL context */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -47,21 +48,23 @@
                         Window() = delete;
                         /**
                          * Construct the window
-                         * @param i   the window id
-                         * @param t   the window title
-                         * @param pos the window top-left corner position
-                         * @param s   the window size
-                         * @param ws  the window style value
+                         * @param i    the window id
+                         * @param t    the window title
+                         * @param pos  the window top-left corner position
+                         * @param s    the window size
+                         * @param ws   the window style value
+                         * @param attr the window context attributes
                          */
-                        Window(WindowId const& i, Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
+                        Window(WindowId const& i, Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr = ContextAttributes());
                         /**
                          * Construct the window with centered position
-                         * @param i   the window id
-                         * @param t   the window title
-                         * @param s   the window size
-                         * @param ws  the window style value
+                         * @param i    the window id
+                         * @param t    the window title
+                         * @param s    the window size
+                         * @param ws   the window style value
+                         * @param attr the window context attributes
                          */
-                        Window(WindowId const& i, Utility::String const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws);
+                        Window(WindowId const& i, Utility::String const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr = ContextAttributes());
 
                     //## Copy Constructor ##//
                         /**

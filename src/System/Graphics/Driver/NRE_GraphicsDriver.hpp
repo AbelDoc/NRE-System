@@ -12,8 +12,23 @@
      #include <cstdlib>
      #include <iostream>
 
+     #define GLEW_STATIC
+
+     #ifdef GLEW_STATIC
+         #define GLEWAPI extern
+     #else
+         #ifdef GLEW_BUILD
+             #define GLEWAPI extern __declspec(dllexport)
+         #else
+             #define GLEWAPI extern __declspec(dllimport)
+         #endif
+     #endif
+
+     #include <GL/glew.h>
+
      #ifdef _WIN32                           // Windows
         #include <Windows.h>
+        #include <GL/wglew.h>
      #elif __linux__                         // Linux
         #include <X11/Xlib.h>
      #else

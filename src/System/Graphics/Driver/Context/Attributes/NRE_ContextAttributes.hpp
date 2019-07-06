@@ -35,10 +35,6 @@
                 DOUBLEBUFFER,           /**< Tell if the frame buffer is single or double buffered */
                 DEPTH_SIZE,             /**< The minimum number of bits for the depth buffer size */
                 STENCIL_SIZE,           /**< The minimum number of bits for the stencil buffer size */
-                ACCUM_RED_SIZE,         /**< The minimum number of bits for the red channel of accumulation */
-                ACCUM_GREEN_SIZE,       /**< The minimum number of bits for the green channel of accumulation */
-                ACCUM_BLUE_SIZE,        /**< The minimum number of bits for the blue channel of accumulation */
-                ACCUM_ALPHA_SIZE,       /**< The minimum number of bits for the alpha channel of accumulation */
                 STEREO,                 /**< Tell if the output is Stereo 3D */
                 MULTISAMPLE_BUFFERS,    /**< The number of buffer used for multisamples anti-aliasing */
                 MULTISAMPLE_SAMPLES,    /**< The number of samples for each buffer used in multisamples anti-aliasing */
@@ -55,7 +51,7 @@
              */
             class ContextAttributes {
                 private :   // Fields
-                    Array<int, GLAttributes::NUM_ATTRIBUTES> attributes;   /**< The context attributes */
+                    Utility::Array<int, static_cast <std::size_t> (GLAttributes::NUM_ATTRIBUTES)> attributes;   /**< The context attributes */
 
                 public :    // Methods
                     //## Constructor ##//
