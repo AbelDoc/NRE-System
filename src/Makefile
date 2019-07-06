@@ -1,14 +1,9 @@
-OBJ = $(OBJDIR)NRE_Main.o 
-OBJDIR = ../obj/
-
 OS = OS
 SYSTEM = System
 
-all : childs $(OBJ)
+all : childs 
 
 childs:
 	@(cd $(OS) && $(MAKE))
 	@(cd $(SYSTEM) && $(MAKE))
 
-$(OBJDIR)%.o :  %.cpp
-	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
