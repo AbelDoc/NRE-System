@@ -20,7 +20,7 @@
                 res.reserve(30);
                 res << title;
                 res << " | ";
-                res << position.toString().c_str();
+                res << position;
                 res << " - ";
                 res << size.getW();
                 res << "x";

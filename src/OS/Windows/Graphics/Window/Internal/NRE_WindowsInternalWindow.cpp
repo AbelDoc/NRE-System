@@ -87,7 +87,7 @@
                 WindowId* id;
 	            if (msg == WM_NCCREATE) {
 	                 id = reinterpret_cast <WindowId*> (((LPCREATESTRUCT)lParam)->lpCreateParams);
-	                 SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast <long&> (id));
+	                 SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast <LONG_PTR> (id));
 
 	                 return DefWindowProc(hwnd, msg, wParam, lParam);
                 } else {
