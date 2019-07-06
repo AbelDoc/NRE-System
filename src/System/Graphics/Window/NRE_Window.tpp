@@ -17,5 +17,9 @@
             inline WindowId Window::getId() const {
                 return id;
             }
+
+            inline void Window::refresh() {
+                window.refresh();
+            }
         }
     }

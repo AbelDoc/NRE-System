@@ -9,7 +9,6 @@
 
     #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
     #include "../../../../../Header/NRE_System.hpp"
-    #include <wingdi.h>
 
     using namespace NRE::Math;
     using namespace NRE::System;
@@ -39,25 +38,8 @@
                 if (style & WindowStyle::FULLSCREEN) {
                     toggleFullscreen(true);
                 }
+                device = GetDC(internal);
                 GraphicsDriver::getDriver().registerWindow(internal, id);
-            }
-
-            InternalWindow::InternalWindow(WindowId i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
-            }
-
-            Point2D<unsigned int> InternalWindow::getPosition() const {
-                RECT internalRect;
-                GetWindowRect(internal, &internalRect);
-                return Point2D<unsigned int>(internalRect.left, internalRect.top);
-            }
-
-            NativeWindowType& InternalWindow::getNative() {
-                return internal;
-            }
-
-            void InternalWindow::close() {
-                GraphicsDriver::getDriver().unregisterWindow(internal);
-                DestroyWindow(internal);
             }
 
             void InternalWindow::toggleFullscreen(bool inFullscreen) {

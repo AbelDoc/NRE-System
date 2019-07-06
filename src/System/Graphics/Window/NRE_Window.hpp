@@ -102,6 +102,10 @@
                          * @param removeFromSystem tell if the window has to be removed from the graphics system
                          */
                         void close(bool removeFromSystem = true);
+                        /**
+                         * Refresh the window screen
+                         */
+                        void refresh();
 
                     //## Assignment Operator ##//
                         /**

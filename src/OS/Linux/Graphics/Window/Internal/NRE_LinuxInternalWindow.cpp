@@ -69,11 +69,6 @@
                 finishCreation(style, title);
             }
 
-            void InternalWindow::close() {
-                GraphicsDriver::getDriver().unregisterWindow(internal);
-                XDestroyWindow(GraphicsDriver::getDriver().getDisplay(), internal);
-            }
-
             void InternalWindow::updateStyle(WindowStyle const& style) {
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
                 Display* display = GraphicsDriver::getDriver().getDisplay();
@@ -110,13 +105,6 @@
 
                 XMapWindow(display, internal);
                 XFlush(display);
-            }
-
-            Point2D<unsigned int> InternalWindow::getPosition() const {
-                XWindowAttributes attributes;
-                XGetWindowAttributes(GraphicsDriver::getDriver().getDisplay(), internal, &attributes);
-
-                return Point2D<unsigned int>(attributes.x, attributes.y);
             }
         }
     }

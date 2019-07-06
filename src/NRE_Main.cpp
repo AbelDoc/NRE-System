@@ -9,6 +9,7 @@
 
     #include "Header/NRE_System.hpp"
 
+    using namespace NRE;
     using namespace NRE::System;
     using namespace NRE::Math;
     using namespace NRE::Event;
@@ -21,7 +22,7 @@
         EventSystem& eSys = getEventSystem();
         Clock& sysClock = getClock();
 
-        gSys.createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
+        Graphics::Window& window = gSys.createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
 
         EventHandler<KeyEvent> keyHandler([&](KeyEvent& event) {
             std::cout << event.getCode() << std::endl;
@@ -46,9 +47,12 @@
 
         sysClock.update();
         sysClock.showFPS();
+
         while (gSys.isRunning()) {
             sysClock.updateAndSleep(16ms);
             eSys.update();
+
+            window.refresh();
         }
 
         return 0;

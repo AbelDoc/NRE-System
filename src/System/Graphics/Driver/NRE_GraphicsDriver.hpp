@@ -28,6 +28,7 @@
 
      #ifdef _WIN32                           // Windows
         #include <Windows.h>
+        #include <wingdi.h>
         #include <GL/wglew.h>
      #elif __linux__                         // Linux
         #include <X11/Xlib.h>

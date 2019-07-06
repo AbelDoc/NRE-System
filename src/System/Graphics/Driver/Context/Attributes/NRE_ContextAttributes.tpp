@@ -11,11 +11,11 @@
         namespace Graphics {
 
             inline ContextAttributes::ContextAttributes() {
-                (*this)[GLAttributes::RED_SIZE] = 0;
-                (*this)[GLAttributes::GREEN_SIZE] = 0;
-                (*this)[GLAttributes::BLUE_SIZE] = 0;
-                (*this)[GLAttributes::ALPHA_SIZE] = 0;
-                (*this)[GLAttributes::BUFFER_SIZE] = 32;
+                (*this)[GLAttributes::RED_SIZE] = 8;
+                (*this)[GLAttributes::GREEN_SIZE] = 8;
+                (*this)[GLAttributes::BLUE_SIZE] = 8;
+                (*this)[GLAttributes::ALPHA_SIZE] = 8;
+                (*this)[GLAttributes::BUFFER_SIZE] = 0;
                 (*this)[GLAttributes::DOUBLEBUFFER] = 1;
                 (*this)[GLAttributes::DEPTH_SIZE] = 24;
                 (*this)[GLAttributes::STENCIL_SIZE] = 8;

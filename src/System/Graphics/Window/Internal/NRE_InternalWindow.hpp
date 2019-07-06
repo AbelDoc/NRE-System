@@ -35,6 +35,7 @@
                     NativeWindowType internal;    /**< The internal window */
                     WindowId id;                  /**< The OS-independant window id */
                     #ifdef WIN32                // Windows
+                        HDC device;                 /**< The rendering device */
                         LONG_PTR savedStyle;        /**< The window last style */
                         LONG_PTR savedExStyle;      /**< The window last extended style */
                         bool savedInFullscreen;     /**< The window last fullscreen state */
@@ -92,10 +93,12 @@
                          * @return the window top-left corner position
                          */
                         Math::Point2D<unsigned int> getPosition() const;
-                        /**
-                         * @return the native internal window
-                         */
-                        NativeWindowType& getNative();
+                        #ifdef _WIN32
+                            /**
+                             * @return the internal device
+                             */
+                            HDC& getDevice();
+                        #endif
 
                     //## Methods ##//
                         /**
@@ -106,6 +109,10 @@
                          * Toggle between fullscreen and windowed mode
                          */
                         void toggleFullscreen(bool inFullscreen);
+                        /**
+                         * Refresh the window
+                         */
+                        void refresh();
 
                     //## Assignment Operator ##//
                         /**
@@ -154,3 +161,9 @@
             };
         }
     }
+
+    #ifdef _WIN32               // Windows
+        #include "../../../../OS/Windows/Graphics/Window/Internal/NRE_WindowsInternalWindow.tpp"
+    #elif __linux__             // Linux
+        #include "../../../../OS/Linux/Graphics/Window/Internal/NRE_LinuxInternalWindow.tpp"
+    #endif
