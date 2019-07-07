@@ -10,6 +10,10 @@
     namespace NRE {
         namespace Graphics {
 
+            inline int InternalWindow::getXId() const {
+                return xId;
+            }
+
             inline void InternalWindow::close() {
                 GraphicsDriver::getDriver().unregisterWindow(internal);
                 XDestroyWindow(GraphicsDriver::getDriver().getDisplay(), internal);
@@ -20,6 +24,11 @@
                 XGetWindowAttributes(GraphicsDriver::getDriver().getDisplay(), internal, &attributes);
 
                 return Math::Point2D<unsigned int>(attributes.x, attributes.y);
+            }
+
+            inline void InternalWindow::refresh() {
+                Display* display = GraphicsDriver::getDriver().getDisplay();
+                glXSwapBuffers(display, internal);
             }
 
         }

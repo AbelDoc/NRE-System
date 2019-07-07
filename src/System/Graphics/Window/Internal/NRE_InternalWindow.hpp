@@ -98,6 +98,11 @@
                              * @return the internal device
                              */
                             HDC& getDevice();
+                        #elif __linux__
+                            /**
+                             * @return the X id
+                             */
+                            int getXId() const;
                         #endif
 
                     //## Methods ##//

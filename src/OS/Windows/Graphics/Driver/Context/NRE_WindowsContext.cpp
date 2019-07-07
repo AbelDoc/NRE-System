@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_WindowsContext.tpp
+     * @file NRE_WindowsContext.cpp
      * @brief Implementation of Graphics's API's Object : Context
      * @author Louis ABEL
      * @date 06/07/2019
@@ -41,11 +41,11 @@
                 NativeContextType tmpContext = wglCreateContext(window.getDevice());
                 wglMakeCurrent(window.getDevice(), tmpContext);
 
-                GLenum err = glewInit();
+                GLenum err = wglewInit();
                 if (err != GLEW_OK) {
                     wglMakeCurrent(window.getDevice(), NULL);
                     wglDeleteContext(tmpContext);
-                    throw std::invalid_argument("Glew Temp Init Failed.");
+                    throw std::invalid_argument("Wglew Init Failed.");
                 }
 
                 const int pixelAttributes[] {
@@ -85,15 +85,9 @@
 
                 err = glewInit();
                 if (err != GLEW_OK) {
-                    wglMakeCurrent(NULL, NULL);
+                    wglMakeCurrent(window.getDevice(), NULL);
                     wglDeleteContext(internal);
-                    throw std::invalid_argument("Glew Final Init Failed : " + std::to_string(err));
-                }
-            }
-
-            Context::~Context() {
-                if (owned) {
-                    release();
+                    throw std::invalid_argument("Glew Init Failed : " + std::to_string(err));
                 }
             }
 

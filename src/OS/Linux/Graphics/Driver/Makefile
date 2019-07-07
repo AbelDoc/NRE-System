@@ -1,7 +1,12 @@
-OBJ = $(OBJDIR)NRE_LinuxGraphicsDriver.o 
+OBJ = 
 OBJDIR = ../../../../../obj/OS/Linux/Graphics/Driver/
 
-all : $(OBJ)
+CONTEXT = Context
 
-$(OBJDIR)%.o :  %.cpp
+all : childs $(OBJ)
+
+childs:
+	@(cd $(CONTEXT) && $(MAKE))
+
+$(OBJDIR)%.o : 
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

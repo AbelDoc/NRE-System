@@ -8,7 +8,6 @@
      */
 
      #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
-     #include  <X11/Xatom.h>
 
      using namespace NRE::Math;
      using namespace NRE::Utility;

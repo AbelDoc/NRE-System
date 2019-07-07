@@ -28,6 +28,7 @@
              #ifdef _WIN32                           // Windows
                  typedef HGLRC NativeContextType;
              #elif __linux__                         // Linux
+                 typedef GLXContext NativeContextType;
              #endif
 
              /**
@@ -91,3 +92,5 @@
              };
          }
      }
+
+     #include "NRE_Context.tpp"
