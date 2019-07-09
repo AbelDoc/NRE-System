@@ -38,56 +38,63 @@
                 int tmpPixelFormat = ChoosePixelFormat(window.getDevice(), &tmpFormat);
                 SetPixelFormat(window.getDevice(), tmpPixelFormat, &tmpFormat);
 
-                NativeContextType tmpContext = wglCreateContext(window.getDevice());
-                wglMakeCurrent(window.getDevice(), tmpContext);
+                if (attr[GLAttributes::MAJOR_VERSION] < 3) {
+                    internal = wglCreateContext(window.getDevice());
+                    wglMakeCurrent(window.getDevice(), internal);
+                } else {
+                    NativeContextType tmpContext = wglCreateContext(window.getDevice());
+                    wglMakeCurrent(window.getDevice(), tmpContext);
 
-                GLenum err = wglewInit();
-                if (err != GLEW_OK) {
+                    GLenum err = wglewInit();
+                    if (err != GLEW_OK) {
+                        wglMakeCurrent(window.getDevice(), NULL);
+                        wglDeleteContext(tmpContext);
+                        throw std::invalid_argument("Wglew Init Failed.");
+                    }
+
+                    const int pixelAttributes[] {
+                        WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
+                        WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
+                        WGL_DOUBLE_BUFFER_ARB, (attr[GLAttributes::DOUBLEBUFFER]) ? (GL_TRUE) : (GL_FALSE),
+                        WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB,
+                        WGL_COLOR_BITS_ARB, bufferSize,
+                        WGL_DEPTH_BITS_ARB, attr[GLAttributes::DEPTH_SIZE],
+                        WGL_STENCIL_BITS_ARB, attr[GLAttributes::STENCIL_SIZE],
+                        WGL_SAMPLE_BUFFERS_ARB, (attr[GLAttributes::MULTISAMPLE_BUFFERS] > 1) ? (GL_TRUE) : (GL_FALSE),
+                        WGL_SAMPLES_ARB, (attr[GLAttributes::MULTISAMPLE_BUFFERS] > 1) ? (attr[GLAttributes::MULTISAMPLE_SAMPLES]) : (0),
+                        WGL_ACCELERATION_ARB, (attr[GLAttributes::ACCELERATED_VISUAL]) ? (WGL_FULL_ACCELERATION_ARB) : (WGL_NO_ACCELERATION_ARB),
+                        WGL_STEREO_ARB, (attr[GLAttributes::STEREO]) ? (GL_TRUE) : (GL_FALSE),
+                        0
+                    };
+
+                    int pixelFormat;
+                    unsigned int formatCount;
+                    wglChoosePixelFormatARB(window.getDevice(), pixelAttributes, NULL, 1, &pixelFormat, &formatCount);
+                    if (formatCount == 0) {
+                        throw std::invalid_argument("Pixel Format Failed : "  + std::to_string(err));
+                    }
+
+                    int glAttributes[] = {
+                        WGL_CONTEXT_MAJOR_VERSION_ARB, attr[GLAttributes::MAJOR_VERSION],
+                        WGL_CONTEXT_MINOR_VERSION_ARB, attr[GLAttributes::MINOR_VERSION],
+            			WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+                        0
+                    };
+
+                    internal = wglCreateContextAttribsARB(window.getDevice(), NULL, glAttributes);
+
                     wglMakeCurrent(window.getDevice(), NULL);
                     wglDeleteContext(tmpContext);
-                    throw std::invalid_argument("Wglew Init Failed.");
+                    wglMakeCurrent(window.getDevice(), internal);
                 }
 
-                const int pixelAttributes[] {
-                    WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
-                    WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
-                    WGL_DOUBLE_BUFFER_ARB, (attr[GLAttributes::DOUBLEBUFFER]) ? (GL_TRUE) : (GL_FALSE),
-                    WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB,
-                    WGL_COLOR_BITS_ARB, bufferSize,
-                    WGL_DEPTH_BITS_ARB, attr[GLAttributes::DEPTH_SIZE],
-                    WGL_STENCIL_BITS_ARB, attr[GLAttributes::STENCIL_SIZE],
-                    WGL_SAMPLE_BUFFERS_ARB, (attr[GLAttributes::MULTISAMPLE_BUFFERS] > 1) ? (GL_TRUE) : (GL_FALSE),
-                    WGL_SAMPLES_ARB, (attr[GLAttributes::MULTISAMPLE_BUFFERS] > 1) ? (attr[GLAttributes::MULTISAMPLE_SAMPLES]) : (0),
-                    WGL_ACCELERATION_ARB, (attr[GLAttributes::ACCELERATED_VISUAL]) ? (WGL_FULL_ACCELERATION_ARB) : (WGL_NO_ACCELERATION_ARB),
-                    WGL_STEREO_ARB, (attr[GLAttributes::STEREO]) ? (GL_TRUE) : (GL_FALSE),
-                    0
-                };
-
-                int pixelFormat;
-                unsigned int formatCount;
-                wglChoosePixelFormatARB(window.getDevice(), pixelAttributes, NULL, 1, &pixelFormat, &formatCount);
-                if (formatCount == 0) {
-                    throw std::invalid_argument("Pixel Format Failed : "  + std::to_string(err));
-                }
-
-                int glAttributes[] = {
-                    WGL_CONTEXT_MAJOR_VERSION_ARB, attr[GLAttributes::MAJOR_VERSION],
-                    WGL_CONTEXT_MINOR_VERSION_ARB, attr[GLAttributes::MINOR_VERSION],
-        			WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-                    0
-                };
-
-                internal = wglCreateContextAttribsARB(window.getDevice(), NULL, glAttributes);
-
-                wglMakeCurrent(window.getDevice(), NULL);
-                wglDeleteContext(tmpContext);
-                wglMakeCurrent(window.getDevice(), internal);
-
-                err = glewInit();
-                if (err != GLEW_OK) {
-                    wglMakeCurrent(window.getDevice(), NULL);
-                    wglDeleteContext(internal);
-                    throw std::invalid_argument("Glew Init Failed : " + std::to_string(err));
+                if (attr[GLAttributes::MAJOR_VERSION] > 1 || (attr[GLAttributes::MAJOR_VERSION] == 1 && attr[GLAttributes::MINOR_VERSION] >= 1)) {
+                    GLenum err = glewInit();
+                    if (err != GLEW_OK) {
+                        wglMakeCurrent(window.getDevice(), NULL);
+                        wglDeleteContext(internal);
+                        throw std::invalid_argument("Glew Init Failed : " + std::to_string(err));
+                    }
                 }
             }
 

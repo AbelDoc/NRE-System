@@ -27,6 +27,9 @@
                 (*this)[GLAttributes::MINOR_VERSION] = 3;
             }
 
+            inline ContextAttributes::ContextAttributes(std::initializer_list<int> list) : attributes(list) {
+            }
+
             inline int& ContextAttributes::operator[](GLAttributes index) {
                 return attributes[static_cast <std::size_t> (index)];
             }

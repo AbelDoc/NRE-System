@@ -8,7 +8,7 @@
      */
 
     #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
-    #include "../../../../../Header/NRE_System.hpp"
+    #include "../../../../../System/NRE_System.hpp"
 
     using namespace NRE::Math;
     using namespace NRE::System;

@@ -17,43 +17,50 @@
     using namespace NRE::Graphics;
     using namespace std::chrono_literals;
 
+    class DevApplication : public Application {
+        public :    // Methods
+            //## Constructor ##//
+                DevApplication() : Application("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE, {8, 8, 8, 0, 0, 1, 24, 8, 0, 0, 0, 1, 2, 1}) {
+                }
+
+            //## Methods ##//
+                void create() override {
+                    addHandler<KeyEvent>([&](KeyEvent& event) {
+                        std::cout << event.getCode() << std::endl;
+                        return true;
+                    });
+
+                    addHandler<WindowCloseEvent>([&](WindowCloseEvent& event) {
+                        std::cout << "One window is closing : " << event.getWindow().getId() << std::endl;
+                        return true;
+                    });
+
+                    addHandler<ButtonEvent>([&](ButtonEvent& event) {
+                        std::cout << event.getCode() << std::endl;
+                        std::cout << "Cursor : " << event.getPosition() << std::endl;
+                        return false;
+                    });
+
+                    addHandler<MotionEvent>([&](MotionEvent& event) {
+                        std::cout << "Motion : " << event.getPosition() << std::endl;
+                        return true;
+                    });
+                    glClearColor(1.0, 0.0, 0.0, 0.0);
+                }
+                void update() override {
+
+                }
+                void render() override {
+                    glClear(GL_COLOR_BUFFER_BIT);
+                }
+                void destroy() override {
+
+                }
+    };
+
     int main(int, char**) {
-        GraphicsSystem& gSys = getGraphicsSystem();
-        EventSystem& eSys = getEventSystem();
-        Clock& sysClock = getClock();
-
-        Graphics::Window& window = gSys.createWindow("NRE-System Devlopment 1", {1280, 720}, WindowStyle::RESIZEABLE);
-
-        EventHandler<KeyEvent> keyHandler([&](KeyEvent& event) {
-            std::cout << event.getCode() << std::endl;
-            return true;
-        });
-
-        EventHandler<WindowCloseEvent> closeHandler([&](WindowCloseEvent& event) {
-            std::cout << "One window is closing : " << event.getWindow().getId() << std::endl;
-            return true;
-        });
-
-        EventHandler<ButtonEvent> buttonHandler([&](ButtonEvent& event) {
-            std::cout << event.getCode() << std::endl;
-            std::cout << "Cursor : " << event.getPosition() << std::endl;
-            return false;
-        });
-
-        EventHandler<MotionEvent> motionHandler([&](MotionEvent& event) {
-            std::cout << "Motion : " << event.getPosition() << std::endl;
-            return true;
-        });
-
-        sysClock.update();
-        sysClock.showFPS();
-
-        while (gSys.isRunning()) {
-            sysClock.updateAndSleep(16ms);
-            eSys.update();
-
-            window.refresh();
-        }
+        DevApplication app;
+        app.NREmain();
 
         return 0;
     }

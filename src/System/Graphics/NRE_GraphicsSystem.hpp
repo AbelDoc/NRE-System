@@ -88,7 +88,7 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        Graphics::Window& createWindow(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr);
                         /**
                          * Create a window and register it in the system
                          * @param title    the window title
@@ -96,7 +96,7 @@
                          * @param style    the window style
                          * @return         the created window
                          */
-                        Graphics::Window& createWindow(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style);
+                        Graphics::Window& createWindow(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr);
                         /**
                          * Remove the window corresponding to the given id
                          * @param id the window to remove

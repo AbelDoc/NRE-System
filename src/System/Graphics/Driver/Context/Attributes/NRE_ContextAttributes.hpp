@@ -59,6 +59,11 @@
                          * Create a default context attributes
                          */
                         ContextAttributes();
+                        /**
+                         * Create a context attributes from an attributes list
+                         * @param list the attributes list
+                         */
+                        ContextAttributes(std::initializer_list<int> list);
 
                     //## Copy Constructor ##//
                         /**
