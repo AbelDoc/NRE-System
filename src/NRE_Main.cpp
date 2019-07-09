@@ -48,7 +48,6 @@
                     glClearColor(1.0, 0.0, 0.0, 0.0);
                 }
                 void update() override {
-
                 }
                 void render() override {
                     glClear(GL_COLOR_BUFFER_BIT);
