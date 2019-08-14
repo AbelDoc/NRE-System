@@ -12,11 +12,12 @@
 
      using namespace NRE::System;
      using namespace NRE::Graphics;
+     using namespace NRE::Utility;
 
      namespace NRE {
          namespace Event {
 
-             WindowCloseEvent::WindowCloseEvent(WindowId id) : window(getGraphicsSystem().getWindow(id)) {
+             WindowCloseEvent::WindowCloseEvent(WindowId id) : window(Singleton<System::System>::get().getGraphicsSystem().getWindow(id)) {
              }
 
          }

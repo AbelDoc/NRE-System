@@ -26,22 +26,5 @@
                  return clock;
              }
 
-             inline System& getSystem() {
-                 static System instance;
-                 return instance;
-             }
-
-             inline GraphicsSystem& getGraphicsSystem() {
-                 return getSystem().getGraphicsSystem();
-             }
-
-             inline EventSystem& getEventSystem() {
-                 return getSystem().getEventSystem();
-             }
-
-             inline Time::Clock& getClock() {
-                 return getSystem().getClock();
-             }
-
          }
      }

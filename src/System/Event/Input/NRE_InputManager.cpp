@@ -12,6 +12,7 @@
 
     using namespace NRE::System;
     using namespace NRE::Math;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace Event {
@@ -19,12 +20,12 @@
              void InputManager::update() {
                 keys.erase(std::remove_if(keys.begin(), keys.end(),
                             [=] (KeyCode k) {
-                                return getEventSystem().emit<KeyEvent>(k);
+                                return Singleton<System::System>::get().getEventSystem().emit<KeyEvent>(k);
                             }
                         ), keys.end());
                buttons.erase(std::remove_if(buttons.begin(), buttons.end(),
                            [=] (ButtonEventData const& b) {
-                               return getEventSystem().emit<ButtonEvent>(b);
+                               return Singleton<System::System>::get().getEventSystem().emit<ButtonEvent>(b);
                            }
                        ), buttons.end());
              }

@@ -18,10 +18,5 @@
                 windows.erase(window);
             }
 
-            inline GraphicsDriver& GraphicsDriver::getDriver() {
-                static GraphicsDriver instance;
-                return instance;
-            }
-
         }
     }

@@ -15,6 +15,7 @@
     using namespace NRE::Event;
     using namespace NRE::Time;
     using namespace NRE::Graphics;
+    using namespace NRE::Utility;
     using namespace std::chrono_literals;
 
     class DevApplication : public Application {
@@ -60,6 +61,8 @@
     int main(int, char**) {
         DevApplication app;
         app.NREmain();
+
+        std::cout << Singleton<NRE::System::System>::get() << std::endl;
 
         return 0;
     }

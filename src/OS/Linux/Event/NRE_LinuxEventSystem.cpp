@@ -13,6 +13,7 @@
     using namespace NRE::Graphics;
     using namespace NRE::Event;
     using namespace NRE::Math;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace System {
@@ -20,11 +21,11 @@
                  void EventSystem::internalDispatcher(XEvent const& event) {
                      switch (event.type) {
                         case ClientMessage : {
-            				if ((event.xclient.format == 32) && (event.xclient.data.l[0] ) == static_cast <long> (GraphicsDriver::getDriver().getCloseAtom())) {
-                                WindowId id = GraphicsDriver::getDriver().findId(event.xany.window);
+            				if ((event.xclient.format == 32) && (event.xclient.data.l[0] ) == static_cast <long> (Singleton<GraphicsDriver>::get().getCloseAtom())) {
+                                WindowId id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
                                 if (id != 0) {
                                     emit<WindowCloseEvent>(id);
-                                    getGraphicsSystem().closeWindow(id);
+                                    Singleton<System>::get().getGraphicsSystem().closeWindow(id);
                                 }
             				}
             				break;
@@ -64,7 +65,7 @@
                  }
 
                  bool EventSystem::hasNextEvent() {
-                     Display* display = GraphicsDriver::getDriver().getDisplay();
+                     Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                      XFlush(display);
                      if (XEventsQueued(display, QueuedAlready)) {
                          return true;
@@ -76,7 +77,7 @@
                  void EventSystem::update() {
                      while (hasNextEvent()) {
                          XEvent event;
-                         XNextEvent(GraphicsDriver::getDriver().getDisplay(), &event);
+                         XNextEvent(Singleton<GraphicsDriver>::get().getDisplay(), &event);
                          internalDispatcher(event);
                      }
                      inputManager.update();

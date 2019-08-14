@@ -12,12 +12,12 @@
 
             template <class T>
             inline EventHandler<T>::EventHandler(Handler && h) : handler(std::move(h)) {
-                System::getEventSystem().addHandler<T>(this);
+                Utility::Singleton<System::System>::get().getEventSystem().addHandler<T>(this);
             }
 
             template <class T>
             inline EventHandler<T>::~EventHandler() {
-                System::getEventSystem().removeHandler<T>(this);
+                Utility::Singleton<System::System>::get().getEventSystem().removeHandler<T>(this);
             }
 
             template <class T>

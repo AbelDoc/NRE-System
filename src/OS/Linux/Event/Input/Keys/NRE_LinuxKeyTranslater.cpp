@@ -12,6 +12,7 @@
     #include "../../../../../System/Graphics/Driver/NRE_GraphicsDriver.hpp"
 
     using namespace NRE::Graphics;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace Event {
@@ -19,7 +20,7 @@
             constexpr KeyTranslater::NativeKeyToKey KeyTranslater::translationMap[];
 
             KeyCode KeyTranslater::translateKey(XKeyEvent const& keyEvent) const {
-                KeySym keySym = XkbKeycodeToKeysym(GraphicsDriver::getDriver().getDisplay(), static_cast <KeyCode> (keyEvent.keycode), 0, keyEvent.state & ShiftMask ? 1 : 0);
+                KeySym keySym = XkbKeycodeToKeysym(Singleton<GraphicsDriver>::get().getDisplay(), static_cast <KeyCode> (keyEvent.keycode), 0, keyEvent.state & ShiftMask ? 1 : 0);
 
                 if (keySym == NoSymbol) {
                     return KeyCode::NONE;

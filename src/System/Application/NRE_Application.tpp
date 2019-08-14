@@ -10,10 +10,10 @@
      namespace NRE {
          namespace System {
 
-             inline Application::Application(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr) : window(getGraphicsSystem().createWindow(title, position, size, style, attr)) {
+             inline Application::Application(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr) : window(Utility::Singleton<System>::get().getGraphicsSystem().createWindow(title, position, size, style, attr)) {
              }
 
-             inline Application::Application(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr) : window(getGraphicsSystem().createWindow(title, size, style, attr)) {
+             inline Application::Application(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr) : window(Utility::Singleton<System>::get().getGraphicsSystem().createWindow(title, size, style, attr)) {
              }
 
              inline Application::~Application() {
@@ -30,9 +30,9 @@
              inline void Application::NREmain() {
                  try {
                      using namespace std::chrono_literals;
-                     Time::Clock& sysClock = getClock();
-                     GraphicsSystem& gSys = getGraphicsSystem();
-                     EventSystem& eSys = getEventSystem();
+                     Time::Clock& sysClock = Utility::Singleton<System>::get().getClock();
+                     GraphicsSystem& gSys = Utility::Singleton<System>::get().getGraphicsSystem();
+                     EventSystem& eSys = Utility::Singleton<System>::get().getEventSystem();
 
                      create();
 

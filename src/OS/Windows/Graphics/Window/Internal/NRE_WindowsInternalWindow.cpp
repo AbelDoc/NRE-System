@@ -39,7 +39,7 @@
                     toggleFullscreen(true);
                 }
                 device = GetDC(internal);
-                GraphicsDriver::getDriver().registerWindow(internal, id);
+                Singleton<GraphicsDriver>::get().registerWindow(internal, id);
             }
 
             void InternalWindow::toggleFullscreen(bool inFullscreen) {
@@ -76,7 +76,7 @@
 	                 id = reinterpret_cast <WindowId*> (GetWindowLongPtr(hwnd, GWLP_USERDATA));
 
 	                 if (id != nullptr) {
-                         return getEventSystem().internalDispatcher(*id, hwnd, msg, wParam, lParam);
+                         return Singleton<System::System>::get().getEventSystem().internalDispatcher(*id, hwnd, msg, wParam, lParam);
                      } else {
 		                 return DefWindowProc(hwnd, msg, wParam, lParam);
                      }

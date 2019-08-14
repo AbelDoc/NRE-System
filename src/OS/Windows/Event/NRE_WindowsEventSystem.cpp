@@ -7,6 +7,8 @@
      * @copyright CC-BY-NC-SA
      */
 
+    #include <Header/NRE_Math.hpp>
+    
     #include "../../../System/NRE_System.hpp"
     #include "../../../System/Event/Event/NRE_Event.hpp"
     #include <Windows.h>
@@ -15,6 +17,7 @@
     using namespace NRE::Graphics;
     using namespace NRE::Event;
     using namespace NRE::Math;
+    using namespace NRE::Utility;
 
      namespace NRE {
          namespace System {
@@ -23,7 +26,7 @@
                      switch (msg) {
                          case (WM_CLOSE) : {
                              emit<WindowCloseEvent>(id);
-                             getGraphicsSystem().closeWindow(id);
+                             Singleton<System>::get().getGraphicsSystem().closeWindow(id);
                              break;
                          }
                          case (WM_DESTROY) : {
@@ -35,7 +38,7 @@
                              if (code != KeyCode::NONE) {
                                  if (code == KeyCode::F4 && GetKeyState(VK_MENU)) {
                                      emit<WindowCloseEvent>(id);
-                                     getGraphicsSystem().closeWindow(id);
+                                     Singleton<System>::get().getGraphicsSystem().closeWindow(id);
                                  } else {
                                      if (!inputManager.isKeyPressed(code)) {
                                          inputManager.processPressedKey(code);

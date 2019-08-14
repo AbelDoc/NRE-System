@@ -11,6 +11,7 @@
 
      #include <Header/NRE_Math.hpp>
      #include <Utility/String/NRE_String.hpp>
+     #include <Utility/Singleton/NRE_Singleton.hpp>
 
      #include "../Style/NRE_WindowStyle.hpp"
      #include "../../Driver/NRE_GraphicsDriver.hpp"

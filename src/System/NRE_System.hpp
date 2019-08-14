@@ -20,6 +20,7 @@
     #include "Time/Clock/NRE_Clock.hpp"
 
     #include <Utility/String/NRE_String.hpp>
+    #include <Utility/Singleton/NRE_Singleton.hpp>
 
     /**
      * @namespace NRE
@@ -36,27 +37,15 @@
              * @class System
              * @brief Represent the System abstraction layer
              */
-            class System {
-                protected :   // Fields
+            class System : public Utility::Singleton<System> {
+                friend Utility::Singleton<System>;
+                private :   // Fields
                     SystemInfo infos;           /**< The system's info */
                     GraphicsSystem graphics;    /**< The graphics sub system */
                     EventSystem events;         /**< The events sub system */
                     Time::Clock clock;          /**< The system clock */
 
                 public :    // Methods
-                    //## Constructor ##//
-                        /**
-                         * Construct the system class;
-                         */
-                        System();
-
-                    //## Copy Constructor ##//
-                        /**
-                         * Copy forbidden
-                         * @param sys the system to copy
-                         */
-                        System(System const& sys) = delete;
-
                     //## Move Constructor ##//
                         /**
                          * Move forbidden
@@ -108,12 +97,6 @@
 
                     //## Assignment Operator ##//
                         /**
-                         * Copy forbidden
-                         * @param s the object to copy into this
-                         * @return  the reference of himself
-                         */
-                        System& operator =(System const& s) = delete;
-                        /**
                          * Move forbidden
                          * @param s the object to move into this
                          * @return  the reference of himself
@@ -126,6 +109,13 @@
                          * @return the converted system
                          */
                         Utility::String toString() const;
+
+                private :   // Methods
+                    //## Constructor ##//
+                        /**
+                         * Construct the system class;
+                         */
+                        System();
             };
 
             /**
@@ -135,23 +125,6 @@
              * @return the    modified stream
              */
             std::ostream& operator <<(std::ostream& stream, System const& o);
-
-            /**
-             * @return the system instance
-             */
-            System& getSystem();
-            /**
-             * @return the system graphics sub system
-             */
-            GraphicsSystem& getGraphicsSystem();
-            /**
-             * @return the system events sub system
-             */
-            EventSystem& getEventSystem();
-            /**
-             * @return the system clock
-             */
-            Time::Clock& getClock();
         }
     }
 

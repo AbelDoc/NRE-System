@@ -14,7 +14,7 @@
             }
 
             inline void InternalWindow::close() {
-                GraphicsDriver::getDriver().unregisterWindow(internal);
+                Utility::Singleton<GraphicsDriver>::get().unregisterWindow(internal);
                 DestroyWindow(internal);
             }
 

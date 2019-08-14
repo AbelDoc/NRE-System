@@ -41,7 +41,7 @@
                  context.release();
                  status.setClosed(true);
                  if (removeFromSystem) {
-                     getGraphicsSystem().removeWindow(id);
+                     Singleton<System::System>::get().getGraphicsSystem().removeWindow(id);
                  }
              }
 

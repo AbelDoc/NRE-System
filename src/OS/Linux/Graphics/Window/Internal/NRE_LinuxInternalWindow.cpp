@@ -16,7 +16,7 @@
          namespace Graphics {
 
             InternalWindow::InternalWindow(WindowId i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                 xId = XDefaultScreen(display);
 
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
@@ -41,7 +41,7 @@
             }
 
             InternalWindow::InternalWindow(WindowId i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                 xId = XDefaultScreen(display);
 
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
@@ -70,7 +70,7 @@
 
             void InternalWindow::updateStyle(WindowStyle const& style) {
                 bool inFullscreen = style & WindowStyle::FULLSCREEN;
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
 
                 Atom wHints = XInternAtom(display, "_MOTIF_WM_HINTS", false);
                 WindowStyle::NativeWindowHints hints;
@@ -86,7 +86,7 @@
 
             void InternalWindow::toggleFullscreen(bool inFullscreen) {
                 if (inFullscreen) {
-                    Display* display = GraphicsDriver::getDriver().getDisplay();
+                    Display* display = Singleton<GraphicsDriver>::get().getDisplay();
 
                     XGrabPointer(display, internal, true , 0, GrabModeAsync, GrabModeAsync, internal, 0L, CurrentTime);
                     XGrabKeyboard(display, internal, false, GrabModeAsync, GrabModeAsync, CurrentTime);
@@ -94,13 +94,13 @@
             }
 
             void InternalWindow::finishCreation(WindowStyle const& style, String const& title) {
-                GraphicsDriver::getDriver().registerWindow(internal, id);
+                Singleton<GraphicsDriver>::get().registerWindow(internal, id);
 
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                 XStoreName(display, internal, title.getCData());
 
                 updateStyle(style);
-                XSetWMProtocols(display, internal, &(GraphicsDriver::getDriver().getCloseAtom()), 1);
+                XSetWMProtocols(display, internal, &(Singleton<GraphicsDriver>::get().getCloseAtom()), 1);
 
                 XMapWindow(display, internal);
                 XFlush(display);

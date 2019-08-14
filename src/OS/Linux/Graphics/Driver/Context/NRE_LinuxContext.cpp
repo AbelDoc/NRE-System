@@ -9,11 +9,13 @@
 
     #include "../../../../../System/Graphics/Driver/Context/NRE_Context.hpp"
 
+    using namespace NRE::Utility;
+
     namespace NRE {
         namespace Graphics {
 
             Context::Context(InternalWindow& window, ContextAttributes const& attr) : attributes(attr) {
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
 
                 if (attr[GLAttributes::MAJOR_VERSION] < 3) {
                     int pixelAttributes[15];
@@ -114,7 +116,7 @@
             }
 
             void Context::release() {
-                Display* display = GraphicsDriver::getDriver().getDisplay();
+                Display* display = Singleton<GraphicsDriver>::get().getDisplay();
 	            glXMakeCurrent(display, 0, NULL);
                 glXDestroyContext(display, internal);
                 owned = false;

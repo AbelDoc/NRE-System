@@ -39,6 +39,7 @@
      #endif
 
      #include <Utility/UnorderedMap/NRE_UnorderedMap.hpp>
+     #include <Utility/Singleton/NRE_Singleton.hpp>
 
      /**
       * @namespace NRE
@@ -63,7 +64,8 @@
               * @class GraphicsDriver
               * @brief Manage the os-dependant graphics driver
               */
-            class GraphicsDriver {
+            class GraphicsDriver : public Utility::Singleton<GraphicsDriver> {
+                friend Utility::Singleton<GraphicsDriver>;
                 private :   // Fields
                     #ifdef __linux__               // Linux
                         Display* display;                                       /**< The X11 display connection */
@@ -71,21 +73,7 @@
                     #endif
                     Utility::UnorderedMap<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
 
-
                 public :    // Methods
-                    //## Constructor ##//
-                        /**
-                         * Construct the graphics driver
-                         */
-                        GraphicsDriver();
-
-                    //## Copy Constructor ##//
-                        /**
-                         * Copy forbidden
-                         * @param drv the internal window to copy
-                         */
-                        GraphicsDriver(GraphicsDriver const& drv) = delete;
-
                     //## Move Constructor ##//
                         /**
                          * Move forbidden
@@ -130,23 +118,19 @@
 
                     //## Assignment Operator ##//
                         /**
-                         * Copy forbidden
-                         * @param drv the object to copy into this
-                         * @return    the reference of himself
-                         */
-                        GraphicsDriver& operator =(GraphicsDriver const& drv) = delete;
-                        /**
                          * Move forbidden
                          * @param drv the object to move into this
                          * @return    the reference of himself
                          */
                         GraphicsDriver& operator =(GraphicsDriver && drv) = delete;
 
-                public :    // Static
-                    /**
-                     * @return the driver instance
-                     */
-                    static GraphicsDriver& getDriver();
+                private :   // Methods
+                    //## Constructor ##//
+                        /**
+                         * Construct the graphics driver
+                         */
+                        GraphicsDriver();
+
             };
         }
     }
