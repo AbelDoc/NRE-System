@@ -24,9 +24,9 @@
     }
     System -right- "1" SystemInfo : infos
     System -down- "1" GraphicsSystem : graphics
-    GraphicsSystem -right- "1" WindowId : counter
+    GraphicsSystem -right- "1" Id : counter
     GraphicsSystem -down- "*" Window : windows
-    Window -right- "1" WindowId : id
+    Window -right- "1" Id : id
     Window -down- "1" InternalWindow : window
     Window -left- "1" WindowAttributes : attributes
     Window -left- "1" WindowStatus : status

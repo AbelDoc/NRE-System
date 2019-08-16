@@ -17,7 +17,7 @@
      namespace NRE {
          namespace Graphics {
 
-            InternalWindow::InternalWindow(WindowId i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
+            InternalWindow::InternalWindow(Id i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i), savedInFullscreen(false) {
                 WNDCLASSEXA windowClass;
                 windowClass.cbSize = sizeof(WNDCLASSEX);
                 windowClass.style = CS_OWNDC;
@@ -66,14 +66,14 @@
             }
 
             LRESULT CALLBACK InternalWindow::internalDispatcher(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-                WindowId* id;
+                Id* id;
 	            if (msg == WM_NCCREATE) {
-	                 id = reinterpret_cast <WindowId*> (((LPCREATESTRUCT)lParam)->lpCreateParams);
+	                 id = reinterpret_cast <Id*> (((LPCREATESTRUCT)lParam)->lpCreateParams);
 	                 SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast <LONG_PTR> (id));
 
 	                 return DefWindowProc(hwnd, msg, wParam, lParam);
                 } else {
-	                 id = reinterpret_cast <WindowId*> (GetWindowLongPtr(hwnd, GWLP_USERDATA));
+	                 id = reinterpret_cast <Id*> (GetWindowLongPtr(hwnd, GWLP_USERDATA));
 
 	                 if (id != nullptr) {
                          return Singleton<System::System>::get().getEventSystem().internalDispatcher(*id, hwnd, msg, wParam, lParam);

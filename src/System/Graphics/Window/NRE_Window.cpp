@@ -17,13 +17,13 @@
      namespace NRE {
          namespace Graphics {
 
-             Window::Window(WindowId const& i, String const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i), context(window, attr) {
+             Window::Window(Id const& i, String const& t, Point2D<unsigned int> const& pos, Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr) : window(i, t, pos, s, ws), attributes(t, pos, s), style(ws), id(i), context(window, attr) {
                  if (ws & WindowStyle::FULLSCREEN) {
                      status.setFullscreen(true);
                  }
              }
 
-             Window::Window(WindowId const& i, String const& t, Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr) : window(i, t, s, ws), attributes(t, s), style(ws), id(i), context(window, attr) {
+             Window::Window(Id const& i, String const& t, Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr) : window(i, t, s, ws), attributes(t, s), style(ws), id(i), context(window, attr) {
                  if (ws & WindowStyle::FULLSCREEN) {
                      status.setFullscreen(true);
                  }

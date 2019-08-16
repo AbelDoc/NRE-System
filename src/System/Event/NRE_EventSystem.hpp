@@ -84,7 +84,7 @@
                              * @param  lParam additionnal message-specific information
                              * @return        depend on the message processing
                              */
-                            LRESULT internalDispatcher(Graphics::WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+                            LRESULT internalDispatcher(Graphics::Id id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
                         #elif __linux__
                             /**
                              * Dispatch an event

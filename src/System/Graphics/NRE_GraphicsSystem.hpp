@@ -31,9 +31,9 @@
              */
             class GraphicsSystem {
                 private :   // Fields
-                    Utility::UnorderedMap<Graphics::WindowId, Graphics::Window*> windows;  /**< The system windows */
-                    Graphics::WindowId counter;                                            /**< The window id counter */
-                    bool running;                                                          /**< Tell if the system is running */
+                    Utility::UnorderedMap<Graphics::Id, Graphics::Window*> windows;  /**< The system windows */
+                    Graphics::Id counter;                                            /**< The window id counter */
+                    bool running;                                                    /**< Tell if the system is running */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -68,12 +68,12 @@
                          * @param  id the window id
                          * @return    the corresponding window
                          */
-                        Graphics::Window& getWindow(Graphics::WindowId id);
+                        Graphics::Window& getWindow(Graphics::Id id);
                         /**
                          * Close a specific window
                          * @param id the window id
                          */
-                        void closeWindow(Graphics::WindowId id);
+                        void closeWindow(Graphics::Id id);
                         /**
                          * @return if at least one window is opened
                          */
@@ -101,7 +101,7 @@
                          * Remove the window corresponding to the given id
                          * @param id the window to remove
                          */
-                        void removeWindow(Graphics::WindowId const& id);
+                        void removeWindow(Graphics::Id const& id);
 
                     //## Assignment Operator ##//
                         /**

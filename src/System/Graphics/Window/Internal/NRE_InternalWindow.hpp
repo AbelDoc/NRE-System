@@ -34,7 +34,7 @@
             class InternalWindow {
                 private :   // Fields
                     NativeWindowType internal;    /**< The internal window */
-                    WindowId id;                  /**< The OS-independant window id */
+                    Id id;                        /**< The OS-independant window id */
                     #ifdef WIN32                // Windows
                         HDC device;                 /**< The rendering device */
                         LONG_PTR savedStyle;        /**< The window last style */
@@ -59,7 +59,7 @@
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(WindowId i, Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(Id i, Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
                         /**
                          * Construct the internal window with centered position
                          * @param i        the window id
@@ -67,7 +67,7 @@
                          * @param size     the window size
                          * @param style    the window style
                          */
-                        InternalWindow(WindowId i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
+                        InternalWindow(Id i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style);
 
                     //## Copy Constructor ##//
                         /**

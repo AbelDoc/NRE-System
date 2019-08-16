@@ -22,7 +22,7 @@
      namespace NRE {
          namespace System {
 
-                 LRESULT EventSystem::internalDispatcher(WindowId id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+                 LRESULT EventSystem::internalDispatcher(Id id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                      switch (msg) {
                          case (WM_CLOSE) : {
                              emit<WindowCloseEvent>(id);

@@ -13,7 +13,7 @@
             inline GraphicsSystem::GraphicsSystem() : counter(1), running(false) {
             }
 
-            inline Graphics::Window& GraphicsSystem::getWindow(Graphics::WindowId id) {
+            inline Graphics::Window& GraphicsSystem::getWindow(Graphics::Id id) {
                 return *(windows.get(id));
             }
 
@@ -21,7 +21,7 @@
                 return running;
             }
 
-            inline void GraphicsSystem::removeWindow(Graphics::WindowId const& id) {
+            inline void GraphicsSystem::removeWindow(Graphics::Id const& id) {
                 windows.erase(id);
             }
 

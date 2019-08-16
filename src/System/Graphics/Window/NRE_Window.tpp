@@ -14,7 +14,7 @@
                 return !status.isClosed();
             }
 
-            inline WindowId Window::getId() const {
+            inline Id Window::getId() const {
                 return id;
             }
 

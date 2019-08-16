@@ -40,7 +40,7 @@
                          * Construct the event from the if of the closing window
                          * @param id the closing window
                          */
-                        WindowCloseEvent(Graphics::WindowId id);
+                        WindowCloseEvent(Graphics::Id id);
 
                     //## Copy-Constructor ##//
                         /**

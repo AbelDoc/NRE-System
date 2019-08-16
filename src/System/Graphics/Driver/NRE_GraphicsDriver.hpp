@@ -40,6 +40,7 @@
 
      #include <Utility/UnorderedMap/NRE_UnorderedMap.hpp>
      #include <Utility/Singleton/NRE_Singleton.hpp>
+     #include <Utility/Id/NRE_Id.hpp>
 
      /**
       * @namespace NRE
@@ -52,7 +53,7 @@
           */
          namespace Graphics {
 
-            typedef std::size_t WindowId;
+            typedef std::size_t Id;
 
             #ifdef _WIN32                           // Windows
                 typedef HWND NativeWindowType;
@@ -71,7 +72,7 @@
                         Display* display;                                       /**< The X11 display connection */
                         Atom closeAtom;                                         /**< The internal atom for close */
                     #endif
-                    Utility::UnorderedMap<NativeWindowType, WindowId> windows;  /**< Store all opened native windows */
+                    Utility::UnorderedMap<NativeWindowType, Id> windows;        /**< Store all opened native windows */
 
                 public :    // Methods
                     //## Move Constructor ##//
@@ -103,7 +104,7 @@
                          * @param window the window to store
                          * @param id     the window id
                          */
-                        void registerWindow(NativeWindowType window, WindowId id);
+                        void registerWindow(NativeWindowType window, Id id);
                         /**
                          * Unregister a window from the driver
                          * @param window the window to remove
@@ -114,7 +115,7 @@
                          * @param  window the window to retrive the id
                          * @return        the corresponding id
                          */
-                        WindowId findId(NativeWindowType window) const;
+                        Id findId(NativeWindowType window) const;
 
                     //## Assignment Operator ##//
                         /**

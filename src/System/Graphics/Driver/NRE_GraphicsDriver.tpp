@@ -10,8 +10,8 @@
     namespace NRE {
         namespace Graphics {
 
-            inline void GraphicsDriver::registerWindow(NativeWindowType window, WindowId id) {
-                windows.emplace(Utility::Pair<NativeWindowType, WindowId>(window, id));
+            inline void GraphicsDriver::registerWindow(NativeWindowType window, Id id) {
+                windows.emplace(Utility::Pair<NativeWindowType, Id>(window, id));
             }
 
             inline void GraphicsDriver::unregisterWindow(NativeWindowType window) {

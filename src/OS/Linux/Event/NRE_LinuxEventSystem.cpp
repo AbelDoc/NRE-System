@@ -22,7 +22,7 @@
                      switch (event.type) {
                         case ClientMessage : {
             				if ((event.xclient.format == 32) && (event.xclient.data.l[0] ) == static_cast <long> (Singleton<GraphicsDriver>::get().getCloseAtom())) {
-                                WindowId id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
+                                Id id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
                                 if (id != 0) {
                                     emit<WindowCloseEvent>(id);
                                     Singleton<System>::get().getGraphicsSystem().closeWindow(id);

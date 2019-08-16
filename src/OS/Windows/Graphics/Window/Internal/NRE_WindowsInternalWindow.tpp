@@ -10,7 +10,7 @@
     namespace NRE {
         namespace Graphics {
 
-            inline InternalWindow::InternalWindow(WindowId i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
+            inline InternalWindow::InternalWindow(Id i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
             }
 
             inline void InternalWindow::close() {

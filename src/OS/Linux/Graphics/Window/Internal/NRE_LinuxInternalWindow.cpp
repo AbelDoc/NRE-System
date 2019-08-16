@@ -15,7 +15,7 @@
      namespace NRE {
          namespace Graphics {
 
-            InternalWindow::InternalWindow(WindowId i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+            InternalWindow::InternalWindow(Id i, String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                 xId = XDefaultScreen(display);
 
@@ -40,7 +40,7 @@
                 finishCreation(style, title);
             }
 
-            InternalWindow::InternalWindow(WindowId i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
+            InternalWindow::InternalWindow(Id i, String const& title, Vector2D<unsigned int> const& size, WindowStyle const& style) : id(i) {
                 Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                 xId = XDefaultScreen(display);
 

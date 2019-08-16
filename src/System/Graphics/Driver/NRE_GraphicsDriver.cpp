@@ -12,7 +12,7 @@
      namespace NRE {
          namespace Graphics {
 
-            WindowId GraphicsDriver::findId(NativeWindowType window) const {
+            Id GraphicsDriver::findId(NativeWindowType window) const {
                 auto it = windows.find(window);
                 if (it != windows.end()) {
                     return it->second;
