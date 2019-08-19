@@ -9,6 +9,9 @@
 
     #include "../../../../../System/Graphics/Driver/Context/NRE_Context.hpp"
 
+    using namespace NRE::Utility;
+    using namespace NRE::Exception;
+
     namespace NRE {
         namespace Graphics {
 
@@ -49,7 +52,7 @@
                     if (err != GLEW_OK) {
                         wglMakeCurrent(window.getDevice(), NULL);
                         wglDeleteContext(tmpContext);
-                        throw std::invalid_argument("Wglew Init Failed.");
+                        throw GlewException("Wglew Init Failed.");
                     }
 
                     const int pixelAttributes[] {
@@ -71,7 +74,7 @@
                     unsigned int formatCount;
                     wglChoosePixelFormatARB(window.getDevice(), pixelAttributes, NULL, 1, &pixelFormat, &formatCount);
                     if (formatCount == 0) {
-                        throw std::invalid_argument("Pixel Format Failed : "  + std::to_string(err));
+                        throw WGLException(String("Pixel Format Failed : ") << err);
                     }
 
                     int glAttributes[] = {
@@ -93,7 +96,7 @@
                     if (err != GLEW_OK) {
                         wglMakeCurrent(window.getDevice(), NULL);
                         wglDeleteContext(internal);
-                        throw std::invalid_argument("Glew Init Failed : " + std::to_string(err));
+                        throw GlewException(String("Glew Init Failed : ") << err);
                     }
                 }
             }

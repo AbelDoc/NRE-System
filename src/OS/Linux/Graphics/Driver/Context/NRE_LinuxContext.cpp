@@ -10,6 +10,7 @@
     #include "../../../../../System/Graphics/Driver/Context/NRE_Context.hpp"
 
     using namespace NRE::Utility;
+    using namespace NRE::Exception;
 
     namespace NRE {
         namespace Graphics {
@@ -43,14 +44,14 @@
 
                     XVisualInfo* vInfo = glXChooseVisual(display, window.getXId(), pixelAttributes);
                     if (vInfo == nullptr) {
-                        throw std::invalid_argument("Can't find required visual.");
+                        throw GLXException("Can't find required visual.");
                     }
                     internal = glXCreateContext(display, vInfo, 0, GL_TRUE);
 
                     glXMakeCurrent(display, window.getXId(), internal);
                 } else {
                     if (glXChooseFBConfig == nullptr) {
-                        throw std::invalid_argument("GLX 1.3 or higher is required.");
+                        throw GLXException("GLX 1.3 or higher is required.");
                     }
                     const int pixelAttributes[] = {
             			GLX_X_RENDERABLE, GL_TRUE,
@@ -73,7 +74,7 @@
                     int count;
                     GLXFBConfig* configs = glXChooseFBConfig(display, window.getXId(), pixelAttributes, &count);
                     if (count == 0) {
-                        throw std::invalid_argument("No matching configuration.");
+                        throw GLXException("No matching configuration.");
                     }
                     GLXFBConfig config = configs[0];
                     XFree(configs);
@@ -85,7 +86,7 @@
                     if (err != GLEW_OK) {
         	            glXMakeCurrent(display, 0, NULL);
                         glXDestroyContext(display, tmpContext);
-                        throw std::invalid_argument("Glxew Init Failed.");
+                        throw GlewException("Glxew Init Failed.");
                     }
 
                     int glAttributes[] = {
@@ -97,7 +98,7 @@
 
                     internal = glXCreateContextAttribsARB(display, config, NULL, GL_TRUE, glAttributes);
                     if (!internal) {
-                        throw std::invalid_argument("Could not create context.");
+                        throw GLXException("Could not create context.");
                     }
 
                     glXMakeCurrent(display, 0, NULL);
@@ -110,7 +111,7 @@
                     if (err != GLEW_OK) {
                         glXMakeCurrent(display, 0, NULL);
                         glXDestroyContext(display, internal);
-                        throw std::invalid_argument("Glew Init Failed : " + std::to_string(err));
+                        throw GlewException(String("Glew Init Failed : ") << err);
                     }
                 }
             }

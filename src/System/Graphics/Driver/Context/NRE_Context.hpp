@@ -14,6 +14,8 @@
      #include "../../Window/Internal/NRE_InternalWindow.hpp"
      #include "Attributes/NRE_ContextAttributes.hpp"
 
+     #include "../../../../Header/NRE_Exception.hpp"
+
      /**
       * @namespace NRE
       * @brief The NearlyRealEngine's global namespace
