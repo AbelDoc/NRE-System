@@ -9,7 +9,7 @@
 
     #pragma once
 
-    #include <Header/NRE_Utility.hpp>
+    #include "NRE_SystemException.hpp"
 
     /**
      * @namespace NRE
@@ -26,13 +26,13 @@
              * @class GLXException
              * @brief An exception thrown by glx operation
              */
-            class GLXException : public IException {
+            class GLXException : public SystemException {
                 public:
                     /**
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    GLXException(Utility::String const& log) throw() : IException(("GLX Exception : " + log).getCData()) {
+                    GLXException(Utility::String const& log) throw() : SystemException(("GLX Exception : " + log).getCData()) {
                     }
 
                     /**

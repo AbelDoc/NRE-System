@@ -1,7 +1,7 @@
 
     /**
-     * @file NRE_LinuxSystem.hpp
-     * @brief Implementation of System's API's Object : System
+     * @file NRE_LinuxEventSystem.cpp
+     * @brief Implementation of System's API's Object : EventSystem
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA

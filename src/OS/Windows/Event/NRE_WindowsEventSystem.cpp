@@ -1,14 +1,14 @@
 
     /**
-     * @file NRE_WindowsSystem.hpp
-     * @brief Implementation of System's API's Object : System
+     * @file NRE_WindowsEventSystem.cpp
+     * @brief Implementation of System's API's Object : EventSystem
      * @author Louis ABEL
      * @date 08/05/2019
      * @copyright CC-BY-NC-SA
      */
 
     #include <Header/NRE_Math.hpp>
-    
+
     #include "../../../System/NRE_System.hpp"
     #include "../../../System/Event/Event/NRE_Event.hpp"
     #include <Windows.h>

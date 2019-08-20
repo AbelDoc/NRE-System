@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_LinuxInternalWindow.hpp
+     * @file NRE_InternalWindow.hpp
      * @brief Declaration of Graphics's API's Object : InternalWindow
      * @author Louis ABEL
      * @date 08/05/2019

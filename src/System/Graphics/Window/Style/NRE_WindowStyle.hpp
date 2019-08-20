@@ -141,10 +141,10 @@
                         unsigned int operator &(unsigned int ws) const;
 
                 public :    // Static
-                    static constexpr unsigned int BASIC      = 0b000;
-                    static constexpr unsigned int CLOSEABLE  = 0b001;
-                    static constexpr unsigned int RESIZEABLE = 0b010;
-                    static constexpr unsigned int FULLSCREEN = 0b100;
+                    static constexpr unsigned int BASIC      = 0b000;   /**< A basic window with no close button and which can't be resized */
+                    static constexpr unsigned int CLOSEABLE  = 0b001;   /**< Add a close button to the window */
+                    static constexpr unsigned int RESIZEABLE = 0b010;   /**< The window can be resized */
+                    static constexpr unsigned int FULLSCREEN = 0b100;   /**< The window start in fullscreen mode */
              };
          }
      }

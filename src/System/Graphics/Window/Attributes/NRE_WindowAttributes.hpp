@@ -86,7 +86,7 @@
                          * @param attr the object to copy into this
                          * @return     the reference of himself
                          */
-                        WindowAttributes& operator =(WindowAttributes const& status) = default;
+                        WindowAttributes& operator =(WindowAttributes const& attr) = default;
                         /**
                          * Move the window attributes into this
                          * @param attr the object to move into this

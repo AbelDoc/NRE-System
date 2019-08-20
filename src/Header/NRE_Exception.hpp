@@ -9,6 +9,7 @@
 
     #pragma once
 
+    #include "../Exception/NRE_SystemException.hpp"
     #include "../Exception/NRE_GlewException.hpp"
     #include "../Exception/NRE_GLXException.hpp"
     #include "../Exception/NRE_WGLException.hpp"

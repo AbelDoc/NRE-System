@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_System.hpp
+     * @file System/NRE_System.hpp
      * @brief Declaration of System's API's Object : System
      * @author Louis ABEL
      * @date 07/05/2019

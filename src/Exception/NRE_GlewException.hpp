@@ -9,7 +9,7 @@
 
     #pragma once
 
-    #include <Header/NRE_Utility.hpp>
+    #include "NRE_SystemException.hpp"
 
     /**
      * @namespace NRE
@@ -26,13 +26,13 @@
              * @class GlewException
              * @brief An exception thrown by glew operation
              */
-            class GlewException : public IException {
+            class GlewException : public SystemException {
                 public:
                     /**
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    GlewException(Utility::String const& log) throw() : IException(("GLEW Exception : " + log).getCData()) {
+                    GlewException(Utility::String const& log) throw() : SystemException(("GLEW Exception : " + log).getCData()) {
                     }
 
                     /**

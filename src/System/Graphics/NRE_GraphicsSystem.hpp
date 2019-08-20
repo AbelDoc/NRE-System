@@ -86,6 +86,7 @@
                          * @param position the window top-left corner position
                          * @param size     the window size
                          * @param style    the window style
+                         * @param attr     the window context attributes
                          * @return         the created window
                          */
                         Graphics::Window& createWindow(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr);
@@ -94,6 +95,7 @@
                          * @param title    the window title
                          * @param size     the window size
                          * @param style    the window style
+                         * @param attr     the window context attributes
                          * @return         the created window
                          */
                         Graphics::Window& createWindow(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr);
