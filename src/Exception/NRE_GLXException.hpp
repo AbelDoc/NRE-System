@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    GLXException(Utility::String const& log) throw() : SystemException(("GLX Exception : " + log).getCData()) {
+                    GLXException(Utility::String const& log) throw() : SystemException("GLX Exception : " + log) {
                     }
 
                     /**

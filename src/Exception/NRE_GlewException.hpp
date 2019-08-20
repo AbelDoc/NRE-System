@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    GlewException(Utility::String const& log) throw() : SystemException(("GLEW Exception : " + log).getCData()) {
+                    GlewException(Utility::String const& log) throw() : SystemException("GLEW Exception : " + log) {
                     }
 
                     /**
