@@ -10,7 +10,7 @@
     namespace NRE {
         namespace Event {
 
-            inline MotionEvent::MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos) : code(c), position(pos) {
+            inline MotionEvent::MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos, Math::Vector2D<int> const& m) : code(c), position(pos), motion(m) {
             }
 
             inline ButtonCode MotionEvent::getCode() const {
@@ -19,6 +19,10 @@
 
             inline Math::Point2D<unsigned int> const& MotionEvent::getPosition() const {
                 return position;
+            }
+
+            inline Math::Vector2D<int> const& MotionEvent::getMotion() const {
+                return motion;
             }
 
             inline bool MotionEvent::isCode(ButtonCode c) const {

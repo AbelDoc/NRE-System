@@ -22,7 +22,7 @@
                  }
              }
 
-             void GraphicsSystem::closeWindow(Id id) {
+             void GraphicsSystem::closeWindow(Graphics::Id id) {
                  getWindow(id).close();
                  checkRunningState();
              }
@@ -37,14 +37,14 @@
              }
 
              Graphics::Window& GraphicsSystem::createWindow(String const& title, Point2D<unsigned int> const& position, Vector2D<unsigned int> const& size, unsigned int style, ContextAttributes const& attr) {
-                 windows.emplace(Pair<Id, Graphics::Window*>(counter, new Graphics::Window(counter, title, position, size, WindowStyle(style), attr)));
+                 windows.emplace(Pair<Graphics::Id, Graphics::Window*>(counter, new Graphics::Window(counter, title, position, size, WindowStyle(style), attr)));
                  ++counter;
                  running = true;
                  return *(windows[counter - 1]);
              }
 
              Graphics::Window& GraphicsSystem::createWindow(String const& title, Vector2D<unsigned int> const& size, unsigned int style, ContextAttributes const& attr) {
-                 windows.emplace(Pair<Id, Graphics::Window*>(counter, new Graphics::Window(counter, title, size, WindowStyle(style), attr)));
+                 windows.emplace(Pair<Graphics::Id, Graphics::Window*>(counter, new Graphics::Window(counter, title, size, WindowStyle(style), attr)));
                  ++counter;
                  running = true;
                  return *(windows[counter - 1]);

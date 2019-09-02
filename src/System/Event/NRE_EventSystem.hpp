@@ -45,6 +45,7 @@
                 private :   // Fields
                     Event::InputManager inputManager;                                          /**< The input manager */
                     Utility::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
+                    Math::Point2D<unsigned int> lastPosition;                                  /**< The last cursor position */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -124,6 +125,10 @@
                          */
                         template <class T>
                         void registerEvent();
+                        /**
+                         * Update the last cursor position
+                         */
+                        void updateCursorPosition();
 
                     //## Assignment Operator ##//
                         /**

@@ -17,7 +17,7 @@
      namespace NRE {
          namespace Event {
 
-             WindowCloseEvent::WindowCloseEvent(Id id) : window(Singleton<System::System>::get().getGraphicsSystem().getWindow(id)) {
+             WindowCloseEvent::WindowCloseEvent(Graphics::Id id) : window(Singleton<System::System>::get().getGraphicsSystem().getWindow(id)) {
              }
 
          }

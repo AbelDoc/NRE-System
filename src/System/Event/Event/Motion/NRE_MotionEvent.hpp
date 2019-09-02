@@ -32,6 +32,7 @@
                 private:    //Fields
                     ButtonCode code;                        /**< The button's code */
                     Math::Point2D<unsigned int> position;   /**< The cursor position */
+                    Math::Vector2D<int> motion;              /**< The motion */
 
                 public:    // Methods
                     //## Constructor ##//
@@ -42,9 +43,10 @@
                         /**
                          * Construct the event
                          * @param c   the button code
-                         * @param pos the curosr position
+                         * @param pos the cursor position
+                         * @param m   the motion
                          */
-                        MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos);
+                        MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos, Math::Vector2D<int> const& m);
 
                     //## Copy-Constructor ##//
                         /**
@@ -75,6 +77,10 @@
                          * @return the cursor position
                          */
                         Math::Point2D<unsigned int> const& getPosition() const;
+                        /**
+                         * @return the motion
+                         */
+                        Math::Vector2D<int> const& getMotion() const;
                         /**
                          * Compare the event code to the given one
                          * @param  c a button code

@@ -22,7 +22,7 @@
                      switch (event.type) {
                         case ClientMessage : {
             				if ((event.xclient.format == 32) && (event.xclient.data.l[0] ) == static_cast <long> (Singleton<GraphicsDriver>::get().getCloseAtom())) {
-                                Id id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
+                                Graphics::Id id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
                                 if (id != 0) {
                                     emit<WindowCloseEvent>(id);
                                     Singleton<System>::get().getGraphicsSystem().closeWindow(id);
@@ -58,7 +58,9 @@
                             if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                 inputManager.updateButtonEventData(ButtonEventData(code, position));
                             }
-                            emit<MotionEvent>(code, position);
+                            Vector2D<int> motion(static_cast <int> (position.getX()) - static_cast <int> (lastPosition.getX()), static_cast <int> (position.getY()) - static_cast <int> (lastPosition.getY()));
+                            emit<MotionEvent>(code, position, motion);
+                            lastPosition = position;
                             break;
                         }
                      }
@@ -81,6 +83,16 @@
                          internalDispatcher(event);
                      }
                      inputManager.update();
+                 }
+
+                 void EventSystem::updateCursorPosition() {
+                     Display* display = Singleton<GraphicsDriver>::get().getDisplay();
+                     int winX, winY, rootX, rootY;
+                     unsigned int mask = 0;
+                     NativeWindowType rootR, childR;
+                     if (XQueryPointer(display, XRootWindow(display, XDefaultScreen(display)), &rootR, &childR, &rootX, &rootY, &winX, &winY, &mask)) {
+                         lastPosition.setCoord(rootX, rootY);
+                     }
                  }
 
          }

@@ -22,7 +22,7 @@
      namespace NRE {
          namespace System {
 
-                 LRESULT EventSystem::internalDispatcher(Id id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+                 LRESULT EventSystem::internalDispatcher(Graphics::Id id, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                      switch (msg) {
                          case (WM_CLOSE) : {
                              emit<WindowCloseEvent>(id);
@@ -82,7 +82,9 @@
                              if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                  inputManager.updateButtonEventData(ButtonEventData(code, position));
                              }
-                             emit<MotionEvent>(code, position);
+                             Vector2D<int> motion(static_cast <int> (position.getX()) - static_cast <int> (lastPosition.getX()), static_cast <int> (position.getY()) - static_cast <int> (lastPosition.getY()));
+                             emit<MotionEvent>(code, position, motion);
+                             lastPosition = position;
                              break;
                          }
                          case (WM_LBUTTONUP) : {
@@ -126,6 +128,13 @@
                          }
                      }
                      inputManager.update();
+                 }
+
+                 void EventSystem::updateCursorPosition() {
+                     POINT p;
+                     if (GetCursorPos(&p)) {
+                         lastPosition.setCoord(p.x, p.y);
+                     }
                  }
          }
      }

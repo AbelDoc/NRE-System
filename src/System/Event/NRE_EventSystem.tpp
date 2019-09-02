@@ -15,6 +15,7 @@
                  registerEvent<Event::ButtonEvent>();
                  registerEvent<Event::MotionEvent>();
                  registerEvent<Event::WindowCloseEvent>();
+                 updateCursorPosition();
              }
 
              template <class T, class ... Args>
