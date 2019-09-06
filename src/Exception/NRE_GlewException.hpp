@@ -34,16 +34,6 @@
                      */
                     GlewException(Utility::String const& log) throw() : SystemException("GLEW Exception : " + log) {
                     }
-
-                    /**
-                     * Output stream operator for the object
-                     * @param  stream the stream to add the object's string representation
-                     * @param  o      the object to add in the stream
-                     * @return        the modified stream
-                     */
-                    friend std::ostream& operator <<(std::ostream& stream, GlewException const& o) {
-                        return stream << o.toString();
-                    }
             };
         }
     }

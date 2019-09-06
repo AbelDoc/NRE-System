@@ -77,15 +77,45 @@
                              break;
                          }
                          case (WM_MOUSEMOVE) : {
-                             ButtonCode code = inputManager.translateButton(wParam);
-                             Point2D<unsigned int> position(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-                             if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
-                                 inputManager.updateButtonEventData(ButtonEventData(code, position));
+                             if (!inputManager.isRelativeMode()) {
+                                 ButtonCode code = inputManager.translateButton(wParam);
+                                 Point2D<unsigned int> position(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+                                 if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
+                                     inputManager.updateButtonEventData(ButtonEventData(code, position));
+                                 }
+                                 Mouse& mouse = inputManager.getMouse();
+                                 mouse.updateFromPosition(position);
+                                 emit<MotionEvent>(code, mouse.getPosition(), mouse.getDelta());
                              }
-                             Vector2D<int> motion(static_cast <int> (position.getX()) - static_cast <int> (lastPosition.getX()), static_cast <int> (position.getY()) - static_cast <int> (lastPosition.getY()));
-                             emit<MotionEvent>(code, position, motion);
-                             lastPosition = position;
                              break;
+                         }
+                         case (WM_INPUT) : {
+                            if (inputManager.isRelativeMode()) {
+                                HRAWINPUT rawInput = reinterpret_cast <HRAWINPUT> (lParam);
+                                RAWINPUT input;
+                                UINT size = sizeof(input);
+
+                                GetRawInputData(rawInput, RID_INPUT, &input, &size, sizeof(RAWINPUTHEADER));
+
+                                if (input.header.dwType == RIM_TYPEMOUSE) {
+                                    RAWMOUSE* rawMouse = &input.data.mouse;
+                                    ButtonCode code = inputManager.translateRawButton(rawMouse);
+                                    Mouse& mouse = inputManager.getMouse();
+
+                                    if ((rawMouse->usFlags & 0x01) == MOUSE_MOVE_RELATIVE) {
+                                        mouse.updateFromDelta(Vector2D<int>(rawMouse->lLastX, rawMouse->lLastY));
+                                    } else {
+                                        mouse.updateFromPosition(Point2D<unsigned int>(rawMouse->lLastX, rawMouse->lLastY));
+                                    }
+
+                                    if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
+                                        inputManager.updateButtonEventData(ButtonEventData(code, mouse.getPosition()));
+                                    }
+
+                                    emit<MotionEvent>(code, mouse.getPosition(), mouse.getDelta());
+                                }
+                            }
+                            break;
                          }
                          case (WM_LBUTTONUP) : {
                              inputManager.processReleasedButton(ButtonEventData(ButtonCode::LEFT_BUTTON, Point2D<unsigned int>(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam))));
@@ -133,7 +163,7 @@
                  void EventSystem::updateCursorPosition() {
                      POINT p;
                      if (GetCursorPos(&p)) {
-                         lastPosition.setCoord(p.x, p.y);
+                         inputManager.getMouse().setLastPosition(Point2D<unsigned int>(p.x, p.y));
                      }
                  }
          }

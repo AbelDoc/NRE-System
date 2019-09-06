@@ -21,6 +21,8 @@
 
 
     #include "../Event/NRE_Event.hpp"
+    #include "Mouse/NRE_Mouse.hpp"
+    #include "../../../Header/NRE_Exception.hpp"
 
     #pragma once
 
@@ -41,7 +43,8 @@
              */
             class InputManager {
                 private :   // Fields
-                    KeyTranslater keyTranslater;         /**< Manage the translation of key event */
+                    KeyTranslater keyTranslater;                  /**< Manage the translation of key event */
+                    Mouse mouse;                                  /**< The interface to the application cursor */
                     Utility::Vector<KeyCode> keys;                /**< The active keys */
                     Utility::Vector<ButtonEventData> buttons;     /**< The active buttons */
 
@@ -59,6 +62,21 @@
                          * @return      if the button is pressed
                          */
                         bool isButtonPressed(ButtonCode code) const;
+                        /**
+                         * @return if we are in relative motion mode
+                         */
+                        bool isRelativeMode() const;
+                        /**
+                         * @return the mouse interface
+                         */
+                        Mouse& getMouse();
+
+                    //## Setter ##//
+                        /**
+                         * Set the relative motion mode
+                         * @param mode toggle the mode, true to activate it
+                         */
+                        void setRelativeMode(bool mode);
 
                     //## Methods ##//
                         #ifdef _WIN32                           // Windows
@@ -75,6 +93,17 @@
                              * @return        the translated button
                              */
                             ButtonCode translateButton(WPARAM wParam) const;
+                            /**
+                             * Translate a raw mouse data into an NRE button
+                             * @param  data the raw mouse data
+                             * @return      the translated button
+                             */
+                            ButtonCode translateRawButton(RAWMOUSE* data) const;
+                            /**
+                             * Toggle the raw input devices system
+                             * @param mode tell if we are (un)registering from the system
+                             */
+                            void toggleRawInputDevices(bool mode);
                         #elif __linux__                         // Linux
                             /**
                              * Translate a native key code into an NRE key

@@ -26,5 +26,9 @@
                  return clock;
              }
 
+             inline void System::setRelativeMode(bool mode) {
+                 events.setRelativeMode(mode);
+             }
+
          }
      }

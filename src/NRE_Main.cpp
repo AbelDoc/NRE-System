@@ -19,15 +19,23 @@
     using namespace std::chrono_literals;
 
     class DevApplication : public Application {
+        private :   // Fields
+            bool relative;
+
         public :    // Methods
             //## Constructor ##//
-                DevApplication() : Application("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE, {8, 8, 8, 0, 0, 1, 24, 8, 0, 0, 0, 1, 2, 1}) {
+                DevApplication() : Application("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE, {8, 8, 8, 0, 0, 1, 24, 8, 0, 0, 0, 1, 2, 1}), relative(false) {
                 }
 
             //## Methods ##//
                 void create() override {
                     addHandler<KeyEvent>([&](KeyEvent& event) {
-                        std::cout << event.getCode() << std::endl;
+                        std::cout << "Key event :" << std::endl;
+                        std::cout << "\tCode : " << event.getCode() << std::endl;
+                        if (event.isCode(KeyCode::R)) {
+                            relative = !relative;
+                            Singleton<System::System>::get().setRelativeMode(relative);
+                        }
                         return true;
                     });
 
@@ -37,16 +45,19 @@
                     });
 
                     addHandler<ButtonEvent>([&](ButtonEvent& event) {
-                        std::cout << event.getCode() << std::endl;
-                        std::cout << "Cursor : " << event.getPosition() << std::endl;
+                        std::cout << "Button event : " << std::endl;
+                        std::cout << "\tCode : " << event.getCode() << std::endl;
+                        std::cout << "\tursor : " << event.getPosition() << std::endl;
                         return false;
                     });
 
                     addHandler<MotionEvent>([&](MotionEvent& event) {
-                        std::cout << "Motion : " << event.getPosition() << std::endl;
+                        std::cout << "Motion event : " << std::endl;
+                        std::cout << "\tCode : " << event.getCode() << std::endl;
+                        std::cout << "\tPosition : " << event.getPosition() << std::endl;
+                        std::cout << "\tMotion : " << event.getMotion() << std::endl;
                         return true;
                     });
-                    glClearColor(1.0, 0.0, 0.0, 0.0);
                 }
                 void update() override {
                 }

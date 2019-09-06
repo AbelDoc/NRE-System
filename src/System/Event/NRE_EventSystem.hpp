@@ -45,7 +45,6 @@
                 private :   // Fields
                     Event::InputManager inputManager;                                          /**< The input manager */
                     Utility::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
-                    Math::Point2D<unsigned int> lastPosition;                                  /**< The last cursor position */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -73,6 +72,13 @@
                          * EventSystem Deconstructor
                          */
                         ~EventSystem() = default;
+
+                    //## Setter ##//
+                        /**
+                         * Set the relative input mode
+                         * @param mode the new mode
+                         */
+                        void setRelativeMode(bool mode);
 
                     //## Methods ##//
                         #ifdef _WIN32                           // Windows

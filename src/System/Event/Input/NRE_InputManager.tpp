@@ -18,6 +18,18 @@
                 return std::find(buttons.begin(), buttons.end(), ButtonEventData(code, Math::Point2D<unsigned int>())) != buttons.end();
             }
 
+            inline bool InputManager::isRelativeMode() const {
+                return mouse.isRelativeMode();
+            }
+
+            inline Mouse& InputManager::getMouse() {
+                return mouse;
+            }
+
+            inline void InputManager::setRelativeMode(bool mode) {
+                mouse.setRelativeMode(mode);
+            }
+
             inline void InputManager::processPressedKey(KeyCode key) {
                 keys.emplaceBack(key);
             }

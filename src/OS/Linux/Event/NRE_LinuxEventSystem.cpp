@@ -91,7 +91,7 @@
                      unsigned int mask = 0;
                      NativeWindowType rootR, childR;
                      if (XQueryPointer(display, XRootWindow(display, XDefaultScreen(display)), &rootR, &childR, &rootX, &rootY, &winX, &winY, &mask)) {
-                         lastPosition.setCoord(rootX, rootY);
+                         inputManager.getMouse().setLastPosition(Point2D<unsigned int>(static_cast <unsigned int> (rootX), static_cast <unsigned int> (rootY)));
                      }
                  }
 

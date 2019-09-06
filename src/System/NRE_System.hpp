@@ -81,6 +81,13 @@
                          */
                         Time::Clock& getClock();
 
+                    //## Setter ##//
+                        /**
+                         * Set the relative input mode
+                         * @param mode the new mode
+                         */
+                        void setRelativeMode(bool mode);
+
                     //## Methods ##//
                         /**
                          * Query the System's Memory info

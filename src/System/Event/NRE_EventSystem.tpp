@@ -18,6 +18,10 @@
                  updateCursorPosition();
              }
 
+             inline void EventSystem::setRelativeMode(bool mode) {
+                 inputManager.setRelativeMode(mode);
+             }
+
              template <class T, class ... Args>
              inline bool EventSystem::emit(Args && ... args) {
                  return getEmitter<T>().emit(std::forward<Args>(args)...);

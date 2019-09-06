@@ -41,5 +41,23 @@
                     return code;
                 }
 
+                inline ButtonCode InputManager::translateRawButton(RAWMOUSE* data) const {
+                    ButtonCode code = ButtonCode::NO_BUTTON;
+                    ULONG button = data->usButtonFlags;
+
+                    if ((button & RI_MOUSE_BUTTON_1_DOWN) || (button & RI_MOUSE_BUTTON_1_UP)) {
+                        code =  ButtonCode::LEFT_BUTTON;
+                    } else if ((button & RI_MOUSE_BUTTON_2_DOWN) || (button & RI_MOUSE_BUTTON_2_UP)) {
+                        code = ButtonCode::RIGHT_BUTTON;
+                    } else if ((button & RI_MOUSE_BUTTON_3_DOWN) || (button & RI_MOUSE_BUTTON_3_UP)) {
+                        code = ButtonCode::MIDDLE_BUTTON;
+                    } else if ((button & RI_MOUSE_BUTTON_4_DOWN) || (button & RI_MOUSE_BUTTON_4_UP)) {
+                        code = ButtonCode::X1_BUTTON;
+                    } else if ((button & RI_MOUSE_BUTTON_5_DOWN) || (button & RI_MOUSE_BUTTON_5_UP)) {
+                        code = ButtonCode::X2_BUTTON;
+                    }
+                    return code;
+                }
+
          }
      }
