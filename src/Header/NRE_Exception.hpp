@@ -13,4 +13,5 @@
     #include "../Exception/NRE_GlewException.hpp"
     #include "../Exception/NRE_GLXException.hpp"
     #include "../Exception/NRE_WGLException.hpp"
-    #include "../Exception/NRE_WindowsException.hpp"
+    #include "../Exception/NRE_WinAPIException.hpp"
+    #include "../Exception/NRE_X11Exception.hpp"

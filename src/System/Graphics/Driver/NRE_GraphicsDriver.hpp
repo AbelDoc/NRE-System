@@ -33,6 +33,7 @@
      #elif __linux__                         // Linux
         #include <X11/Xlib.h>
         #include <X11/Xatom.h>
+        #include <X11/extensions/XInput2.h>
         #include <GL/glxew.h>
      #else
         #error "Not Supported Yet or Unknown compiler"

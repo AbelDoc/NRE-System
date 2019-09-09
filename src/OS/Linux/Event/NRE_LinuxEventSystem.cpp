@@ -58,9 +58,8 @@
                             if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                 inputManager.updateButtonEventData(ButtonEventData(code, position));
                             }
-                            Vector2D<int> motion(static_cast <int> (position.getX()) - static_cast <int> (lastPosition.getX()), static_cast <int> (position.getY()) - static_cast <int> (lastPosition.getY()));
+                            Vector2D<int> motion(position); // TODO
                             emit<MotionEvent>(code, position, motion);
-                            lastPosition = position;
                             break;
                         }
                      }
@@ -85,13 +84,39 @@
                      inputManager.update();
                  }
 
-                 void EventSystem::updateCursorPosition() {
+                 void EventSystem::updateInfos() {
                      Display* display = Singleton<GraphicsDriver>::get().getDisplay();
                      int winX, winY, rootX, rootY;
-                     unsigned int mask = 0;
+                     unsigned int trashMask = 0;
                      NativeWindowType rootR, childR;
-                     if (XQueryPointer(display, XRootWindow(display, XDefaultScreen(display)), &rootR, &childR, &rootX, &rootY, &winX, &winY, &mask)) {
+                     if (XQueryPointer(display, XRootWindow(display, XDefaultScreen(display)), &rootR, &childR, &rootX, &rootY, &winX, &winY, &trashMask)) {
                          inputManager.getMouse().setLastPosition(Point2D<unsigned int>(static_cast <unsigned int> (rootX), static_cast <unsigned int> (rootY)));
+                     }
+
+                     int trashEvent, trashErr;
+
+                     if (!XQueryExtension(display, "XInputExtension", &rawInputCode, &trashEvent, &trashErr)) {
+                         throw Exception::X11Exception("The server can't provide XInputExtension which is required");
+                     }
+
+                     int major = 2, minor = 2;
+                     XIQueryVersion(display, &major, &minor);
+                     if (major < 2) {
+                         throw Exception::X11Exception(Utility::String("XInputExtension 2.+ is required. Found : ") << major << "." << minor);
+                     }
+
+                     XIEventMask eventMask;
+                     unsigned char mask[3] = {0, 0, 0};
+                     eventMask.deviceid = XIAllMasterDevices;
+                     eventMask.mask_len = sizeof(mask);
+                     eventMask.mask = mask;
+
+                     XISetMask(mask, XI_RawMotion);
+                     XISetMask(mask, XI_RawButtonPress);
+                     XISetMask(mask, XI_RawButtonRelease);
+
+                     if (XISelectEvents(display, DefaultRootWindow(display), &eventMask, 1) != Success) {
+                         throw Exception::X11Exception("Couldn't use Raw input events");
                      }
                  }
 

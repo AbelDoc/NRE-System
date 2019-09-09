@@ -160,7 +160,7 @@
                      inputManager.update();
                  }
 
-                 void EventSystem::updateCursorPosition() {
+                 void EventSystem::updateInfos() {
                      POINT p;
                      if (GetCursorPos(&p)) {
                          inputManager.getMouse().setLastPosition(Point2D<unsigned int>(p.x, p.y));

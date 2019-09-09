@@ -15,7 +15,7 @@
                  registerEvent<Event::ButtonEvent>();
                  registerEvent<Event::MotionEvent>();
                  registerEvent<Event::WindowCloseEvent>();
-                 updateCursorPosition();
+                 updateInfos();
              }
 
              inline void EventSystem::setRelativeMode(bool mode) {

@@ -45,6 +45,9 @@
                 private :   // Fields
                     Event::InputManager inputManager;                                          /**< The input manager */
                     Utility::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
+                    #ifdef __linux__
+                        int rawInputCode;                                                      /**< XI2 operation code */
+                    #endif
 
                 public :    // Methods
                     //## Constructor ##//
@@ -132,9 +135,9 @@
                         template <class T>
                         void registerEvent();
                         /**
-                         * Update the last cursor position
+                         * Update info according to the OS
                          */
-                        void updateCursorPosition();
+                        void updateInfos();
 
                     //## Assignment Operator ##//
                         /**

@@ -10,9 +10,7 @@
     namespace NRE {
         namespace Event {
 
-            inline void Mouse::setRelativeMode(bool mode) {
-                toggleRawInputDevices(mode);
-                relativeMode = mode;
+            inline void Mouse::setRelativeMode(bool) {
             }
 
             inline void Mouse::toggleRawInputDevices(bool mode) {
@@ -25,7 +23,7 @@
 
                     if (!static_cast <bool> (RegisterRawInputDevices(&raw, 1, sizeof(RAWINPUTDEVICE)))) {
                         if (mode) {
-                            throw Exception::WindowsException("Raw devices system not supported");
+                            throw Exception::WinAPIException("Raw devices system not supported");
                         }
                     }
 

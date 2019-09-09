@@ -32,7 +32,7 @@
                     addHandler<KeyEvent>([&](KeyEvent& event) {
                         std::cout << "Key event :" << std::endl;
                         std::cout << "\tCode : " << event.getCode() << std::endl;
-                        if (event.isCode(KeyCode::R)) {
+                        if (event.isCode(Event::KeyCode::R)) {
                             relative = !relative;
                             Singleton<System::System>::get().setRelativeMode(relative);
                         }
