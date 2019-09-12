@@ -10,7 +10,9 @@
     namespace NRE {
         namespace Event {
 
-            inline void Mouse::setRelativeMode(bool) {
+            inline void Mouse::setRelativeMode(bool mode) {
+                toggleRawInputDevices(mode);
+                relativeMode = mode;
             }
 
             inline void Mouse::toggleRawInputDevices(bool mode) {
