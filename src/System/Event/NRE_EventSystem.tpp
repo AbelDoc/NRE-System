@@ -14,6 +14,7 @@
                  registerEvent<Event::KeyEvent>();
                  registerEvent<Event::ButtonEvent>();
                  registerEvent<Event::MotionEvent>();
+                 registerEvent<Event::WheelMotionEvent>();
                  registerEvent<Event::WindowCloseEvent>();
                  updateInfos();
              }

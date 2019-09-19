@@ -39,17 +39,11 @@
             }
 
             inline void InputManager::processReleasedKey(KeyCode key) {
-                auto it = std::remove(keys.begin(), keys.end(), key);
-                if (it != keys.end()) {
-                    keys.erase(it);
-                }
+                keys.erase(std::remove(keys.begin(), keys.end(), key), keys.end());
             }
 
             inline void InputManager::processReleasedButton(ButtonEventData const& buttonData) {
-                auto it = std::remove(buttons.begin(), buttons.end(), buttonData);
-                if (it != buttons.end()) {
-                    buttons.erase(it);
-                }
+                buttons.erase(std::remove(buttons.begin(), buttons.end(), buttonData), buttons.end());
             }
 
             inline void InputManager::updateButtonEventData(ButtonEventData const& buttonData) {

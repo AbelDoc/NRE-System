@@ -12,4 +12,5 @@
     #include "Key/NRE_KeyEvent.hpp"
     #include "Button/NRE_ButtonEvent.hpp"
     #include "Motion/NRE_MotionEvent.hpp"
+    #include "WheelMotion/NRE_WheelMotionEvent.hpp"
     #include "Window/NRE_WindowCloseEvent.hpp"

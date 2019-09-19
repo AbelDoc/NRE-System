@@ -47,7 +47,7 @@
                     addHandler<ButtonEvent>([&](ButtonEvent& event) {
                         std::cout << "Button event : " << std::endl;
                         std::cout << "\tCode : " << event.getCode() << std::endl;
-                        std::cout << "\tursor : " << event.getPosition() << std::endl;
+                        std::cout << "\tCursor : " << event.getPosition() << std::endl;
                         return false;
                     });
 
@@ -56,6 +56,13 @@
                         std::cout << "\tCode : " << event.getCode() << std::endl;
                         std::cout << "\tPosition : " << event.getPosition() << std::endl;
                         std::cout << "\tMotion : " << event.getMotion() << std::endl;
+                        return true;
+                    });
+
+                    addHandler<WheelMotionEvent>([&](WheelMotionEvent& event) {
+                        std::cout << "Wheel Motion event : " << std::endl;
+                        std::cout << "\tPosition : " << event.getPosition() << std::endl;
+                        std::cout << "\tDelta : " << event.getDelta() << std::endl;
                         return true;
                     });
                 }

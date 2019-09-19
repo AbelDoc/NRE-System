@@ -29,9 +29,5 @@
                 return code == c;
             }
 
-            inline bool MotionEvent::operator ==(MotionEvent const& e) const {
-                return code == e.code;
-            }
-
         }
     }

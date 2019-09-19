@@ -89,6 +89,12 @@
                              }
                              break;
                          }
+                         case (WM_MOUSEWHEEL) : {
+                             Point2D<unsigned int> position(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+                             int delta = (GET_WHEEL_DELTA_WPARAM(wParam) > 0) ? (1) : (-1);
+                             emit<WheelMotionEvent>(position, delta);
+                             break;
+                         }
                          case (WM_INPUT) : {
                             if (inputManager.isRelativeMode()) {
                                 HRAWINPUT rawInput = reinterpret_cast <HRAWINPUT> (lParam);

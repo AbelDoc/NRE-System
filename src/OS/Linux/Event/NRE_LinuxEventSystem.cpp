@@ -45,11 +45,23 @@
                             break;
                         }
                         case ButtonPress : {
-                            inputManager.processPressedButton(ButtonEventData(inputManager.translateButton(event.xbutton), Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                            ButtonCode code = inputManager.translateButton(event.xbutton);
+                            if (code != ButtonCode::NO_BUTTON) {
+                                inputManager.processPressedButton(ButtonEventData(code, Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                            }
                             break;
                         }
                         case ButtonRelease : {
-                            inputManager.processReleasedButton(ButtonEventData(inputManager.translateButton(event.xbutton), Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                            if (event.xbutton.button == Button4 || event.xbutton.button == Button5) {
+                                Point2D<unsigned int> position(event.xbutton.x, event.xbutton.y);
+                                int delta = (event.xbutton.button == Button4) ? (1) : (-1);
+                                emit<WheelMotionEvent>(position, delta);
+                            } else {
+                                ButtonCode code = inputManager.translateButton(event.xbutton);
+                                if (code != ButtonCode::NO_BUTTON) {
+                                    inputManager.processReleasedButton(ButtonEventData(code, Point2D<unsigned int>(event.xbutton.x, event.xbutton.y)));
+                                }
+                            }
                             break;
                         }
                         case MotionNotify : {

@@ -1,7 +1,7 @@
 
     /**
-     * @file NRE_MotionEvent.hpp
-     * @brief Declaration of Event's API's Object : MotionEvent
+     * @file NRE_WheelMotionEvent.hpp
+     * @brief Declaration of Event's API's Object : WheelMotionEvent
      * @author Louis ABEL
      * @date 14/05/2019
      * @copyright CC-BY-NC-SA
@@ -25,68 +25,56 @@
         namespace Event {
 
             /**
-             * @class MotionEvent
-             * @brief Manage a controller motion event
+             * @class WheelMotionEvent
+             * @brief Manage a controller wheel motion event
              */
-            class MotionEvent {
+            class WheelMotionEvent {
                 private:    //Fields
-                    ButtonCode code;                        /**< The button's code */
-                    Math::Point2D<unsigned int> position;   /**< The cursor position on application area */
-                    Math::Vector2D<int> motion;             /**< The motion */
+                    Math::Point2D<unsigned int> position;   /**< The cursor position on screen */
+                    int delta;                              /**< The motion delta */
 
                 public:    // Methods
                     //## Constructor ##//
                         /**
                          * Default constructor
                          */
-                        MotionEvent() = delete;
+                        WheelMotionEvent() = delete;
                         /**
                          * Construct the event
-                         * @param c   the button code
                          * @param pos the cursor position
-                         * @param m   the motion
+                         * @param d   the motion delta
                          */
-                        MotionEvent(ButtonCode c, Math::Point2D<unsigned int> const& pos, Math::Vector2D<int> const& m);
+                        WheelMotionEvent(Math::Point2D<unsigned int> const& pos, int d);
 
                     //## Copy-Constructor ##//
                         /**
                          * Copy e into this
                          * @param e the motion event to copy
                          */
-                        MotionEvent(MotionEvent const& e) = default;
+                        WheelMotionEvent(WheelMotionEvent const& e) = default;
 
                     //## Move-Constructor ##//
                         /**
                          * Move e into this
                          * @param e the motion event to move
                          */
-                        MotionEvent(MotionEvent && e) = default;
+                        WheelMotionEvent(WheelMotionEvent && e) = default;
 
                     //## Deconstructor ##//
                         /**
-                         * MotionEvent Deconstructor
+                         * WheelMotionEvent Deconstructor
                          */
-                        ~MotionEvent() = default;
+                        ~WheelMotionEvent() = default;
 
                     //## Getter ##//
-                        /**
-                         * @return the button's code
-                         */
-                        ButtonCode getCode() const;
                         /**
                          * @return the cursor position
                          */
                         Math::Point2D<unsigned int> const& getPosition() const;
                         /**
-                         * @return the motion
+                         * @return the motion delta
                          */
-                        Math::Vector2D<int> const& getMotion() const;
-                        /**
-                         * Compare the event code to the given one
-                         * @param  c a button code
-                         * @return   the test's result
-                         */
-                        bool isCode(ButtonCode c) const;
+                        int getDelta() const;
 
                     //## Assignment Operator ##//
                         /**
@@ -94,15 +82,15 @@
                          * @param e the object to copy into this
                          * @return  the reference of himself
                          */
-                        MotionEvent& operator =(MotionEvent const& e) = default;
+                        WheelMotionEvent& operator =(WheelMotionEvent const& e) = default;
                         /**
                          * Copy e into this
                          * @param e the object to copy into this
                          * @return  the reference of himself
                          */
-                        MotionEvent& operator =(MotionEvent && e) = default;
+                        WheelMotionEvent& operator =(WheelMotionEvent && e) = default;
             };
         }
     }
 
-    #include "NRE_MotionEvent.tpp"
+    #include "NRE_WheelMotionEvent.tpp"
