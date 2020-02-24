@@ -29,6 +29,10 @@
              inline void System::setRelativeMode(bool mode) {
                  events.setRelativeMode(mode);
              }
+             
+             inline void System::showCursor(bool mode) {
+                 events.showCursor(mode);
+             }
 
          }
      }

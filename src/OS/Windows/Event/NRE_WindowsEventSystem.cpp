@@ -117,7 +117,8 @@
                                     if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                         inputManager.updateButtonEventData(ButtonEventData(code, mouse.getPosition()));
                                     }
-
+                                    auto const& win = Singleton<System>::get().getGraphicsSystem().getWindow(id);
+                                    mouse.warpCursor(win.toScreen(win.getAttributes().getSize() / 2));
                                     emit<MotionEvent>(code, mouse.getPosition(), mouse.getDelta());
                                 }
                             }

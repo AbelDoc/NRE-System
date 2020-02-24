@@ -11,6 +11,8 @@
 
     #include <Header/NRE_Math.hpp>
 
+    #include "../../../Graphics/Window/Internal/NRE_InternalWindow.hpp"
+
     /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -107,6 +109,24 @@
                          * @param motion the cursor motion
                          */
                         void updateFromDelta(Math::Vector2D<int> const& motion);
+                        #ifdef WIN32
+                            /**
+                             * Warp the cursor position to the given coordinates
+                             * @param pos the new cursor position
+                             */
+                            void warpCursor(Math::Point2D<unsigned int> const& pos);
+                        #elif __linux__
+                            /**
+                             * Warp the cursor position to the given coordinates
+                             * @param pos the new cursor position
+                             */
+                            void warpCursor(Graphics::InternalWindow const& window, Math::Point2D<unsigned int> const& pos);
+                        #endif
+                        /**
+                         * Show or hide the cursor
+                         * @param mode the new mode, true to show it
+                         */
+                        void showCursor(bool mode);
 
                     //## Assignment Operator ##//
                         /**

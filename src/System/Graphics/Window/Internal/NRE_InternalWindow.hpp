@@ -94,6 +94,12 @@
                          * @return the window top-left corner position
                          */
                         Math::Point2D<unsigned int> getPosition() const;
+                        /**
+                         * @return the OS-dependant window
+                         */
+                        NativeWindowType getInternal() const {
+                            return internal;
+                        }
                         #ifdef _WIN32
                             /**
                              * @return the internal device
@@ -105,6 +111,12 @@
                              */
                             int getXId() const;
                         #endif
+                         /**
+                          * Transform a point from client space to screen space
+                          * @param p the point to transform
+                          * @return  the transformed point
+                          */
+                         Math::Point2D<unsigned int> toScreen(Math::Point2D<unsigned int> const& p) const;
 
                     //## Methods ##//
                         /**

@@ -67,10 +67,16 @@
                         case MotionNotify : {
                             ButtonCode code = inputManager.translateButton(event.xbutton);
                             Point2D<unsigned int> position(event.xbutton.x, event.xbutton.y);
+                            Mouse& mouse = inputManager.getMouse();
                             if (code != ButtonCode::NO_BUTTON && inputManager.isButtonPressed(code)) {
                                 inputManager.updateButtonEventData(ButtonEventData(code, position));
                             }
                             Vector2D<int> motion(position); // TODO
+                            if (mouse.isRelativeMode()) {
+                                Graphics::Id id = Singleton<GraphicsDriver>::get().findId(event.xany.window);
+                                auto const& win = Singleton<System>::get().getGraphicsSystem().getWindow(id);
+                                mouse.warpCursor(win.getInternal(), win.getAttributes().getSize() / 2);
+                            }
                             emit<MotionEvent>(code, position, motion);
                             break;
                         }

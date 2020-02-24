@@ -15,6 +15,10 @@
 
             inline WindowAttributes::WindowAttributes(Utility::String const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
             }
+            
+            inline Math::Vector2D<unsigned int> const& WindowAttributes::getSize() const {
+                return size;
+            }
 
             inline void WindowAttributes::setPosition(Math::Point2D<unsigned int> const& pos) {
                 position = pos;

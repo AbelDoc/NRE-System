@@ -77,6 +77,11 @@
                          * @param mode toggle the mode, true to activate it
                          */
                         void setRelativeMode(bool mode);
+                        /**
+                         * Show or hide the cursor
+                         * @param mode the new mode, true to show it
+                         */
+                        void showCursor(bool mode);
 
                     //## Methods ##//
                         #ifdef _WIN32                           // Windows

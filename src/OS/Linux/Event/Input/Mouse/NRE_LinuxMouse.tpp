@@ -13,6 +13,16 @@
             inline void Mouse::setRelativeMode(bool mode) {
                 relativeMode = mode;
             }
+    
+            inline void Mouse::warpCursor(Graphics::InternalWindow const& window, Math::Point2D<unsigned int> const& pos) {
+                Display* display = Utility::Singleton<Graphics::GraphicsDriver>::get().getDisplay();
+                XWarpPointer(display, None, window.getInternal(), 0, 0, 0, 0, pos.getX(), pos.getY());
+                XSync(display, False);
+            }
+    
+            inline void Mouse::showCursor(bool) {
+                // TODO
+            }
 
         }
     }

@@ -92,9 +92,23 @@
                          */
                         bool isRunning() const;
                         /**
+                         * @return the internal window
+                         */
+                        InternalWindow const& getInternal() const;
+                        /**
+                         * @return the window's attributes
+                         */
+                        WindowAttributes const& getAttributes() const;
+                        /**
                          * @return the window id
                          */
                         Id getId() const;
+                        /**
+                         * Transform a point from client space to screen space
+                         * @param p the point to transform
+                         * @return  the transformed point
+                         */
+                        Math::Point2D<unsigned int> toScreen(Math::Point2D<unsigned int> const& p) const;
 
                     //## Methods ##//
                         /**

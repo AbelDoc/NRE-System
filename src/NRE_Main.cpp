@@ -21,10 +21,11 @@
     class DevApplication : public Application {
         private :   // Fields
             bool relative;
+            bool show;
 
         public :    // Methods
             //## Constructor ##//
-                DevApplication() : Application("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE, {8, 8, 8, 0, 0, 1, 24, 8, 0, 0, 0, 1, 2, 1}), relative(false) {
+                DevApplication() : Application("NRE-System Devlopment", {1280, 720}, WindowStyle::RESIZEABLE, {8, 8, 8, 0, 0, 1, 24, 8, 0, 0, 0, 1, 2, 1}), relative(false), show(true) {
                 }
 
             //## Methods ##//
@@ -35,6 +36,10 @@
                         if (event.isCode(Event::KeyCode::R)) {
                             relative = !relative;
                             Singleton<System::System>::get().setRelativeMode(relative);
+                        }
+                        if (event.isCode(Event::KeyCode::S)) {
+                            show = !show;
+                            Singleton<System::System>::get().showCursor(show);
                         }
                         return true;
                     });

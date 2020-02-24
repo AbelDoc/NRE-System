@@ -22,6 +22,10 @@
              inline void EventSystem::setRelativeMode(bool mode) {
                  inputManager.setRelativeMode(mode);
              }
+             
+             inline void EventSystem::showCursor(bool mode) {
+                 inputManager.showCursor(mode);
+             }
 
              template <class T, class ... Args>
              inline bool EventSystem::emit(Args && ... args) {

@@ -25,6 +25,10 @@
 
                 return Math::Point2D<unsigned int>(attributes.x, attributes.y);
             }
+    
+            inline Math::Point2D<unsigned int> InternalWindow::toScreen(Math::Point2D<unsigned int> const& p) const {
+                return p;
+            }
 
             inline void InternalWindow::refresh() {
                 Display* display = Utility::Singleton<GraphicsDriver>::get().getDisplay();

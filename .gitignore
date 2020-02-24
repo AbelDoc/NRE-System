@@ -5,3 +5,5 @@ DoxyFile
 archive.sh
 bin/Linux/NRE-System
 *.dll
+.idea/*
+cmake-build-debug/*

@@ -84,9 +84,14 @@
                     //## Setter ##//
                         /**
                          * Set the relative input mode
-                         * @param mode the new mode
+                         * @param mode the new mode, true for relative
                          */
                         void setRelativeMode(bool mode);
+                        /**
+                         * Show or hide the cursor
+                         * @param mode the new mode, true to show it
+                         */
+                        void showCursor(bool mode);
 
                     //## Methods ##//
                         /**

@@ -72,6 +72,12 @@
                          * WindowAttributes Deconstructor
                          */
                         ~WindowAttributes() = default;
+    
+                     //## Getter ##//
+                        /**
+                         * @return the window's size
+                         */
+                        Math::Vector2D<unsigned int> const& getSize() const;
 
                     //## Setter ##//
                         /**

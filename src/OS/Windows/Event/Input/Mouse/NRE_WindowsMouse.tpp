@@ -14,6 +14,18 @@
                 toggleRawInputDevices(mode);
                 relativeMode = mode;
             }
+            
+            inline void Mouse::warpCursor(Math::Point2D<unsigned int> const& pos) {
+                SetCursorPos(pos.getX(), pos.getY());
+            }
+            
+            inline void Mouse::showCursor(bool mode) {
+                ShowCursor(mode);
+                if (!mode) {
+                    while (ShowCursor(mode) >= 0) {
+                    }
+                }
+            }
 
             inline void Mouse::toggleRawInputDevices(bool mode) {
                 if ((mode && !registered) || (!mode && registered)) {

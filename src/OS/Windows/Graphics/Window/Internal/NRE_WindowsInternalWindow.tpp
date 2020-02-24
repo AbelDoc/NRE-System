@@ -27,6 +27,14 @@
             inline HDC& InternalWindow::getDevice() {
                 return device;
             }
+            
+            inline Math::Point2D<unsigned int> InternalWindow::toScreen(Math::Point2D<unsigned int> const& p) const {
+                POINT pt;
+                pt.x = p.getX();
+                pt.y = p.getY();
+                ClientToScreen(internal, &pt);
+                return Math::Point2D<unsigned int>(pt.x, pt.y);
+            }
 
             inline void InternalWindow::refresh() {
                 SwapBuffers(device);

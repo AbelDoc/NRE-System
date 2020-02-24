@@ -21,13 +21,17 @@
             inline bool InputManager::isRelativeMode() const {
                 return mouse.isRelativeMode();
             }
-
+            
             inline Mouse& InputManager::getMouse() {
                 return mouse;
             }
 
             inline void InputManager::setRelativeMode(bool mode) {
                 mouse.setRelativeMode(mode);
+            }
+            
+            inline void InputManager::showCursor(bool mode) {
+                mouse.showCursor(mode);
             }
 
             inline void InputManager::processPressedKey(KeyCode key) {
