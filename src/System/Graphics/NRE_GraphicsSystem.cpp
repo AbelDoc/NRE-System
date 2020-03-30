@@ -19,6 +19,7 @@
              GraphicsSystem::~GraphicsSystem() {
                  for (auto& it : windows) {
                      it.second->close(false);
+                     delete it.second;
                  }
              }
 

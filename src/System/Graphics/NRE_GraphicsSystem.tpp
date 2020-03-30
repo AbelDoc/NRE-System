@@ -22,6 +22,7 @@
             }
 
             inline void GraphicsSystem::removeWindow(Graphics::Id const& id) {
+                delete windows.get(id);
                 windows.erase(id);
             }
 
