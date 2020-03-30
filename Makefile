@@ -4,8 +4,8 @@ export LD = g++.exe
 export CFLAGS = -pedantic -Wno-virtual-move-assign -Wall -Wextra -Wfloat-equal -Wstrict-overflow -Wshadow -Wconversion -Wunreachable-code -Wuninitialized -Winit-self -Werror -fstrict-overflow -O3 -std=c++17
 export LDFLAGS = -static -static-libgcc -static-libstdc++
 
-export INC = -I"C:/lib/MinGW64_7.3/include" -I"C:/lib/Glew/include" -I"C:/Users/abell/Documents/GitHub/NRE-Math/src" -I"C:/Users/abell/Documents/GitHub/NRE-Utility/src" 
-export LIB = "-lmingw32" "-lPsapi" "-lgdi32" "-lNRE-Math" "-lOpenGL32" "C:\lib\Glew\lib\libglew32.dll.a" 
+export INC = -I"C:/lib/MinGW64_7.3/include" -I"C:/lib/Glew/include" -I"C:/Users/abell/Documents/GitHub/NRE-Math/src" -I"C:/Users/abell/Documents/GitHub/NRE-Utility/src" -I"C:/Users/abell/Documents/GitHub/NRE-Memory/src" 
+export LIB = "-lmingw32" "-lPsapi" "-lgdi32" "-lOpenGL32" "C:\lib\Glew\lib\libglew32.dll.a" 
 export LIBDIR = -L"C:/lib/MinGW64_7.3/x86_64-w64-mingw32/lib" -L"C:/lib/WindowsKits/10/Lib/10.0.17763.0/um/x64" -L"C:/lib/NRE" -L"C:/lib/Glew/lib" 
 
 OBJDIR = obj/

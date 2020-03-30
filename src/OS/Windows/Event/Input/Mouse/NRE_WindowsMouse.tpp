@@ -20,9 +20,11 @@
             }
             
             inline void Mouse::showCursor(bool mode) {
-                ShowCursor(mode);
                 if (!mode) {
                     while (ShowCursor(mode) >= 0) {
+                    }
+                } else {
+                    while (ShowCursor(mode) < 0) {
                     }
                 }
             }
