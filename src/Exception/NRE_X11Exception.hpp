@@ -18,7 +18,7 @@
     namespace NRE {
         /**
          * @namespace Exception
-         * @brief Utility's API
+         * @brief Core's API
          */
         namespace Exception {
 
@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    X11Exception(Utility::String const& log) throw() : SystemException("X11 Exception : " + log) {
+                    X11Exception(Core::String const& log) throw() : SystemException("X11 Exception : " + log) {
                     }
             };
         }

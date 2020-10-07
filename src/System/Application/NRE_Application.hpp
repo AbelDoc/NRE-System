@@ -10,7 +10,7 @@
     #pragma once
 
     #include "../NRE_System.hpp"
-    #include <Utility/Vector/NRE_Vector.hpp>
+    #include <Core/Vector/NRE_Vector.hpp>
 
     /**
      * @namespace NRE
@@ -30,7 +30,7 @@
             class Application {
                 private :   // Fields
                     Graphics::Window& window;                       /**< The application's window */
-                    Utility::Vector<Utility::Observer*> handlers;   /**< The application's event handlers */
+                    Core::Vector<Core::Observer*> handlers;   /**< The application's event handlers */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -46,7 +46,7 @@
                          * @param style    the window style
                          * @param attr     the window OpenGL Context attributes
                          */
-                        Application(Utility::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr = Graphics::ContextAttributes());
+                        Application(Core::String const& title, Math::Point2D<unsigned int> const& position, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr = Graphics::ContextAttributes());
                         /**
                          * Create the application from the window attributes
                          * @param title    the window title
@@ -54,7 +54,7 @@
                          * @param style    the window style
                          * @param attr     the window OpenGL Context attributes
                          */
-                        Application(Utility::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr = Graphics::ContextAttributes());
+                        Application(Core::String const& title, Math::Vector2D<unsigned int> const& size, unsigned int style, Graphics::ContextAttributes const& attr = Graphics::ContextAttributes());
 
                     //## Copy Constructor ##//
                         /**

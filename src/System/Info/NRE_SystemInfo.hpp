@@ -11,7 +11,7 @@
 
     #include <iostream>
 
-    #include <Utility/String/NRE_String.hpp>
+    #include <Core/String/NRE_String.hpp>
 
     /**
      * @namespace NRE
@@ -30,8 +30,8 @@
              */
             class SystemInfo {
                 private :   // Fields
-                    Utility::String cpuName;            /**< The CPU's name */
-                    Utility::String architecture;       /**< The System Architecture */
+                    Core::String cpuName;            /**< The CPU's name */
+                    Core::String architecture;       /**< The System Architecture */
                     std::size_t nbProcessors;           /**< The number of CPU */
                     std::size_t memorySize;             /**< The RAM size */
                     std::size_t memoryUsed;             /**< The RAM totally used */
@@ -48,11 +48,11 @@
                         /**
                          * @return the CPU's name
                          */
-                        Utility::String const& getCPUName() const;
+                        Core::String const& getCPUName() const;
                         /**
                          * @return the System Architecture
                          */
-                        Utility::String const& getArchitecture() const;
+                        Core::String const& getArchitecture() const;
                         /**
                          * @return the number of CPU
                          */
@@ -75,12 +75,12 @@
                          * Set the cpu name value
                          * @param name the new cpu's name
                          */
-                        void setCPUName(Utility::String const& name);
+                        void setCPUName(Core::String const& name);
                         /**
                          * Set the architecture value
                          * @param arc the new architecture value
                          */
-                        void setArchitecture(Utility::String const& arc);
+                        void setArchitecture(Core::String const& arc);
                         /**
                          * Set the number of processors
                          * @param nb the new number of processors
@@ -107,7 +107,7 @@
                          * Convert the system info into a string
                          * @return the converted system info
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
 
             };
 

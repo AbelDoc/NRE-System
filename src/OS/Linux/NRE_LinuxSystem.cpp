@@ -12,7 +12,7 @@
     #include <sys/types.h>
     #include <sys/sysinfo.h>
 
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace System {

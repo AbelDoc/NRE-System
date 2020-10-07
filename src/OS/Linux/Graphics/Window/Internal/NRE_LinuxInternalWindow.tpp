@@ -15,13 +15,13 @@
             }
 
             inline void InternalWindow::close() {
-                Utility::Singleton<GraphicsDriver>::get().unregisterWindow(internal);
-                XDestroyWindow(Utility::Singleton<GraphicsDriver>::get().getDisplay(), internal);
+                Core::Singleton<GraphicsDriver>::get().unregisterWindow(internal);
+                XDestroyWindow(Core::Singleton<GraphicsDriver>::get().getDisplay(), internal);
             }
 
             inline Math::Point2D<unsigned int> InternalWindow::getPosition() const {
                 XWindowAttributes attributes;
-                XGetWindowAttributes(Utility::Singleton<GraphicsDriver>::get().getDisplay(), internal, &attributes);
+                XGetWindowAttributes(Core::Singleton<GraphicsDriver>::get().getDisplay(), internal, &attributes);
 
                 return Math::Point2D<unsigned int>(attributes.x, attributes.y);
             }
@@ -31,7 +31,7 @@
             }
 
             inline void InternalWindow::refresh() {
-                Display* display = Utility::Singleton<GraphicsDriver>::get().getDisplay();
+                Display* display = Core::Singleton<GraphicsDriver>::get().getDisplay();
                 glXSwapBuffers(display, internal);
             }
 

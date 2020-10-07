@@ -11,7 +11,7 @@
     #include <Windows.h>
     #include <Psapi.h>
 
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace System {

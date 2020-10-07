@@ -12,7 +12,7 @@
 
     using namespace NRE::Math;
     using namespace NRE::System;
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace Graphics {

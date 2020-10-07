@@ -10,7 +10,7 @@
      #pragma once
 
      #include <Header/NRE_Math.hpp>
-     #include <Utility/String/NRE_String.hpp>
+     #include <Core/String/NRE_String.hpp>
 
      /**
       * @namespace NRE
@@ -29,7 +29,7 @@
               */
              class WindowAttributes {
                  private :  // Fields
-                     Utility::String title;                  /**< The window title */
+                     Core::String title;                  /**< The window title */
                      Math::Point2D<unsigned int> position;   /**< The window top-left corner position */
                      Math::Vector2D<unsigned int> size;      /**< The window size */
 
@@ -45,13 +45,13 @@
                          * @param pos the window top-left corner position
                          * @param s   the window size
                          */
-                        WindowAttributes(Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
+                        WindowAttributes(Core::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s);
                         /**
                          * Construct the window attributes
                          * @param t   the window title
                          * @param s   the window size
                          */
-                        WindowAttributes(Utility::String const& t, Math::Vector2D<unsigned int> const& s);
+                        WindowAttributes(Core::String const& t, Math::Vector2D<unsigned int> const& s);
 
                     //## Copy Constructor ##//
                         /**
@@ -105,7 +105,7 @@
                          * Convert the window attributes into a string
                          * @return the converted window attributes
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
 
             };
 

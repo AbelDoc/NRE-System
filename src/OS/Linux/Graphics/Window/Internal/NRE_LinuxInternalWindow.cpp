@@ -10,7 +10,7 @@
      #include "../../../../../System/Graphics/Window/Internal/NRE_InternalWindow.hpp"
 
      using namespace NRE::Math;
-     using namespace NRE::Utility;
+     using namespace NRE::Core;
 
      namespace NRE {
          namespace Graphics {

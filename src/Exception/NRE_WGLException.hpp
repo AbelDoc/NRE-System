@@ -18,7 +18,7 @@
     namespace NRE {
         /**
          * @namespace Exception
-         * @brief Utility's API
+         * @brief Core's API
          */
         namespace Exception {
 
@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    WGLException(Utility::String const& log) throw() : SystemException("WGL Exception : " + log) {
+                    WGLException(Core::String const& log) throw() : SystemException("WGL Exception : " + log) {
                     }
             };
         }

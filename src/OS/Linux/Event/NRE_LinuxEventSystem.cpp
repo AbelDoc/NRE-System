@@ -13,7 +13,7 @@
     using namespace NRE::Graphics;
     using namespace NRE::Event;
     using namespace NRE::Math;
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace System {
@@ -120,7 +120,7 @@
                      int major = 2, minor = 2;
                      XIQueryVersion(display, &major, &minor);
                      if (major < 2) {
-                         throw Exception::X11Exception(Utility::String("XInputExtension 2.+ is required. Found : ") << major << "." << minor);
+                         throw Exception::X11Exception(Core::String("XInputExtension 2.+ is required. Found : ") << major << "." << minor);
                      }
 
                      XIEventMask eventMask;

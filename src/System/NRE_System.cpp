@@ -9,7 +9,7 @@
 
     #include "NRE_System.hpp"
 
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace System {

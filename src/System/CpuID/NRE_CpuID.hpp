@@ -18,7 +18,7 @@
         typedef uint32_t Register;
     #endif
 
-    #include <Utility/String/NRE_String.hpp>
+    #include <Core/String/NRE_String.hpp>
 
     /**
      * @namespace NRE
@@ -96,7 +96,7 @@
                          * Convert the registers into a string
                          * @return the converted registers
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
             };
 
             /**

@@ -16,7 +16,7 @@
     #include "Emitter/NRE_EventEmitter.hpp"
     #include "Event/NRE_Event.hpp"
 
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
 
     /**
      * @namespace NRE
@@ -44,7 +44,7 @@
             class EventSystem {
                 private :   // Fields
                     Event::InputManager inputManager;                                          /**< The input manager */
-                    Utility::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
+                    Core::Vector<std::unique_ptr<Event::AbstractEventEmitter>> emitters;    /**< Event emitters */
                     #ifdef __linux__
                         int rawInputCode;                                                      /**< XI2 operation code */
                     #endif

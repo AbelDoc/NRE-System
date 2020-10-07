@@ -10,10 +10,10 @@
     namespace NRE {
         namespace Graphics {
 
-            inline WindowAttributes::WindowAttributes(Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
+            inline WindowAttributes::WindowAttributes(Core::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s) : title(t), position(pos), size(s) {
             }
 
-            inline WindowAttributes::WindowAttributes(Utility::String const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
+            inline WindowAttributes::WindowAttributes(Core::String const& t, Math::Vector2D<unsigned int> const& s) : title(t), size(s) {
             }
             
             inline Math::Vector2D<unsigned int> const& WindowAttributes::getSize() const {

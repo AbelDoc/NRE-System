@@ -12,16 +12,16 @@
 
             template <class T>
             inline EventHandler<T>::EventHandler(Handler && h) : handler(std::move(h)) {
-                Utility::Singleton<System::System>::get().getEventSystem().addHandler<T>(this);
+                Core::Singleton<System::System>::get().getEventSystem().addHandler<T>(this);
             }
 
             template <class T>
             inline EventHandler<T>::~EventHandler() {
-                Utility::Singleton<System::System>::get().getEventSystem().removeHandler<T>(this);
+                Core::Singleton<System::System>::get().getEventSystem().removeHandler<T>(this);
             }
 
             template <class T>
-            inline void EventHandler<T>::update(Utility::Observable* obs, void* arg) {
+            inline void EventHandler<T>::update(Core::Observable* obs, void* arg) {
                 static_cast <EventEmitter<T>*> (obs)->setConsumed(handler(*(static_cast <T*> (arg))));
             }
         }

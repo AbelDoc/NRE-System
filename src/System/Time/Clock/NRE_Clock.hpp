@@ -13,7 +13,7 @@
     #include <thread>
     #include <chrono>
 
-    #include <Utility/String/NRE_String.hpp>
+    #include <Core/String/NRE_String.hpp>
 
      /**
      * @namespace NRE
@@ -126,7 +126,7 @@
                          * Convert the clock into a string
                          * @return the converted clock
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
 
                 private:   // Methods
                     /**

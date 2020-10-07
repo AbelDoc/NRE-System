@@ -10,13 +10,13 @@
     #include "NRE_WindowAttributes.hpp"
 
     using namespace NRE::Math;
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace Graphics {
 
-             Utility::String WindowAttributes::toString() const {
-                Utility::String res;
+             Core::String WindowAttributes::toString() const {
+                Core::String res;
                 res.reserve(30);
                 res << title;
                 res << " | ";

@@ -9,7 +9,7 @@
 
     #include "../../../../../System/Graphics/Driver/Context/NRE_Context.hpp"
 
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
     using namespace NRE::Exception;
 
     namespace NRE {

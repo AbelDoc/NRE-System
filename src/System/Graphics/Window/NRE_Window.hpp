@@ -14,7 +14,7 @@
      #include "Internal/NRE_InternalWindow.hpp"
      #include "../Driver/Context/NRE_Context.hpp"
 
-     #include <Utility/String/NRE_String.hpp>
+     #include <Core/String/NRE_String.hpp>
 
      /**
       * @namespace NRE
@@ -55,7 +55,7 @@
                          * @param ws   the window style value
                          * @param attr the window context attributes
                          */
-                        Window(Id const& i, Utility::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr);
+                        Window(Id const& i, Core::String const& t, Math::Point2D<unsigned int> const& pos, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr);
                         /**
                          * Construct the window with centered position
                          * @param i    the window id
@@ -64,7 +64,7 @@
                          * @param ws   the window style value
                          * @param attr the window context attributes
                          */
-                        Window(Id const& i, Utility::String const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr);
+                        Window(Id const& i, Core::String const& t, Math::Vector2D<unsigned int> const& s, WindowStyle const& ws, ContextAttributes const& attr);
 
                     //## Copy Constructor ##//
                         /**
@@ -140,7 +140,7 @@
                          * Convert the window into a string
                          * @return the converted window
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
 
             };
 

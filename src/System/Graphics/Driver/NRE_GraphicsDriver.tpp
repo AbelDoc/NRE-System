@@ -11,7 +11,7 @@
         namespace Graphics {
 
             inline void GraphicsDriver::registerWindow(NativeWindowType window, Id id) {
-                windows.emplace(Utility::Pair<NativeWindowType, Id>(window, id));
+                windows.emplace(Core::Pair<NativeWindowType, Id>(window, id));
             }
 
             inline void GraphicsDriver::unregisterWindow(NativeWindowType window) {

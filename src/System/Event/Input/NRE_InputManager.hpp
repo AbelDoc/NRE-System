@@ -9,7 +9,7 @@
 
     #include <vector>
     #include <Header/NRE_Math.hpp>
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
 
     #ifdef _WIN32                           // Windows
         #include "../../../OS/Windows/Event/Input/Keys/NRE_WindowsKeyTranslater.hpp"
@@ -45,8 +45,8 @@
                 private :   // Fields
                     KeyTranslater keyTranslater;                  /**< Manage the translation of key event */
                     Mouse mouse;                                  /**< The interface to the application cursor */
-                    Utility::Vector<KeyCode> keys;                /**< The active keys */
-                    Utility::Vector<ButtonEventData> buttons;     /**< The active buttons */
+                    Core::Vector<KeyCode> keys;                /**< The active keys */
+                    Core::Vector<ButtonEventData> buttons;     /**< The active buttons */
 
                 public :    // Methods
                     //## Getter ##//

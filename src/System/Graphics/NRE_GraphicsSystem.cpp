@@ -11,7 +11,7 @@
 
     using namespace NRE::Math;
     using namespace NRE::Graphics;
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
      namespace NRE {
          namespace System {

@@ -13,11 +13,11 @@
             inline SystemInfo::SystemInfo() : nbProcessors(0), memorySize(0), memoryUsed(0), memoryUsedByProcess(0) {
             }
 
-            inline Utility::String const& SystemInfo::getCPUName() const {
+            inline Core::String const& SystemInfo::getCPUName() const {
                 return cpuName;
             }
 
-            inline Utility::String const& SystemInfo::getArchitecture() const {
+            inline Core::String const& SystemInfo::getArchitecture() const {
                 return architecture;
             }
 
@@ -37,11 +37,11 @@
                 return memoryUsedByProcess;
             }
 
-            inline void SystemInfo::setCPUName(Utility::String const& name) {
+            inline void SystemInfo::setCPUName(Core::String const& name) {
                 cpuName = name;
             }
 
-            inline void SystemInfo::setArchitecture(Utility::String const& arc) {
+            inline void SystemInfo::setArchitecture(Core::String const& arc) {
                 architecture = arc;
             }
 

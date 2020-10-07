@@ -9,7 +9,7 @@
 
     #include "NRE_Clock.hpp"
 
-    using namespace NRE::Utility;
+    using namespace NRE::Core;
 
     namespace NRE {
         namespace Time {

@@ -10,7 +10,7 @@
     #pragma once
 
     #include <functional>
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
     #include "../../NRE_System.hpp"
 
     /**
@@ -29,7 +29,7 @@
              * @brief Manage an event handler for a special type
              */
             template <class T>
-            class EventHandler : public Utility::Observer {
+            class EventHandler : public Core::Observer {
                 public :     // Fields
                     /** Shortcut for handler type abstraction */
                     typedef std::function<bool(T&)> Handler;
@@ -75,7 +75,7 @@
                          * @param obs the observed object
                          * @param arg notification data
                          */
-                        void update(Utility::Observable* obs, void* arg) override;
+                        void update(Core::Observable* obs, void* arg) override;
 
                     //## Assignment Operator ##//
                         /**

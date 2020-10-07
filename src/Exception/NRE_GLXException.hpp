@@ -18,7 +18,7 @@
     namespace NRE {
         /**
          * @namespace Exception
-         * @brief Utility's API
+         * @brief Core's API
          */
         namespace Exception {
 
@@ -32,7 +32,7 @@
                      * Construct the exception with a custom log
                      * @param log the exception's log
                      */
-                    GLXException(Utility::String const& log) throw() : SystemException("GLX Exception : " + log) {
+                    GLXException(Core::String const& log) throw() : SystemException("GLX Exception : " + log) {
                     }
             };
         }

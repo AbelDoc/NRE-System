@@ -9,7 +9,7 @@
 
      #pragma once
 
-     #include <Utility/Array/NRE_Array.hpp>
+     #include <Core/Array/NRE_Array.hpp>
 
      /**
       * @namespace NRE
@@ -51,7 +51,7 @@
              */
             class ContextAttributes {
                 private :   // Fields
-                    Utility::Array<int, static_cast <std::size_t> (GLAttributes::NUM_ATTRIBUTES)> attributes;   /**< The context attributes */
+                    Core::Array<int, static_cast <std::size_t> (GLAttributes::NUM_ATTRIBUTES)> attributes;   /**< The context attributes */
 
                 public :    // Methods
                     //## Constructor ##//

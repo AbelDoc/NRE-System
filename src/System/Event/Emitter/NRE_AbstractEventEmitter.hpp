@@ -9,7 +9,7 @@
 
     #pragma once
 
-    #include <Header/NRE_Utility.hpp>
+    #include <Header/NRE_Core.hpp>
 
     /**
      * @namespace NRE
@@ -26,7 +26,7 @@
              * @class AbstractEventEmitter
              * @brief Abstract class for specialized event emission
              */
-            class AbstractEventEmitter : public Utility::Observable {
+            class AbstractEventEmitter : public Core::Observable {
                 public :    // Fields
                     /**< Shortcut to hide the Category type */
                     typedef std::size_t Category;

@@ -10,11 +10,11 @@
     namespace NRE {
         namespace Graphics {
 
-            inline InternalWindow::InternalWindow(Id i, Utility::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
+            inline InternalWindow::InternalWindow(Id i, Core::String const& title, Math::Vector2D<unsigned int> const& size, WindowStyle const& style) : InternalWindow(i, title, computeCenteredPosition(size), size, style) {
             }
 
             inline void InternalWindow::close() {
-                Utility::Singleton<GraphicsDriver>::get().unregisterWindow(internal);
+                Core::Singleton<GraphicsDriver>::get().unregisterWindow(internal);
                 DestroyWindow(internal);
             }
 

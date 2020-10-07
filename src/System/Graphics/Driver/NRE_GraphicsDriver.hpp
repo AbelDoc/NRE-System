@@ -39,9 +39,9 @@
         #error "Not Supported Yet or Unknown compiler"
      #endif
 
-     #include <Utility/UnorderedMap/NRE_UnorderedMap.hpp>
-     #include <Utility/Singleton/NRE_Singleton.hpp>
-     #include <Utility/Id/NRE_Id.hpp>
+     #include <Core/UnorderedMap/NRE_UnorderedMap.hpp>
+     #include <Core/Singleton/NRE_Singleton.hpp>
+     #include <Core/Id/NRE_Id.hpp>
 
      /**
       * @namespace NRE
@@ -66,14 +66,14 @@
               * @class GraphicsDriver
               * @brief Manage the os-dependant graphics driver
               */
-            class GraphicsDriver : public Utility::Singleton<GraphicsDriver> {
-                friend Utility::Singleton<GraphicsDriver>;
+            class GraphicsDriver : public Core::Singleton<GraphicsDriver> {
+                friend Core::Singleton<GraphicsDriver>;
                 private :   // Fields
                     #ifdef __linux__               // Linux
                         Display* display;                                       /**< The X11 display connection */
                         Atom closeAtom;                                         /**< The internal atom for close */
                     #endif
-                    Utility::UnorderedMap<NativeWindowType, Id> windows;        /**< Store all opened native windows */
+                    Core::UnorderedMap<NativeWindowType, Id> windows;        /**< Store all opened native windows */
 
                 public :    // Methods
                     //## Move Constructor ##//

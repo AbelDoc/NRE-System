@@ -19,8 +19,8 @@
     #include "Event/NRE_EventSystem.hpp"
     #include "Time/Clock/NRE_Clock.hpp"
 
-    #include <Utility/String/NRE_String.hpp>
-    #include <Utility/Singleton/NRE_Singleton.hpp>
+    #include <Core/String/NRE_String.hpp>
+    #include <Core/Singleton/NRE_Singleton.hpp>
 
     /**
      * @namespace NRE
@@ -37,8 +37,8 @@
              * @class System
              * @brief Represent the System abstraction layer
              */
-            class System : public Utility::Singleton<System> {
-                friend Utility::Singleton<System>;
+            class System : public Core::Singleton<System> {
+                friend Core::Singleton<System>;
                 private :   // Fields
                     SystemInfo infos;           /**< The system's info */
                     GraphicsSystem graphics;    /**< The graphics sub system */
@@ -63,7 +63,7 @@
                         /**
                          * @return the system's name
                          */
-                        Utility::String getSystemName() const;
+                        Core::String getSystemName() const;
                         /**
                          * @return the System info
                          */
@@ -120,7 +120,7 @@
                          * Convert the system into a string
                          * @return the converted system
                          */
-                        Utility::String toString() const;
+                        Core::String toString() const;
 
                 private :   // Methods
                     //## Constructor ##//
